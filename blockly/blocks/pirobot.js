@@ -26,3 +26,141 @@ Blockly.Blocks['control_key_down'] = {
 		this.setTooltip('');
 	}
 };
+
+Blockly.Blocks['block_drt'] = {
+  init: function() {
+    this.appendValueInput("NBR_SEC").appendField("Dormir pendant");
+    this.appendDummyInput().appendField("secondes");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(185);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['block_move_forward'] = {
+  init: function() {
+    this.appendValueInput("NBR_PAS_FORWARD").appendField("Avancer de");
+    this.appendDummyInput().appendField("pas");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(150);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['block_hi'] = {
+  init: function() {
+    this.appendValueInput("NBR_HI").appendField("Saluer")
+    this.appendDummyInput().appendField("fois");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(150);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['block_move_forward_gn_cd'] = {
+  init: function() {
+    this.appendValueInput("NBR_PAS_FORWARD").appendField("Avancer de");
+    this.appendDummyInput().appendField("pas avec lever de genoux");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(150);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['block_motor_dc'] = {
+  init: function() {
+  	this.appendDummyInput()
+  		.appendField("faire tourner vers")
+        .appendField(new Blockly.FieldDropdown([["l'avant","av"], ["l'arrière","re"]]), "MOVE")
+  	this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(150);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['block_yes'] = {
+  init: function() {
+  	this.appendDummyInput()
+  		.appendField("dire ")
+        	.appendField(new Blockly.FieldDropdown([["oui","o"], ["non","n"]]), "MOVE")
+		.appendField("de la tete")
+  	this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(150);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['block_init'] = {
+  init: function() {
+  	this.appendDummyInput()
+		.appendField("remettre a la position initiale")
+  	this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(150);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['dire'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Dire")
+        .appendField(new Blockly.FieldTextInput("Bonjour"), "TEXT");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(315);
+ this.setTooltip("Fait parler le robot");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['repete'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Répète après moi");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(315);
+ this.setTooltip("Parle et le robot répètera ce que tu dis");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['question'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Demande")
+        .appendField(new Blockly.FieldTextInput("comment tu t'appelles?"), "QSTN");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(315);
+ this.setTooltip("Pose une question au robot");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['question_vocale'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Demande")
+        .appendField(new Blockly.FieldTextInput("comment tu t'appelles?"), "QSTN");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(315);
+ this.setTooltip("Pose une question au robot");
+ this.setHelpUrl("");
+  }
+};

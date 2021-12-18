@@ -58,3 +58,113 @@ Blockly.JavaScript['control_key_down'] = function(block) {
 	var code = 'window.addKeyEventListenerForBlock("'+block.id+'", "'+type+'", "'+callbackCode+'");';
 	return code;
 };
+
+Blockly.JavaScript['motor_move'] = function(block) {
+	var value_power = Blockly.JavaScript.valueToCode(block, 'POWER2',
+			Blockly.JavaScript.ORDER_ATOMIC);
+	var dropdown_motor = block.getFieldValue('MOTOR2');
+	var move = block.getFieldValue('MOVE');
+    // Check the input ...
+    if (value_power > 180) {
+        alert("Maximum motor power for the robot is 180.");
+        return '';
+    }
+    if (value_power < 0) {
+        alert("Minimum motor power for the robot is 0.");
+        return '';
+    }
+    if(move == 're'){
+    	value_power = value_power * -1;
+    }
+    if (dropdown_motor == 1) {
+        alert("l'angle est " + value_power + " voila!");
+        return '';
+    }
+
+	var code = 'runPiRobotCommand("setRobotMotorPower2", "' + dropdown_motor + '",' + value_power + ');';
+	return code;
+};
+
+Blockly.JavaScript['dire'] = function(block) {
+  var value_text = block.getFieldValue('TEXT');
+  var code = 'runPiRobotCommand("speak", "' + value_text + '");';
+  return code;
+};
+
+Blockly.JavaScript['repete'] = function(block) {
+  var code = 'runPiRobotCommand("repeat");';
+  return code;
+};
+
+Blockly.JavaScript['question'] = function(block) {
+  var text_qstn = block.getFieldValue('QSTN');
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'runPiRobotCommand("quest", "' + text_qstn + '");';
+  return code;
+};
+
+Blockly.JavaScript['question_vocale'] = function(block) {
+  var text_qstn = block.getFieldValue('QSTN');
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'runPiRobotCommand("quest", "' + text_qstn + '");';
+  return code;
+};
+
+Blockly.JavaScript['block_drt'] = function(block) {
+	var value_power = Blockly.JavaScript.valueToCode(block, 'NBR_SEC',
+			Blockly.JavaScript.ORDER_ATOMIC);
+	var code = 'runPiRobotCommand("setDelay", ' + value_power + ');';
+	return code;
+
+};
+
+Blockly.JavaScript['block_move_forward'] = function(block){
+	var value_nb_steps = Blockly.JavaScript.valueToCode(block, 'NBR_PAS_FORWARD',
+			Blockly.JavaScript.ORDER_ATOMIC);
+
+    var code = 'runPiRobotCommand("doWalk", ' + value_nb_steps + ');';
+	return code;
+};
+
+Blockly.JavaScript['block_move_forward_gn_cd'] = function(block){
+	var value_nb_steps = Blockly.JavaScript.valueToCode(block, 'NBR_PAS_FORWARD',
+			Blockly.JavaScript.ORDER_ATOMIC);
+
+    var code = 'runPiRobotCommand("doWalk_gn_cd", ' + value_nb_steps + ');';
+	return code;
+};
+
+Blockly.JavaScript['block_hi'] = function(block){
+	var value_nb_hi = Blockly.JavaScript.valueToCode(block, 'NBR_HI',
+			Blockly.JavaScript.ORDER_ATOMIC);
+
+    var code = 'runPiRobotCommand("doHi", ' + value_nb_hi + ');';
+	return code;
+};
+
+Blockly.JavaScript['block_motor_dc'] = function(block){
+	var dropdown_motor = block.getFieldValue('MOVE');
+	if(dropdown_motor  == 1){
+		  alert("l'angle est voila!");
+        return '';
+	}
+	var code = 'runPiRobotCommand("motor_dc", '+1+');';
+	return code;
+};
+
+Blockly.JavaScript['block_yes'] = function(block){
+	var dropdown_motor = block.getFieldValue('MOVE');
+	if(dropdown_motor == "o"){
+    		var code = 'runPiRobotCommand("do_yes");';
+	}
+	if(dropdown_motor == "n"){
+		var code = 'runPiRobotCommand("do_no");';
+	}
+	return code;
+};
+
+Blockly.JavaScript['block_init'] = function(block){
+	var code = 'runPiRobotCommand("do_init");';
+	return code;
+};
+//*********************************************************

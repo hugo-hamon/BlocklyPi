@@ -301,6 +301,83 @@
         <sep></sep>
         <category id="catVariables" custom="VARIABLE" name="Variables"></category>
         <category id="catFunctions" custom="PROCEDURE" name="Functions"></category>
+
+        <category id="robotCat" name="Robot francaster">
+
+
+
+            <block type="robot_motor_power">
+                <value name="POWER">
+                    <block type="math_number">
+                        <field name="NUM">100</field>
+                    </block>
+                </value>
+            </block>
+
+
+
+            <block type="motor_move" >
+                <value name="POWER2">
+                    <block type="math_number">
+                        <field name="NUM">90</field>
+                    </block>
+                </value>
+
+            </block>
+
+
+            <block type="block_drt" >
+                <value name="NBR_SEC">
+                    <block type="math_number">
+                        <field name="NUM">0</field>
+                    </block>
+                </value>
+            </block>
+
+
+
+            <block type="block_move_forward" >
+                <value name="NBR_PAS_FORWARD">
+                    <block type="math_number">
+                        <field name="NUM">0</field>
+                    </block>
+                </value>
+            </block>
+
+            <block type="block_hi" >
+                <value name="NBR_HI">
+                    <block type="math_number">
+                        <field name="NUM">0</field>
+                    </block>
+                </value>
+            </block>
+
+            <block type = "block_yes">
+            </block>
+
+            <block type = "dire">
+            </block>
+
+            <block type = "question">
+            </block>
+
+            <block type = "repete">
+            </block>
+
+
+            <block type="block_move_forward_gn_cd" >
+                <value name="NBR_PAS_FORWARD">
+                    <block type="math_number">
+                        <field name="NUM">0</field>
+                    </block>
+                </value>
+            </block>
+            <block type = "block_init">
+            </block>
+            <block type = "block_motor_dc">
+            </block>
+        </category>
+
     </xml>
 
 
