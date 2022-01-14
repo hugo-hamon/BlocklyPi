@@ -58,3 +58,8 @@ Blockly.JavaScript['control_key_down'] = function(block) {
 	var code = 'window.addKeyEventListenerForBlock("'+block.id+'", "'+type+'", "'+callbackCode+'");';
 	return code;
 };
+
+Blockly.Arduino['francas_block'] = function(block) {
+  var code = "printf(\"hello world\");"
+  return code;
+};
