@@ -1,4 +1,4 @@
-Blockly.JavaScript['set_motor_power'] = function (block) {
+Blockly.JavaScript['francaster_set_motor_power'] = function (block) {
     var value_power = Blockly.JavaScript.valueToCode(block, 'POWER',
         Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_motor = block.getFieldValue('MOTOR');
@@ -19,7 +19,7 @@ Blockly.JavaScript['set_motor_power'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['control_key_down'] = function (block) {
+Blockly.JavaScript['francaster_control_key_down'] = function (block) {
     // The inputs ...
     var statements_statements = Blockly.JavaScript.statementToCode(block, 'STATEMENTS');
     var dropdown_key = block.getFieldValue('KEY');
@@ -59,7 +59,7 @@ Blockly.JavaScript['control_key_down'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['shift_motor_position'] = function (block) {
+Blockly.JavaScript['francaster_shift_motor_position'] = function (block) {
     var value_power = Blockly.JavaScript.valueToCode(block, 'POWER2',
         Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_motor = block.getFieldValue('MOTOR2');
@@ -85,18 +85,18 @@ Blockly.JavaScript['shift_motor_position'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['francster_say_hi'] = function (block) {
+Blockly.JavaScript['francaster_say_hi'] = function (block) {
     var value_text = block.getFieldValue('TEXT');
     var code = 'runPiRobotCommand("speak", "' + value_text + '");';
     return code;
 };
 
-Blockly.JavaScript['francster_repeat_after_me'] = function (block) {
+Blockly.JavaScript['francaster_repeat_after_me'] = function (block) {
     var code = 'runPiRobotCommand("repeat");';
     return code;
 };
 
-Blockly.JavaScript['francster_ask_question'] = function (block) {
+Blockly.JavaScript['francaster_ask_question'] = function (block) {
     var text_qstn = block.getFieldValue('QSTN');
     // TODO: Assemble JavaScript into code variable.
     var code = 'runPiRobotCommand("quest", "' + text_qstn + '");';
@@ -119,7 +119,7 @@ Blockly.JavaScript['francaster_make_n_step'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['francster_make_n_steps_with_knee_lift'] = function (block) {
+Blockly.JavaScript['francaster_make_n_steps_with_knee_lift'] = function (block) {
     var value_nb_steps = Blockly.JavaScript.valueToCode(block, 'NBR_PAS_FORWARD',
         Blockly.JavaScript.ORDER_ATOMIC);
 
@@ -135,7 +135,7 @@ Blockly.JavaScript['francaster_say_hi'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['francster_say_yes'] = function (block) {
+Blockly.JavaScript['francaster_say_yes'] = function (block) {
     var dropdown_motor = block.getFieldValue('MOVE');
     if (dropdown_motor == "o") {
         var code = 'runPiRobotCommand("do_yes");';
@@ -146,7 +146,7 @@ Blockly.JavaScript['francster_say_yes'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['francster_reset_position'] = function (block) {
+Blockly.JavaScript['francaster_reset_position'] = function (block) {
     var code = 'runPiRobotCommand("do_init");';
     return code;
 };

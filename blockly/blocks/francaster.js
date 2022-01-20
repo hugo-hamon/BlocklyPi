@@ -81,7 +81,7 @@ Blockly.Blocks['francaster_say_hi'] = {
     }
 };
 
-Blockly.Blocks['francster_make_n_steps_with_knee_lift'] = {
+Blockly.Blocks['francaster_make_n_steps_with_knee_lift'] = {
     init: function () {
         this.appendValueInput("NBR_PAS_FORWARD").appendField("Avancer de");
         this.appendDummyInput().appendField("pas avec lever de genoux");
@@ -93,7 +93,7 @@ Blockly.Blocks['francster_make_n_steps_with_knee_lift'] = {
     }
 };
 
-Blockly.Blocks['francster_say_yes'] = {
+Blockly.Blocks['francaster_say_yes'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("dire ")
@@ -107,7 +107,7 @@ Blockly.Blocks['francster_say_yes'] = {
     }
 };
 
-Blockly.Blocks['francster_reset_position'] = {
+Blockly.Blocks['francaster_reset_position'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("remettre a la position initiale")
@@ -119,7 +119,7 @@ Blockly.Blocks['francster_reset_position'] = {
     }
 };
 
-Blockly.Blocks['francster_say_hi'] = {
+Blockly.Blocks['francaster_say_hi'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Dire")
@@ -132,7 +132,7 @@ Blockly.Blocks['francster_say_hi'] = {
     }
 };
 
-Blockly.Blocks['francster_repeat_after_me'] = {
+Blockly.Blocks['francaster_repeat_after_me'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Répète après moi");
@@ -144,7 +144,7 @@ Blockly.Blocks['francster_repeat_after_me'] = {
     }
 };
 
-Blockly.Blocks['francster_ask_question'] = {
+Blockly.Blocks['francaster_ask_question'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Demande")
