@@ -1,4 +1,4 @@
-Blockly.JavaScript['robot_motor_power'] = function (block) {
+Blockly.JavaScript['set_motor_power'] = function (block) {
     var value_power = Blockly.JavaScript.valueToCode(block, 'POWER',
         Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_motor = block.getFieldValue('MOTOR');
@@ -59,7 +59,7 @@ Blockly.JavaScript['control_key_down'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['motor_move'] = function (block) {
+Blockly.JavaScript['shift_motor_position'] = function (block) {
     var value_power = Blockly.JavaScript.valueToCode(block, 'POWER2',
         Blockly.JavaScript.ORDER_ATOMIC);
     var dropdown_motor = block.getFieldValue('MOTOR2');
@@ -110,7 +110,7 @@ Blockly.JavaScript['question_vocale'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['block_drt'] = function (block) {
+Blockly.JavaScript['francaster_sleep'] = function (block) {
     var value_power = Blockly.JavaScript.valueToCode(block, 'NBR_SEC',
         Blockly.JavaScript.ORDER_ATOMIC);
     var code = 'runPiRobotCommand("setDelay", ' + value_power + ');';
@@ -118,7 +118,7 @@ Blockly.JavaScript['block_drt'] = function (block) {
 
 };
 
-Blockly.JavaScript['block_move_forward'] = function (block) {
+Blockly.JavaScript['francaster_make_n_step'] = function (block) {
     var value_nb_steps = Blockly.JavaScript.valueToCode(block, 'NBR_PAS_FORWARD',
         Blockly.JavaScript.ORDER_ATOMIC);
 
@@ -126,7 +126,7 @@ Blockly.JavaScript['block_move_forward'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['block_move_forward_gn_cd'] = function (block) {
+Blockly.JavaScript['francster_make_n_steps_with_knee_lift'] = function (block) {
     var value_nb_steps = Blockly.JavaScript.valueToCode(block, 'NBR_PAS_FORWARD',
         Blockly.JavaScript.ORDER_ATOMIC);
 
@@ -134,7 +134,7 @@ Blockly.JavaScript['block_move_forward_gn_cd'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['block_hi'] = function (block) {
+Blockly.JavaScript['francaster_say_hi'] = function (block) {
     var value_nb_hi = Blockly.JavaScript.valueToCode(block, 'NBR_HI',
         Blockly.JavaScript.ORDER_ATOMIC);
 

@@ -93,19 +93,6 @@ Blockly.Blocks['block_move_forward_gn_cd'] = {
     }
 };
 
-Blockly.Blocks['block_motor_dc'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("faire tourner vers")
-            .appendField(new Blockly.FieldDropdown([["l'avant", "av"], ["l'arrière", "re"]]), "MOVE")
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(150);
-        this.setTooltip("");
-        this.setHelpUrl("");
-    }
-};
-
 Blockly.Blocks['block_yes'] = {
     init: function () {
         this.appendDummyInput()
