@@ -71,7 +71,7 @@ Blockly.Blocks['francaster_make_n_steps'] = {
 
 Blockly.Blocks['francaster_say_hi'] = {
     init: function () {
-        this.appendValueInput("NBR_HI").appendField("Saluer")
+        this.appendValueInput("NBR_HI").appendField("Saluer");
         this.appendDummyInput().appendField("fois");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -115,19 +115,6 @@ Blockly.Blocks['francaster_reset_position'] = {
         this.setNextStatement(true, null);
         this.setColour(150);
         this.setTooltip("");
-        this.setHelpUrl("");
-    }
-};
-
-Blockly.Blocks['francaster_say_hi'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("Dire")
-            .appendField(new Blockly.FieldTextInput("Bonjour"), "TEXT");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(315);
-        this.setTooltip("Fait parler le robot");
         this.setHelpUrl("");
     }
 };
