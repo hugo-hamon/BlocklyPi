@@ -300,12 +300,13 @@
     </category>
 
     <sep></sep>
+
     <category id="catVariables" custom="VARIABLE" name="Variables"></category>
     <category id="catFunctions" custom="PROCEDURE" name="Functions"></category>
+
     <sep></sep>
+
     <category id="catFrancaster" name="Francaster">
-
-
         <block type="francaster_set_motor_power">
             <value name="POWER">
                 <block type="math_number">
@@ -313,18 +314,13 @@
                 </block>
             </value>
         </block>
-
-
         <block type="francaster_shift_motor_position">
             <value name="POWER2">
                 <block type="math_number">
                     <field name="NUM">90</field>
                 </block>
             </value>
-
         </block>
-
-
         <block type="francaster_sleep">
             <value name="NBR_SEC">
                 <block type="math_number">
@@ -332,8 +328,6 @@
                 </block>
             </value>
         </block>
-
-
         <block type="francaster_make_n_steps">
             <value name="NBR_PAS_FORWARD">
                 <block type="math_number">
@@ -341,7 +335,6 @@
                 </block>
             </value>
         </block>
-
         <block type="francaster_say_hi">
             <value name="NBR_HI">
                 <block type="math_number">
@@ -349,20 +342,10 @@
                 </block>
             </value>
         </block>
-
-        <block type="francster_say_yes">
-        </block>
-
-        <block type="francster_say_hi">
-        </block>
-
-        <block type="francster_ask_question">
-        </block>
-
-        <block type="francster_repeat_after_me">
-        </block>
-
-
+        <block type="francster_say_yes"></block>
+        <block type="francster_say_hi"></block>
+        <block type="francster_ask_question"></block>
+        <block type="francster_repeat_after_me"></block>
         <block type="francster_make_n_steps_with_knee_lift">
             <value name="NBR_PAS_FORWARD">
                 <block type="math_number">
@@ -373,6 +356,7 @@
         <block type="francster_reset_position">
         </block>
     </category>
+
     <category id="catAllBots" name="Allbots"></category>
 
 </xml>
