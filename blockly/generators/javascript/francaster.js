@@ -45,12 +45,6 @@ Blockly.JavaScript['francaster_shift_motor_position'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['francaster_say_hi'] = function (block) {
-    var value_text = block.getFieldValue('TEXT');
-    var code = 'runPiRobotCommand("speak", "' + value_text + '");';
-    return code;
-};
-
 Blockly.JavaScript['francaster_repeat_after_me'] = function (block) {
     var code = 'runPiRobotCommand("repeat");';
     return code;
