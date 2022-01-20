@@ -1,7 +1,9 @@
+var FRANCASTER_COLOR = 60;
+
 Blockly.Blocks['francaster_set_motor_power'] = {
     init: function () {
         this.setHelpUrl('http://www.example.com/');
-        this.setColour(0);
+        this.setColour(FRANCASTER_COLOR);
         this.appendValueInput("POWER").setCheck("Number").appendField(
             new Blockly.FieldDropdown([
                 ["Set the power of the left motor to", "LEFT"],
@@ -39,7 +41,7 @@ Blockly.Blocks['francaster_shift_motor_position'] = {
             "MOTOR2");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(230);
+        this.setColour(FRANCASTER_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -51,7 +53,7 @@ Blockly.Blocks['francaster_sleep'] = {
         this.appendDummyInput().appendField("secondes");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(185);
+        this.setColour(FRANCASTER_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -63,7 +65,7 @@ Blockly.Blocks['francaster_make_n_steps'] = {
         this.appendDummyInput().appendField("pas");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(150);
+        this.setColour(FRANCASTER_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -75,7 +77,7 @@ Blockly.Blocks['francaster_say_hi'] = {
         this.appendDummyInput().appendField("fois");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(150);
+        this.setColour(FRANCASTER_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -87,7 +89,7 @@ Blockly.Blocks['francaster_make_n_steps_with_knee_lift'] = {
         this.appendDummyInput().appendField("pas avec lever de genoux");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(150);
+        this.setColour(FRANCASTER_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -101,7 +103,7 @@ Blockly.Blocks['francaster_say_yes'] = {
             .appendField("de la tete")
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(150);
+        this.setColour(FRANCASTER_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -113,7 +115,7 @@ Blockly.Blocks['francaster_reset_position'] = {
             .appendField("remettre a la position initiale")
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(150);
+        this.setColour(FRANCASTER_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -125,7 +127,7 @@ Blockly.Blocks['francaster_repeat_after_me'] = {
             .appendField("Répète après moi");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(315);
+        this.setColour(FRANCASTER_COLOR);
         this.setTooltip("Parle et le robot répètera ce que tu dis");
         this.setHelpUrl("");
     }
@@ -138,7 +140,7 @@ Blockly.Blocks['francaster_ask_question'] = {
             .appendField(new Blockly.FieldTextInput("comment tu t'appelles?"), "QSTN");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(315);
+        this.setColour(FRANCASTER_COLOR);
         this.setTooltip("Pose une question au robot");
         this.setHelpUrl("");
     }
