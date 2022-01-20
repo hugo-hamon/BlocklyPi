@@ -1,3 +1,5 @@
+var ALLBOTS_COLOR = 0;
+
 Blockly.Blocks['allbots_shift_motor_position'] = {
     init: function () {
         this.appendDummyInput()
@@ -17,7 +19,7 @@ Blockly.Blocks['allbots_shift_motor_position'] = {
             "MOTOR2");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(230);
+        this.setColour(ALLBOTS_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
