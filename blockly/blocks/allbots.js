@@ -13,14 +13,7 @@ Blockly.Blocks['allbots_shift_motor_position'] = {
                 ["le moteur 5 de", "5"],
                 ["le moteur 6 de", "6"],
                 ["le moteur 7 de", "7"],
-                ["le moteur 8 de", "8"],
-                ["le moteur 9 de", "9"],
-                ["le moteur 10 de", "10"],
-                ["le moteur 11 de", "11"],
-                ["le moteur 12 de", "12"],
-                ["le moteur 13 de", "13"],
-                ["le moteur 14 de", "14"],
-                ["le moteur 15 de", "15"]]),
+                ["le moteur 8 de", "8"]]),
             "MOTOR2");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
