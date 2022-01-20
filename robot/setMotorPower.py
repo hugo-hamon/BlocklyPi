@@ -15,13 +15,13 @@ BACKWARD_POWER_LEFT = None;
 
 def init():
     """ Initiate and configure the variables needed for the 'setRobotMotorPower' command."""
-    
+
     # This function will assign the following global variables:
     global FORWARD_POWER_RIGHT
     global BACKWARD_POWER_RIGHT
     global FORWARD_POWER_LEFT
     global BACKWARD_POWER_LEFT
-    
+
     # Motor Right
     GPIO.setup(17, GPIO.OUT)
     GPIO.setup(18, GPIO.OUT)
@@ -41,7 +41,7 @@ def init():
 
 def set(motor, power):
     """ Execute the 'setRobotMotorPower' command. """
-    
+
     # Set the power of left motor.
     if motor == "LEFT":
         if power > 0:
@@ -53,7 +53,7 @@ def set(motor, power):
         else:
             FORWARD_POWER_LEFT.ChangeDutyCycle(0)
             BACKWARD_POWER_LEFT.ChangeDutyCycle(-power)
-        
+
     elif motor == "RIGHT":
         if power > 0:
             FORWARD_POWER_RIGHT.ChangeDutyCycle(power)
