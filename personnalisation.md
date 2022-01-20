@@ -13,11 +13,11 @@ Modifiez le fichier [index.html](index.html), entre les balises `<xml>`.
 
 ### Ajout du bloc au projet
 
-Modifiez le fichier [blockly/blocks/pirobot.js](blockly/blocks/pirobot.js), à la racine du fichier.
+Modifiez le fichier [blockly/blocks/francas.js](blockly/blocks/francas.js), à la racine du fichier.
 
 ### Personnalisation du générateur de code
 
-Modifiez le fichier [blockly/generators/javascript/pirobot.js](blockly/generators/javascript/pirobot.js)
+Modifiez le fichier [blockly/generators/javascript/francas.js](blockly/generators/javascript/francas.js)
 
 Inutile ici d'adapter le code comme décrit dans
 la [documentation originale](https://github.com/antoinelabard/blocklino/blob/demo/personnalisation.md#personnalisation-du-g%C3%A9n%C3%A9rateur-de-code)
