@@ -103,13 +103,6 @@ Blockly.JavaScript['francster_ask_question'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['question_vocale'] = function (block) {
-    var text_qstn = block.getFieldValue('QSTN');
-    // TODO: Assemble JavaScript into code variable.
-    var code = 'runPiRobotCommand("quest", "' + text_qstn + '");';
-    return code;
-};
-
 Blockly.JavaScript['francaster_sleep'] = function (block) {
     var value_power = Blockly.JavaScript.valueToCode(block, 'NBR_SEC',
         Blockly.JavaScript.ORDER_ATOMIC);

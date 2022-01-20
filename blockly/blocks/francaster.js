@@ -157,19 +157,6 @@ Blockly.Blocks['francster_ask_question'] = {
     }
 };
 
-Blockly.Blocks['question_vocale'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("Demande")
-            .appendField(new Blockly.FieldTextInput("comment tu t'appelles?"), "QSTN");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(315);
-        this.setTooltip("Pose une question au robot");
-        this.setHelpUrl("");
-    }
-};
-
 Blockly.Blocks['control_key_down'] = {
     init: function () {
         this.setHelpUrl('http://www.example.com/');
