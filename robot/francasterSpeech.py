@@ -19,9 +19,9 @@ def record_audio(ask=False, lang='fr'):
         try:
             voice_data = r.recognize_google(audio, language=lang)
         except sr.UnknownValueError:
-            francaster_speak("Désolé je n'ai pas compris")
+            francaster_speak("Désolé, je n'ai pas compris.")
         except sr.RequestError:
-            francaster_speak("Une erreur c'est produite")
+            francaster_speak("Une erreur s'est produite.")
         return voice_data
 
 
@@ -47,10 +47,10 @@ def francaster_repeat(lang='fr'):
 
 def answer(a=None):
     if a == None:
-        a = record_audio("recording...")
-    if "comment tu t'appel" in a:
-        francaster_speak("je m'appel francaster")
-    if "quelle heure est-il" in a:
+        a = record_audio("Recording...")
+    if "Comment tu t'appelles ?" in a:
+        francaster_speak("Je m'appelle Francaster.")
+    if "Quelle heure est-il ?" in a:
         francaster_speak(time.strftime("%H:%M"))
     if "recherche" in a:
         search = record_audio("vous voullez rechercher quoi?")
@@ -61,7 +61,7 @@ def answer(a=None):
         location = record_audio("vous voullez rechercher quoi?")
         url = 'https://www.google.fr/maps/place/' + location + '/'
         webbrowser.get().open(url)
-        print("Voila ce que j'ai trouver pour \t" + location)
+        print("Voila ce que j'ai trouvé pour \t" + location)
     if "stop" in a:
-        francaster_speak("à bientot")
+        francaster_speak("À bientot !")
         exit()
