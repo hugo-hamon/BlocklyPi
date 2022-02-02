@@ -7,7 +7,7 @@ def registerRobotXmlRpcMethods(server):
     server.register_introspection_functions()
 
     # Register the motor power command function.
-    server.register_function(dummyMotorPowerMethod, 'setRobotMotorPower')
+    server.register_function(dummyMotorPowerMethod, 'FrancasterController.setMotorPower')
 
 
 def dummyMotorPowerMethod(motor, power):

@@ -1,25 +1,8 @@
 from adafruit_servokit import ServoKit
-from time import sleep
 from gpiozero import Motor
-import os
-import random
-from gtts import gTTS
-import pygame
+from time import sleep
 
 kit = None
-
-
-def francaster_speak(audio_string):
-    print(audio_string)
-    pygame.mixer.init()
-    tts = gTTS(text=audio_string, lang='fr')
-    r = random.randint(1, 1000)
-    audio_file = "file-" + str(r) + ".mp3"
-    tts.save(audio_file)
-    pygame.mixer.music.load(audio_file)
-    pygame.mixer.music.play()
-    os.remove(audio_file)
-
 
 # set the range of motion for each motor. The index of the list is the motor's number
 motors_range = [(0, 180), (0, 180), (0, 180), (0, 180), (0, 180), (0, 180), (0, 180), (0, 170), (0, 180),
@@ -75,33 +58,33 @@ def verify_drange_max(motor, angle):
 
 def verify_range(motor, angle):
     mi, ma = motors_range[motor]
-    return mi <= angle and angle <= ma
+    return mi <= angle <= ma
 
 
-def set(motor, angle):
+def set_motor_power(motor, angle):
     motor = int(motor)
     angle = int(angle)
     mi, ma = motors_range[motor]
     if verify_range(motor, angle):
         kit.servo[motor].angle = angle
     else:
-        if (verify_drange_min(motor, angle)):
+        if verify_drange_min(motor, angle):
             kit.servo[motor].angle = int(mi)
-        if (verify_drange_max(motor, angle)):
+        if verify_drange_max(motor, angle):
             kit.servo[motor].angle = int(ma)
     print(str(motor) + " " + str(mi) + " " + str(ma) + " " + str(kit.servo[int(motor)].angle))
 
 
-def set2(motor, angle):
+def shift_motor_position(motor, angle):
     x = kit.servo[int(motor)].angle + angle
     mi, ma = motors_range[motor]
-    if (verify_range(motor, x)):
+    if verify_range(motor, x):
         kit.servo[int(motor)].angle += int(angle)
     else:
 
-        if (verify_drange_min(motor, x)):
+        if verify_drange_min(motor, x):
             kit.servo[int(motor)].angle = int(mi)
-        if (verify_drange_max(motor, x)):
+        if verify_drange_max(motor, x):
             kit.servo[int(motor)].angle = int(ma)
     print(str(motor) + " " + str(mi) + " " + str(ma) + " " + str(kit.servo[int(motor)].angle))
 
@@ -111,8 +94,8 @@ def delay(temps):
     print("motor  posé" + temps)
 
 
-def marche(ps):
-    for _ in range(0, ps - 1):
+def walk_n_steps(n):
+    for _ in range(0, n - 1):
         kit.servo[3].angle = 60
         sleep(.1)
         kit.servo[4].angle = 60
@@ -145,7 +128,7 @@ def do_hi(ps):
     init()
 
 
-def marche_gn_cd(ps):
+def walk_n_steps_with_knee_lift(ps):
     kit.servo[2].angle = 170
     kit.servo[5].angle = 10
     for _ in range(0, ps - 1):
@@ -184,7 +167,7 @@ def marche_gn_cd(ps):
     init()
 
 
-def say_no():
+def do_no():
     for _ in range(0, 2):
         sleep(.5)
         kit.servo[14].angle = 120
@@ -193,7 +176,7 @@ def say_no():
     init()
 
 
-def say_yes():
+def do_yes():
     for _ in range(0, 2):
         sleep(.5)
         kit.servo[15].angle = 45
@@ -203,20 +186,20 @@ def say_yes():
 
 
 def motor_dc(speed=1):
-    moteur = Motor(pinA, pinB)
-    moteur.forward(speed)
+    motor = Motor(pinA, pinB)
+    motor.forward(speed)
 
 
 def motor_dc_backward(speed=1):
-    moteur = Motor(pinA, pinB)
-    moteur.backward(speed)
+    motor = Motor(pinA, pinB)
+    motor.backward(speed)
 
 
-def motor_dc_reverse(speed=1):
-    moteur = Motor(pinA, pinB)
-    moteur.reverse(speed)
+def motor_dc_reverse():
+    motor = Motor(pinA, pinB)
+    motor.reverse()
 
 
 def motor_dc_stop():
-    moteur = Motor(pinA, pinB)
-    moteur.stop()
+    motor = Motor(pinA, pinB)
+    motor.stop()

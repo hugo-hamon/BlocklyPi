@@ -19,13 +19,13 @@ def record_audio(ask=False, lang='fr'):
         try:
             voice_data = r.recognize_google(audio, language=lang)
         except sr.UnknownValueError:
-            francaster_speak("Désolé, je n'ai pas compris.")
+            speak("Désolé, je n'ai pas compris.")
         except sr.RequestError:
-            francaster_speak("Une erreur s'est produite.")
+            speak("Une erreur s'est produite.")
         return voice_data
 
 
-def francaster_speak(audio_string, lang='fr'):
+def speak(audio_string, lang='fr'):
     pygame.mixer.init()
     print(audio_string)
     tts = gTTS(text=audio_string, lang=lang)
@@ -40,18 +40,18 @@ def francaster_speak(audio_string, lang='fr'):
     os.remove(audio_file)
 
 
-def francaster_repeat(lang='fr'):
+def repeat(lang='fr'):
     a = record_audio("recording...", lang=lang)
-    francaster_speak(a, lang=lang)
+    speak(a, lang=lang)
 
 
 def answer(a=None):
     if a == None:
         a = record_audio("Recording...")
     if "Comment tu t'appelles ?" in a:
-        francaster_speak("Je m'appelle Francaster.")
+        speak("Je m'appelle Francaster.")
     if "Quelle heure est-il ?" in a:
-        francaster_speak(time.strftime("%H:%M"))
+        speak(time.strftime("%H:%M"))
     if "recherche" in a:
         search = record_audio("vous voullez rechercher quoi?")
         url = 'https://google.com/search?q=' + search
@@ -63,5 +63,5 @@ def answer(a=None):
         webbrowser.get().open(url)
         print("Voila ce que j'ai trouvé pour \t" + location)
     if "stop" in a:
-        francaster_speak("À bientot !")
+        speak("À bientot !")
         exit()
