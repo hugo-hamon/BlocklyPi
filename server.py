@@ -13,7 +13,8 @@ def register_francaster_xmlrpc_methods(server: SimpleXMLRPCServer):
     server.register_function(FrancasterContoller.walk_n_steps, 'FrancasterController.walk')
     server.register_function(FrancasterContoller.do_hi, 'FrancasterController.doHi')
     server.register_function(FrancasterContoller.init, 'FrancasterController.init')
-    server.register_function(FrancasterContoller.walk_n_steps_with_knee_lift, 'FrancasterController.walkNStepsWithKneeLift')
+    server.register_function(FrancasterContoller.walk_n_steps_with_knee_lift,
+                             'FrancasterController.walkNStepsWithKneeLift')
     server.register_function(FrancasterContoller.motor_dc, 'motor_dc')
     server.register_function(FrancasterContoller.do_yes, 'FrancasterController.doYes')
     server.register_function(FrancasterContoller.do_no, 'FrancasterController.doNo')
@@ -37,12 +38,6 @@ if __name__ == "__main__":
 
     # Register standard XML-RPC methods.
     server.register_introspection_functions()
-
-    # Register the Francaster XML-RPC methods
-    register_francaster_xmlrpc_methods(server)
-
-    # Register the Francaster XML-RPC methods
-    register_francaster_xmlrpc_methods(server)
 
     # Start to server.
     server.serve_forever()
