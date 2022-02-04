@@ -47,7 +47,6 @@ Blockly.JavaScript['francaster_repeat_after_me'] = function (block) {
 
 Blockly.JavaScript['francaster_ask_question'] = function (block) {
     var text_qstn = block.getFieldValue('QSTN');
-    // TODO: Assemble JavaScript into code variable.
     return 'runPiRobotCommand("FrancasterController.answerQuestion", "' + text_qstn + '");';
 };
 
@@ -82,6 +81,6 @@ Blockly.JavaScript['francaster_say_yes'] = function (block) {
 };
 
 Blockly.JavaScript['francaster_reset_position'] = function (block) {
-    return 'runPiRobotCommand("FrancasterController.init");';
+    return 'runPiRobotCommand("FrancasterController.reset_position");';
 };
 //*********************************************************
