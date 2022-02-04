@@ -4,6 +4,11 @@ from time import sleep
 
 
 class FrancasterController:
+    # set the range of motion for each motor. The index of the list is the motor's number
+    MOTORS_RANGES = [(0, 180), (0, 180), (0, 180), (0, 180), (0, 180), (0, 180), (0, 180), (0, 170), (0, 180),
+                     (0, 135), (0, 120), (0, 180), (45, 180), (0, 120), (0, 180), (35, 140)]
+
+    servo_kit = ServoKit(channels=16)
 
     def reset_position(self):
         self.servo_kit.servo[0].angle = 180
@@ -24,29 +29,24 @@ class FrancasterController:
         self.servo_kit.servo[15].angle = 90
 
     def __init__(self):
-        # set the range of motion for each motor. The index of the list is the motor's number
-        self.motors_range = [(0, 180), (0, 180), (0, 180), (0, 180), (0, 180), (0, 180), (0, 180), (0, 170), (0, 180),
-                             (0, 135), (0, 120), (0, 180), (45, 180), (0, 120), (0, 180), (35, 140)]
-
-        self.servo_kit = ServoKit(channels=16)
         self.reset_position()
 
     def verify_drange_min(self, motor, angle):
-        mi, ma = self.motors_range[motor]
+        mi, ma = self.MOTORS_RANGES[motor]
         return mi > angle
 
     def verify_drange_max(self, motor, angle):
-        mi, ma = self.motors_range[motor]
+        mi, ma = self.MOTORS_RANGES[motor]
         return ma < angle
 
     def verify_range(self, motor, angle):
-        mi, ma = self.motors_range[motor]
+        mi, ma = self.MOTORS_RANGES[motor]
         return mi <= angle <= ma
 
     def set_motor_power(self, motor, angle):
         motor = int(motor)
         angle = int(angle)
-        mi, ma = self.motors_range[motor]
+        mi, ma = self.MOTORS_RANGES[motor]
         if self.verify_range(motor, angle):
             self.servo_kit.servo[motor].angle = angle
         else:
@@ -58,7 +58,7 @@ class FrancasterController:
 
     def shift_motor_position(self, motor, angle):
         x = self.servo_kit.servo[int(motor)].angle + angle
-        mi, ma = self.motors_range[motor]
+        mi, ma = self.MOTORS_RANGES[motor]
         if self.verify_range(motor, x):
             self.servo_kit.servo[int(motor)].angle += int(angle)
         else:

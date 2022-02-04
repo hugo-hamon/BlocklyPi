@@ -5,6 +5,15 @@ from time import sleep
 
 class AllbotsController:
 
+    # set the range of motion for each motor. The index of the list is the motor's number
+    MOTORS_RANGES = [
+        (30, 150), (0, 90),
+        (30, 150), (0, 90),
+        (30, 150), (0, 90),
+        (30, 150), (0, 90)
+    ]
+    MIN_IMP, MAX_IMP = 500, 2500
+
     def reset_position(self):
         self.servo_kit.servo[0].angle = 10
         self.servo_kit.servo[1].angle = 30
@@ -16,14 +25,6 @@ class AllbotsController:
         self.servo_kit.servo[7].angle = 150
 
     def __init__(self):
-        # set the range of motion for each motor. The index of the list is the motor's number
-        self.MOTORS_RANGES = [
-            (30, 150), (0, 90),
-            (30, 150), (0, 90),
-            (30, 150), (0, 90),
-            (30, 150), (0, 90)
-        ]
-        self.MIN_IMP, self.MAX_IMP = 500, 2500
 
         self.servo_kit = ServoKit(channels=16)
         for i in range(len(self.MOTORS_RANGES)):
