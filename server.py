@@ -2,6 +2,7 @@ from http.server import SimpleHTTPRequestHandler
 from xmlrpc.server import SimpleXMLRPCRequestHandler, SimpleXMLRPCServer
 import robot.francasterController as FrancasterContoller
 from robot import francasterSpeech
+from robot.allbotsController import AllbotsController
 
 
 def register_francaster_xmlrpc_methods(server: SimpleXMLRPCServer):
@@ -22,6 +23,10 @@ def register_francaster_xmlrpc_methods(server: SimpleXMLRPCServer):
     server.register_function(francasterSpeech.repeat, 'FrancasterController.repeat')
     server.register_function(francasterSpeech.answer, 'FrancasterController.answerQuestion')
 
+def register_allbots_xmlrpc_methods(server: SimpleXMLRPCServer):
+    AllbotsController()
+    server.register_function(AllbotsController.reset_position, 'AllbotsController.reset_position')
+
 
 # We define a custom server request handler, capable of both handling GET and XML-RPC requests.
 class RequestHandler(SimpleXMLRPCRequestHandler, SimpleHTTPRequestHandler):
@@ -38,6 +43,9 @@ if __name__ == "__main__":
 
     # Register standard XML-RPC methods.
     server.register_introspection_functions()
+
+    register_francaster_xmlrpc_methods(server)
+    register_allbots_xmlrpc_methods(server)
 
     # Start to server.
     server.serve_forever()
