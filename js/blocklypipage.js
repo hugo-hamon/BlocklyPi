@@ -55,8 +55,8 @@ BlocklyPiPage.prototype.stopBlocklyWorkspace = function () {
 
     // Reset the robot.
     // Just stopping it is enough for now ...
-    this.runPiRobotCommand("FrancasterController.setMotorPower", "RIGHT", 0);
-    this.runPiRobotCommand("FrancasterController.setMotorPower", "LEFT", 0);
+    this.runPiRobotCommand("FrancasterController.set_motor_position", "RIGHT", 0);
+    this.runPiRobotCommand("FrancasterController.set_motor_position", "LEFT", 0);
 
     // Remove all previously registered listeners from an older run.
     this.removeAllEventListeners();
@@ -204,7 +204,7 @@ BlocklyPiPage.prototype.highlightBlock = function (id) {
  * The first argument is the name of the method to call on the Pi.
  * All the other arguments are the parameters of that method.
  *
- * e.g.: runPiRobotCommand("FrancasterController.setMotorPower","LEFT", 80);
+ * e.g.: runPiRobotCommand("FrancasterController.set_motor_position","LEFT", 80);
  *
  * Keep in mind that this method does not return the result of the XML-RPC method. If this
  * is necessary, use @see BlocklyPiPage.prototype.returnPiRobotCommandResult.
