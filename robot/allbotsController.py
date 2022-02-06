@@ -4,7 +4,6 @@ from time import sleep
 
 
 class AllbotsController:
-
     # set of constants used to replace the motor numbers by more meaningful names
     FRONT_LEFT_ELBOW = 0
     FRONT_LEFT_SHOULDER = 1
@@ -17,10 +16,10 @@ class AllbotsController:
 
     # set the range of motion for each motor. The index of the list is the motor's number
     MOTORS_RANGES = [
-        (30, 150), (0, 90),
-        (30, 150), (0, 90),
-        (30, 150), (0, 90),
-        (30, 150), (0, 90)
+        (0, 180), (30, 120),
+        (0, 180), (50, 150),
+        (0, 180), (50, 150),
+        (0, 180), (30, 120)
     ]
     MIN_IMP, MAX_IMP = 500, 2500
 
