@@ -15,12 +15,17 @@ class AllbotsController:
     BACK_RIGHT_SHOULDER = 7
 
     # set the range of motion for each motor. The index of the list is the motor's number
-    MOTORS_RANGES = [
-        (0, 180), (30, 120),
-        (0, 180), (50, 150),
-        (0, 180), (50, 150),
-        (0, 180), (30, 120)
-    ]
+    MOTORS_RANGES = {
+        FRONT_LEFT_ELBOW: (0, 180),
+        FRONT_LEFT_SHOULDER: (30, 120),
+        FRONT_RIGHT_ELBOW: (0, 180),
+        FRONT_RIGHT_SHOULDER: (50, 150),
+        BACK_LEFT_ELBOW: (0, 180),
+        BACK_LEFT_SHOULDER: (50, 150),
+        BACK_RIGHT_ELBOW: (0, 180),
+        BACK_RIGHT_SHOULDER: (30, 120)
+    }
+
     MIN_IMP, MAX_IMP = 500, 2500
 
     def reset_position(self):

@@ -27,8 +27,24 @@ class FrancasterController:
     ABOVE_RANGE = 1
 
     # set the range of motion for each motor. The index of the list is the motor's number
-    MOTORS_RANGES = [(0, 180), (0, 180), (0, 180), (0, 180), (0, 180), (0, 180), (0, 180), (0, 170), (0, 180),
-                     (0, 135), (0, 120), (0, 180), (45, 180), (0, 120), (0, 180), (35, 140)]
+    MOTORS_RANGES = {
+        LEFT_ELBOW: (0, 180),
+        LEFT_SHOULDER_ABDUCTOR: (0, 180),
+        LEFT_SHOULDER_ROTATOR: (0, 180),
+        LEFT_SHOULDER_FLEXOR: (0, 180),
+        RIGHT_SHOULDER_FLEXOR: (0, 180),
+        RIGHT_SHOULDER_ABDUCTOR: (0, 180),
+        RIGHT_SHOULDER_ROTATOR: (0, 180),
+        RIGHT_ELBOW: (0, 170),
+        LEFT_HIP: (0, 180),
+        LEFT_KNEE: (0, 135),
+        LEFT_ANKLE: (0, 120),
+        RIGHT_HIP: (0, 180),
+        RIGHT_KNEE: (45, 180),
+        RIGHT_ANKLE: (0, 120),
+        HEAD_YAW: (0, 180),
+        HEAD_PITCH: (35, 140)
+    }
 
     servo_kit = ServoKit(channels=16)
 
