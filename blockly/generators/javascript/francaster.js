@@ -64,7 +64,7 @@ Blockly.JavaScript['francaster_make_n_step'] = function (block) {
 Blockly.JavaScript['francaster_make_n_steps_with_knee_lift'] = function (block) {
     var value_nb_steps = Blockly.JavaScript.valueToCode(block, 'NBR_PAS_FORWARD', Blockly.JavaScript.ORDER_ATOMIC);
 
-    return 'runPiRobotCommand("FrancasterController.FrancasterController.walk_n_steps_with_knee_lift", ' + value_nb_steps + ');';
+    return 'runPiRobotCommand("FrancasterController.walk_n_steps_with_knee_lift", ' + value_nb_steps + ');';
 };
 
 Blockly.JavaScript['francaster_say_hi'] = function (block) {
