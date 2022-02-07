@@ -1,4 +1,4 @@
-from robot import RobotController
+from robot.RobotController import RobotController
 
 
 class AllbotsController(RobotController):

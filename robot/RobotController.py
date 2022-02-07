@@ -11,7 +11,7 @@ class RobotController:
     # Indicate the range of motion of each motor in the robot.
     # - The keys are the motors numbers. Prefer to use class constants to name the motors for readability and
     #     maintainability.
-    # - The values are a tuple of ints containig the minimum and the maximum angles of the range.
+    # - The values are a tuple of ints containing the minimum and the maximum angles of the range.
     MOTORS_RANGES = {}
 
     # constants used for the is_in_range function

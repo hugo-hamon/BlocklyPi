@@ -1,5 +1,5 @@
 from time import sleep
-from robot import RobotController
+from robot.RobotController import RobotController
 
 
 class FrancasterController(RobotController):
