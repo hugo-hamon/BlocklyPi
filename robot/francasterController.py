@@ -1,8 +1,8 @@
-from adafruit_servokit import ServoKit
 from time import sleep
+from robot import RobotController
 
 
-class FrancasterController:
+class FrancasterController(RobotController):
     # set of constants used to replace the motor numbers by more meaningful names
     LEFT_ELBOW = 0
     LEFT_SHOULDER_ABDUCTOR = 1
@@ -26,7 +26,6 @@ class FrancasterController:
     BELOW_RANGE = -1
     ABOVE_RANGE = 1
 
-    # set the range of motion for each motor. The index of the list is the motor's number
     MOTORS_RANGES = {
         LEFT_ELBOW: (0, 180),
         LEFT_SHOULDER_ABDUCTOR: (0, 180),
@@ -46,11 +45,6 @@ class FrancasterController:
         HEAD_PITCH: (35, 140)
     }
 
-    servo_kit = ServoKit(channels=16)
-
-    def __init__(self):
-        self.reset_position()
-
     def is_in_range(self, motor_nb, angle):
         """
         return IN_RANGE if angle is within the range associated with motor_nb, BELOW_RANGE if below and
@@ -63,29 +57,6 @@ class FrancasterController:
             return self.BELOW_RANGE
         else:
             return self.ABOVE_RANGE
-
-    def set_motor_position(self, motor_nb, angle):
-        motor_nb, angle = int(motor_nb), int(angle)
-        mi, ma = self.MOTORS_RANGES[motor_nb]
-        if self.is_in_range(motor_nb, angle) == 0:
-            self.servo_kit.servo[motor_nb].angle = angle
-        elif self.is_in_range(motor_nb, angle) == -1:
-            self.servo_kit.servo[motor_nb].angle = mi
-        elif self.is_in_range(motor_nb, angle) == 1:
-            self.servo_kit.servo[motor_nb].angle = ma
-        print(str(motor_nb) + " " + str(mi) + " " + str(ma) + " " + str(self.servo_kit.servo[motor_nb].angle))
-
-    def shift_motor_position(self, motor_nb, angle):
-        motor_nb, angle = int(motor_nb), int(angle)
-        shifted_angle = self.servo_kit.servo[motor_nb].angle + angle
-        mi, ma = self.MOTORS_RANGES[motor_nb]
-        if self.is_in_range(motor_nb, shifted_angle) == 0:
-            self.servo_kit.servo[motor_nb].angle += angle
-        elif self.is_in_range(motor_nb, shifted_angle) == -1:
-            self.servo_kit.servo[motor_nb].angle = mi
-        elif self.is_in_range(motor_nb, shifted_angle) == 1:
-            self.servo_kit.servo[motor_nb].angle = ma
-        print(str(motor_nb) + " " + str(mi) + " " + str(ma) + " " + str(self.servo_kit.servo[motor_nb].angle))
 
     def reset_position(self):
         self.set_motor_position(self.LEFT_ELBOW, 180)
