@@ -35,3 +35,8 @@ class AllbotsController(RobotController):
 
     def __init__(self):
         self.reset_position()
+
+    def walk_n_steps(self, n):
+        for _ in range(0, n - 1):
+            return
+            # TODO: implement walk_n_steps for AllbotsController
