@@ -38,7 +38,7 @@ class RequestHandler(SimpleXMLRPCRequestHandler, SimpleHTTPRequestHandler):
 if __name__ == "__main__":
     # Create our XML-RPC server.using out custom request handler that is also able to serve web pages over GET.
     port = 8080
-    server = SimpleXMLRPCServer(("", port), RequestHandler)
+    server = SimpleXMLRPCServer(("", port), RequestHandler, allow_none=True)
 
     # Register standard XML-RPC methods.
     server.register_introspection_functions()
