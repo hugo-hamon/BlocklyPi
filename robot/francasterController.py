@@ -45,19 +45,6 @@ class FrancasterController(RobotController):
         HEAD_PITCH: (35, 140)
     }
 
-    def is_in_range(self, motor_nb, angle):
-        """
-        return IN_RANGE if angle is within the range associated with motor_nb, BELOW_RANGE if below and
-        ABOVE_RANGE if above
-        """
-        mi, ma = self.MOTORS_RANGES[motor_nb]
-        if mi <= angle <= ma:
-            return self.IN_RANGE
-        elif mi > angle:
-            return self.BELOW_RANGE
-        else:
-            return self.ABOVE_RANGE
-
     def reset_position(self):
         self.set_motor_position(self.LEFT_ELBOW, 180)
         self.set_motor_position(self.LEFT_SHOULDER_ABDUCTOR, 90)
