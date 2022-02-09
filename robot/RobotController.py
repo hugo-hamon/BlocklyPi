@@ -21,15 +21,21 @@ class RobotController:
 
     servo_kit = ServoKit(channels=16)
 
-    def is_in_range(self, motor_nb, angle):
+    def is_in_range(self, motor_nb: int, angle: int, range: (int, int)):
         """
-        return IN_RANGE if angle is within the range associated with motor_nb, BELOW_RANGE if below and ABOVE_RANGE if
+        @:param
+            - motor_nb: the motor number.
+            - angle: the set-point angle.
+            - range: a tuple containing the minimum and maximum angle of the motor.
+        @:return
+            - IN_RANGE if angle is within the value provided by angle is between the values provided by range.
+            - BELOW_RANGE if it is below the minimum value.
+            - ABOVE_RANGE if it is above the maximum value.
         above
         """
-        mi, ma = self.MOTORS_RANGES[motor_nb]
-        if mi <= angle <= ma:
+        if range[0] <= angle <= range[1]:
             return self.IN_RANGE
-        elif mi > angle:
+        elif range[0] > angle:
             return self.BELOW_RANGE
         else:
             return self.ABOVE_RANGE
