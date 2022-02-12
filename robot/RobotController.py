@@ -21,7 +21,7 @@ class RobotController:
 
     servo_kit = ServoKit(channels=16)
 
-    def is_in_range(self, motor_nb: int, angle: int, range: (int, int)):
+    def is_in_range(self, angle: int, angle_range: (int, int)):
         """
         @:param
             - motor_nb: the motor number.
@@ -31,30 +31,31 @@ class RobotController:
             - IN_RANGE if angle is within the value provided by angle is between the values provided by range.
             - BELOW_RANGE if it is below the minimum value.
             - ABOVE_RANGE if it is above the maximum value.
-        above
         """
-        if range[0] <= angle <= range[1]:
+        if angle_range[0] <= angle <= angle_range[1]:
             return self.IN_RANGE
-        elif range[0] > angle:
+        elif angle_range[0] > angle:
             return self.BELOW_RANGE
         else:
             return self.ABOVE_RANGE
 
     def set_motor_position(self, motor_nb: int, angle: int):
         mi, ma = self.MOTORS_RANGES[motor_nb]
-        if self.is_in_range(motor_nb, angle) == 0:
+        in_range = self.is_in_range(angle, self.MOTORS_RANGES[motor_nb])
+        if in_range == 0:
             self.servo_kit.servo[motor_nb].angle = angle
-        elif self.is_in_range(motor_nb, angle) == -1:
+        elif in_range == -1:
             self.servo_kit.servo[motor_nb].angle = mi
-        elif self.is_in_range(motor_nb, angle) == 1:
+        elif in_range == 1:
             self.servo_kit.servo[motor_nb].angle = ma
 
     def shift_motor_position(self, motor_nb: int, angle: int):
         shifted_angle = self.servo_kit.servo[motor_nb].angle + angle
         mi, ma = self.MOTORS_RANGES[motor_nb]
-        if self.is_in_range(motor_nb, shifted_angle) == 0:
+        in_range = self.is_in_range(shifted_angle, self.MOTORS_RANGES[motor_nb])
+        if in_range == 0:
             self.servo_kit.servo[motor_nb].angle += angle
-        elif self.is_in_range(motor_nb, shifted_angle) == -1:
+        elif in_range == -1:
             self.servo_kit.servo[motor_nb].angle = mi
-        elif self.is_in_range(motor_nb, shifted_angle) == 1:
+        elif in_range == 1:
             self.servo_kit.servo[motor_nb].angle = ma
