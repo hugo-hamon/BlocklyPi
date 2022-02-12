@@ -14,7 +14,7 @@ Blockly.JavaScript['francaster_set_motor_power'] = function (block) {
     }
 
     // Generate the code ...
-    return 'runPiRobotCommand("FrancasterController.set_motor_position", "' + dropdown_motor + '",' + value_power + ');';
+    return 'runPiRobotCommand("robotController.set_motor_position", "' + dropdown_motor + '",' + value_power + ');';
 };
 
 Blockly.JavaScript['francaster_shift_motor_position'] = function (block) {
@@ -38,7 +38,7 @@ Blockly.JavaScript['francaster_shift_motor_position'] = function (block) {
         return '';
     }
 
-    return 'runPiRobotCommand("FrancasterController.shift_motor_position", "' + dropdown_motor + '",' + value_power + ');';
+    return 'runPiRobotCommand("robotController.shift_motor_position", "' + dropdown_motor + '",' + value_power + ');';
 };
 
 Blockly.JavaScript['francaster_repeat_after_me'] = function (block) {

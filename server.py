@@ -1,30 +1,25 @@
 from http.server import SimpleHTTPRequestHandler
 from xmlrpc.server import SimpleXMLRPCRequestHandler, SimpleXMLRPCServer
 from robot import francasterSpeech
-from robot.francasterController import FrancasterController
-from robot.allbotsController import AllbotsController
+from robot import robotController, francasterController, allbotsController
 
 
-def register_francaster_xmlrpc_methods(server: SimpleXMLRPCServer):
-    # Register the motor power command function.
-    francaster_controller = FrancasterController()
-    server.register_function(francaster_controller.set_motor_position, 'FrancasterController.set_motor_position')
-    server.register_function(francaster_controller.shift_motor_position, 'FrancasterController.shift_motor_position')
-    server.register_function(francaster_controller.walk_n_steps, 'FrancasterController.walk_n_steps')
-    server.register_function(francaster_controller.do_hi, 'FrancasterController.do_hi')
-    server.register_function(francaster_controller.reset_position, 'FrancasterController.reset_position')
-    server.register_function(francaster_controller.walk_n_steps_with_knee_lift,
+def register_robot_xmlrpc_methods(server: SimpleXMLRPCServer):
+    server.register_function(robotController.set_motor_position, 'robotController.set_motor_position')
+    server.register_function(robotController.shift_motor_position, 'robotController.shift_motor_position')
+
+    server.register_function(francasterController.walk_n_steps, 'FrancasterController.walk_n_steps')
+    server.register_function(francasterController.do_hi, 'FrancasterController.do_hi')
+    server.register_function(francasterController.reset_position, 'FrancasterController.reset_position')
+    server.register_function(francasterController.walk_n_steps_with_knee_lift,
                              'FrancasterController.walk_n_steps_with_knee_lift')
-    server.register_function(francaster_controller.do_yes, 'FrancasterController.do_yes')
-    server.register_function(francaster_controller.do_no, 'FrancasterController.do_no')
+    server.register_function(francasterController.do_yes, 'FrancasterController.do_yes')
+    server.register_function(francasterController.do_no, 'FrancasterController.do_no')
     server.register_function(francasterSpeech.speak, 'FrancasterController.speak')
     server.register_function(francasterSpeech.repeat, 'FrancasterController.repeat')
     server.register_function(francasterSpeech.answer, 'FrancasterController.answer_question')
 
-
-def register_allbots_xmlrpc_methods(server: SimpleXMLRPCServer):
-    allbots_controller = AllbotsController()
-    server.register_function(allbots_controller.reset_position, 'AllbotsController.reset_position')
+    server.register_function(allbotsController.reset_position, 'AllbotsController.reset_position')
 
 
 # We define a custom server request handler, capable of both handling GET and XML-RPC requests.
@@ -43,8 +38,7 @@ if __name__ == "__main__":
     # Register standard XML-RPC methods.
     server.register_introspection_functions()
 
-    register_francaster_xmlrpc_methods(server)
-    register_allbots_xmlrpc_methods(server)
+    register_robot_xmlrpc_methods(server)
 
     # Start to server.
     server.serve_forever()
