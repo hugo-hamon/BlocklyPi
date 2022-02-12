@@ -1,25 +1,15 @@
 from robot import robotController
+from robot.robotMotor import RobotMotor
 
 # set of constants used to replace the motor numbers by more meaningful names
-FRONT_LEFT_ELBOW = 0
-FRONT_LEFT_SHOULDER = 1
-FRONT_RIGHT_ELBOW = 2
-FRONT_RIGHT_SHOULDER = 3
-BACK_LEFT_ELBOW = 4
-BACK_LEFT_SHOULDER = 5
-BACK_RIGHT_ELBOW = 6
-BACK_RIGHT_SHOULDER = 7
-
-MOTORS_RANGES = {
-    FRONT_LEFT_ELBOW: (0, 180),
-    FRONT_LEFT_SHOULDER: (30, 120),
-    FRONT_RIGHT_ELBOW: (0, 180),
-    FRONT_RIGHT_SHOULDER: (50, 150),
-    BACK_LEFT_ELBOW: (0, 180),
-    BACK_LEFT_SHOULDER: (50, 150),
-    BACK_RIGHT_ELBOW: (0, 180),
-    BACK_RIGHT_SHOULDER: (30, 120)
-}
+FRONT_LEFT_ELBOW = RobotMotor(0, 0, 180)
+FRONT_LEFT_SHOULDER = RobotMotor(1, 30, 120)
+FRONT_RIGHT_ELBOW = RobotMotor(2, 0, 180)
+FRONT_RIGHT_SHOULDER = RobotMotor(3, 50, 150)
+BACK_LEFT_ELBOW = RobotMotor(4, 0, 180)
+BACK_LEFT_SHOULDER = RobotMotor(3, 50, 150)
+BACK_RIGHT_ELBOW = RobotMotor(6, 0, 180)
+BACK_RIGHT_SHOULDER = RobotMotor(7, 30, 120)
 
 
 def reset_position():
