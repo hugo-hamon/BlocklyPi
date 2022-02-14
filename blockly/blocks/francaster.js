@@ -59,7 +59,7 @@ Blockly.Blocks['francaster_sleep'] = {
     }
 };
 
-Blockly.Blocks['francaster_make_n_steps'] = {
+Blockly.Blocks['francaster_walk_n_steps'] = {
     init: function () {
         this.appendValueInput("NBR_PAS_FORWARD").appendField("Avancer de");
         this.appendDummyInput().appendField("pas");
@@ -83,7 +83,7 @@ Blockly.Blocks['francaster_say_hi'] = {
     }
 };
 
-Blockly.Blocks['francaster_make_n_steps_with_knee_lift'] = {
+Blockly.Blocks['francaster_walk_n_steps_with_knee_lift'] = {
     init: function () {
         this.appendValueInput("NBR_PAS_FORWARD").appendField("Avancer de");
         this.appendDummyInput().appendField("pas avec lever de genoux");

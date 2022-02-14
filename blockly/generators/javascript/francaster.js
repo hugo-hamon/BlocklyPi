@@ -55,13 +55,13 @@ Blockly.JavaScript['francaster_sleep'] = function (block) {
     return 'runPiRobotCommand("FrancasterController.setDelay", ' + value_power + ');';
 };
 
-Blockly.JavaScript['francaster_make_n_step'] = function (block) {
+Blockly.JavaScript['francaster_walk_n_steps'] = function (block) {
     var value_nb_steps = Blockly.JavaScript.valueToCode(block, 'NBR_PAS_FORWARD', Blockly.JavaScript.ORDER_ATOMIC);
 
     return 'runPiRobotCommand("FrancasterController.walk_n_steps", ' + value_nb_steps + ');';
 };
 
-Blockly.JavaScript['francaster_make_n_steps_with_knee_lift'] = function (block) {
+Blockly.JavaScript['francaster_walk_n_steps_with_knee_lift'] = function (block) {
     var value_nb_steps = Blockly.JavaScript.valueToCode(block, 'NBR_PAS_FORWARD', Blockly.JavaScript.ORDER_ATOMIC);
 
     return 'runPiRobotCommand("FrancasterController.walk_n_steps_with_knee_lift", ' + value_nb_steps + ');';
