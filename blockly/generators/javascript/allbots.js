@@ -20,6 +20,6 @@ Blockly.JavaScript['francaster_shift_motor_position'] = function (block) {
         return '';
     }
 
-    var code = 'runPiRobotCommand("robotController.shift_motor_position", "' + dropdown_motor + '",' + value_power + ');';
+    var code = 'runPiRobotCommand("francaster-shift_motor_position", "' + dropdown_motor + '",' + value_power + ');';
     return code;
 };

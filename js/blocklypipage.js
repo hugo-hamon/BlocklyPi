@@ -199,7 +199,7 @@ BlocklyPiPage.prototype.highlightBlock = function (id) {
  * The first argument is the name of the method to call on the Pi.
  * All the other arguments are the parameters of that method.
  *
- * e.g.: runPiRobotCommand("robotController.set_motor_position","LEFT", 80);
+ * e.g.: runPiRobotCommand("francaster-set_motor_position","LEFT", 80);
  *
  * Keep in mind that this method does not return the result of the XML-RPC method. If this
  * is necessary, use @see BlocklyPiPage.prototype.returnPiRobotCommandResult.

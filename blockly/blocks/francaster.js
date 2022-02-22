@@ -21,7 +21,7 @@ function getMotorDropdown() {
     ]);
 }
 
-Blockly.Blocks['francaster_set_motor_power'] = {
+Blockly.Blocks['francaster-set_motor_position'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Mettre le moteur")
@@ -38,7 +38,7 @@ Blockly.Blocks['francaster_set_motor_power'] = {
     }
 };
 
-Blockly.Blocks['francaster_shift_motor_position'] = {
+Blockly.Blocks['francaster-shift_motor_position'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Faire")
@@ -60,7 +60,7 @@ Blockly.Blocks['francaster_shift_motor_position'] = {
     }
 };
 
-Blockly.Blocks['francaster_sleep'] = {
+Blockly.Blocks['francaster-sleep'] = {
     init: function () {
         this.appendValueInput("NBR_SEC").appendField("Dormir pendant");
         this.appendDummyInput().appendField("secondes");
@@ -84,7 +84,7 @@ Blockly.Blocks['francaster_walk_n_steps'] = {
     }
 };
 
-Blockly.Blocks['francaster_say_hi'] = {
+Blockly.Blocks['francaster-do_hi'] = {
     init: function () {
         this.appendValueInput("NBR_HI").appendField("Saluer");
         this.appendDummyInput().appendField("fois");
@@ -108,7 +108,7 @@ Blockly.Blocks['francaster_walk_n_steps_with_knee_lift'] = {
     }
 };
 
-Blockly.Blocks['francaster_say_yes'] = {
+Blockly.Blocks['francaster-do_yes'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("dire ")
@@ -122,7 +122,7 @@ Blockly.Blocks['francaster_say_yes'] = {
     }
 };
 
-Blockly.Blocks['francaster_reset_position'] = {
+Blockly.Blocks['francaster-reset_position'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("remettre a la position initiale")
@@ -134,7 +134,7 @@ Blockly.Blocks['francaster_reset_position'] = {
     }
 };
 
-Blockly.Blocks['francaster_repeat_after_me'] = {
+Blockly.Blocks['francaster-repeat'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Répète après moi");
@@ -146,7 +146,7 @@ Blockly.Blocks['francaster_repeat_after_me'] = {
     }
 };
 
-Blockly.Blocks['francaster_ask_question'] = {
+Blockly.Blocks['francaster-answer_question'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Demande")

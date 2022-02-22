@@ -309,9 +309,9 @@
     <sep></sep>
 
     <category id="catFrancaster" name="Francaster">
-        <block type="francaster_set_motor_power"></block>
-        <block type="francaster_shift_motor_position"></block>
-        <block type="francaster_sleep">
+        <block type="francaster-set_motor_position"></block>
+        <block type="francaster-shift_motor_position"></block>
+        <block type="francaster-sleep">
             <value name="NBR_SEC">
                 <block type="math_number">
                     <field name="NUM">0</field>
@@ -325,16 +325,16 @@
                 </block>
             </value>
         </block>
-        <block type="francaster_say_hi">
+        <block type="francaster-do_hi">
             <value name="NBR_HI">
                 <block type="math_number">
                     <field name="NUM">0</field>
                 </block>
             </value>
         </block>
-        <block type="francaster_say_yes"></block>
-        <block type="francaster_ask_question"></block>
-        <block type="francaster_repeat_after_me"></block>
+        <block type="francaster-do_yes"></block>
+        <block type="francaster-answer_question"></block>
+        <block type="francaster-repeat"></block>
         <block type="francaster_walk_n_steps_with_knee_lift">
             <value name="NBR_PAS_FORWARD">
                 <block type="math_number">
@@ -342,7 +342,7 @@
                 </block>
             </value>
         </block>
-        <block type="francaster_reset_position">
+        <block type="francaster-reset_position">
         </block>
     </category>
 

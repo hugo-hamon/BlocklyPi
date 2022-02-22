@@ -5,20 +5,20 @@ from robot import francasterController, allbotsController
 
 
 def register_robot_xmlrpc_methods(server: SimpleXMLRPCServer):
-    server.register_function(francasterController.set_motor_position, 'robotController.set_motor_position')
-    server.register_function(francasterController.shift_motor_position, 'robotController.shift_motor_position')
+    server.register_function(francasterController.set_motor_position, 'francaster-set_motor_position')
+    server.register_function(francasterController.shift_motor_position, 'francaster-shift_motor_position')
 
-    server.register_function(francasterController.walk_n_steps, 'FrancasterController.walk_n_steps')
-    server.register_function(francasterController.do_hi, 'FrancasterController.do_hi')
-    server.register_function(francasterController.reset_position, 'FrancasterController.reset_position')
-    server.register_function(francasterController.set_delay, 'FrancasterController.setDelay')
+    server.register_function(francasterController.walk_n_steps, 'francaster-walk_n_steps')
+    server.register_function(francasterController.do_hi, 'francaster-do_hi')
+    server.register_function(francasterController.reset_position, 'francaster-reset_position')
+    server.register_function(francasterController.set_delay, 'francaster-sleep')
     server.register_function(francasterController.walk_n_steps_with_knee_lift,
-                             'FrancasterController.walk_n_steps_with_knee_lift')
-    server.register_function(francasterController.do_yes, 'FrancasterController.do_yes')
-    server.register_function(francasterController.do_no, 'FrancasterController.do_no')
-    server.register_function(francasterSpeech.speak, 'FrancasterController.speak')
-    server.register_function(francasterSpeech.repeat, 'FrancasterController.repeat')
-    server.register_function(francasterSpeech.answer, 'FrancasterController.answer_question')
+                             'francaster-walk_n_steps_with_knee_lift')
+    server.register_function(francasterController.do_yes, 'francaster-do_yes')
+    server.register_function(francasterController.do_no, 'francaster-do_no')
+    server.register_function(francasterSpeech.speak, 'francaster-speak')
+    server.register_function(francasterSpeech.repeat, 'francaster-repeat')
+    server.register_function(francasterSpeech.answer, 'francaster-answer_question')
 
     server.register_function(allbotsController.reset_position, 'AllbotsController.reset_position')
 
