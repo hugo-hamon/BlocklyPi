@@ -53,11 +53,6 @@ BlocklyPiPage.prototype.stopBlocklyWorkspace = function () {
     // of the current script (if it's currently executing).
     this._executingScript = false;
 
-    // Reset the robot.
-    // Just stopping it is enough for now ...
-    this.runPiRobotCommand("robotController.set_motor_position", "RIGHT", 0);
-    this.runPiRobotCommand("robotController.set_motor_position", "LEFT", 0);
-
     // Remove all previously registered listeners from an older run.
     this.removeAllEventListeners();
 
