@@ -11,6 +11,7 @@ def register_robot_xmlrpc_methods(server: SimpleXMLRPCServer):
     server.register_function(francasterController.walk_n_steps, 'FrancasterController.walk_n_steps')
     server.register_function(francasterController.do_hi, 'FrancasterController.do_hi')
     server.register_function(francasterController.reset_position, 'FrancasterController.reset_position')
+    server.register_function(francasterController.set_delay, 'FrancasterController.setDelay')
     server.register_function(francasterController.walk_n_steps_with_knee_lift,
                              'FrancasterController.walk_n_steps_with_knee_lift')
     server.register_function(francasterController.do_yes, 'FrancasterController.do_yes')
