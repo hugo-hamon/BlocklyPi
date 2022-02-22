@@ -1,12 +1,12 @@
 from http.server import SimpleHTTPRequestHandler
 from xmlrpc.server import SimpleXMLRPCRequestHandler, SimpleXMLRPCServer
 from robot import francasterSpeech
-from robot import robotController, francasterController, allbotsController
+from robot import francasterController, allbotsController
 
 
 def register_robot_xmlrpc_methods(server: SimpleXMLRPCServer):
-    server.register_function(robotController.set_motor_position, 'robotController.set_motor_position')
-    server.register_function(robotController.shift_motor_position, 'robotController.shift_motor_position')
+    server.register_function(francasterController.set_motor_position, 'robotController.set_motor_position')
+    server.register_function(francasterController.shift_motor_position, 'robotController.shift_motor_position')
 
     server.register_function(francasterController.walk_n_steps, 'FrancasterController.walk_n_steps')
     server.register_function(francasterController.do_hi, 'FrancasterController.do_hi')
