@@ -3,22 +3,22 @@ from time import sleep
 from robot.robotMotor import RobotMotor
 
 MOTORS = {
-    "lEFT_ELBOW": RobotMotor(0, 0, 180),
-    "LEFT_SHOULDER_ABDUCTOR": RobotMotor(1, 0, 180),
-    "LEFT_SHOULDER_ROTATOR": RobotMotor(2, 0, 180),
-    "LEFT_SHOULDER_FLEXOR": RobotMotor(3, 0, 180),
-    "RIGHT_SHOULDER_FLEXOR": RobotMotor(4, 0, 180),
-    "RIGHT_SHOULDER_ABDUCTOR": RobotMotor(5, 0, 180),
-    "RIGHT_SHOULDER_ROTATOR": RobotMotor(6, 0, 180),
-    "RIGHT_ELBOW": RobotMotor(7, 0, 170),
-    "LEFT_HIP": RobotMotor(8, 0, 180),
-    "LEFT_KNEE": RobotMotor(9, 0, 135),
-    "LEFT_ANKLE": RobotMotor(10, 0, 120),
-    "RIGHT_HIP": RobotMotor(11, 0, 180),
-    "RIGHT_KNEE": RobotMotor(12, 45, 180),
-    "RIGHT_ANKLE": RobotMotor(13, 0, 120),
-    "HEAD_YAW": RobotMotor(14, 0, 180),
-    "HEAD_PITCH": RobotMotor(15, 35, 140)
+    "lEFT_ELBOW": RobotMotor(0, 0, 180, 180),
+    "LEFT_SHOULDER_ABDUCTOR": RobotMotor(1, 0, 180, 90),
+    "LEFT_SHOULDER_ROTATOR": RobotMotor(2, 0, 180, 180),
+    "LEFT_SHOULDER_FLEXOR": RobotMotor(3, 0, 180, 90),
+    "RIGHT_SHOULDER_FLEXOR": RobotMotor(4, 0, 180, 90),
+    "RIGHT_SHOULDER_ABDUCTOR": RobotMotor(5, 0, 180, 0),
+    "RIGHT_SHOULDER_ROTATOR": RobotMotor(6, 0, 180, 90),
+    "RIGHT_ELBOW": RobotMotor(7, 0, 170, 0),
+    "LEFT_HIP": RobotMotor(8, 0, 180, 90),
+    "LEFT_KNEE": RobotMotor(9, 0, 135, 0),
+    "LEFT_ANKLE": RobotMotor(10, 0, 120, 45),
+    "RIGHT_HIP": RobotMotor(11, 0, 180, 90),
+    "RIGHT_KNEE": RobotMotor(12, 45, 180, 180),
+    "RIGHT_ANKLE": RobotMotor(13, 0, 120, 75),
+    "HEAD_YAW": RobotMotor(14, 0, 180, 90),
+    "HEAD_PITCH": RobotMotor(15, 35, 140, 90)
 }
 
 
@@ -39,22 +39,8 @@ def shift_motor_position(motor_nb: str, angle: str):
 
 
 def reset_position():
-    MOTORS["LEFT_ELBOW"].set_motor_position(180)
-    MOTORS["LEFT_SHOULDER_ABDUCTOR"].set_motor_position(90)
-    MOTORS["LEFT_SHOULDER_ROTATOR"].set_motor_position(180)
-    MOTORS["LEFT_SHOULDER_FLEXOR"].set_motor_position(90)
-    MOTORS["RIGHT_SHOULDER_FLEXOR"].set_motor_position(90)
-    MOTORS["RIGHT_SHOULDER_ABDUCTOR"].set_motor_position(0)
-    MOTORS["RIGHT_SHOULDER_ROTATOR"].set_motor_position(90)
-    MOTORS["RIGHT_ELBOW"].set_motor_position(0)
-    MOTORS["LEFT_HIP"].set_motor_position(90)
-    MOTORS["LEFT_KNEE"].set_motor_position(0)
-    MOTORS["LEFT_ANKLE"].set_motor_position(45)
-    MOTORS["RIGHT_HIP"].set_motor_position(90)
-    MOTORS["RIGHT_KNEE"].set_motor_position(180)
-    MOTORS["RIGHT_ANKLE"].set_motor_position(75)
-    MOTORS["HEAD_YAW"].set_motor_position(90)
-    MOTORS["HEAD_PITCH"].set_motor_position(90)
+    for motor in MOTORS.values():
+        motor.reset()
 
 
 def set_delay(seconds: str):

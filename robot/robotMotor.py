@@ -12,6 +12,8 @@ class RobotMotor:
     min_angle: int
     max_angle: int
 
+    initial_angle: int
+
     # constants used for the is_in_range function
     IN_RANGE = 0
     BELOW_RANGE = -1
@@ -19,10 +21,11 @@ class RobotMotor:
 
     servo_kit = ServoKit(channels=16)
 
-    def __init__(self, id: int, min_angle: int, max_angle: int):
+    def __init__(self, id: int, min_angle: int, max_angle: int, initial_angle: int):
         self.id = id
         self.min_angle = min_angle
         self.max_angle = max_angle
+        self.initial_angle = initial_angle
 
     def is_in_range(self, angle: int):
         """
@@ -58,3 +61,6 @@ class RobotMotor:
             self.servo_kit.servo[self.id].angle = self.min_angle
         elif in_range == 1:
             self.servo_kit.servo[self.id].angle = self.max_angle
+
+    def reset(self):
+        self.set_motor_position(self.initial_angle)
