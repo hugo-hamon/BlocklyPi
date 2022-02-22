@@ -1,27 +1,31 @@
 var FRANCASTER_COLOR = 60;
 
+function getMotorDropdown() {
+    return new Blockly.FieldDropdown([
+        ["0", "0"],
+        ["1", "1"],
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"],
+        ["12", "12"],
+        ["13", "13"],
+        ["14", "14"],
+        ["15", "15"]
+    ]);
+}
+
 Blockly.Blocks['francaster_set_motor_power'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Mettre le moteur")
-            .appendField(new Blockly.FieldDropdown([
-                ["0", "0"],
-                ["1", "1"],
-                ["2", "2"],
-                ["3", "3"],
-                ["4", "4"],
-                ["5", "5"],
-                ["6", "6"],
-                ["7", "7"],
-                ["8", "8"],
-                ["9", "9"],
-                ["10", "10"],
-                ["11", "11"],
-                ["12", "12"],
-                ["13", "13"],
-                ["14", "14"],
-                ["15", "15"]
-            ]), "MOTOR_NB");
+            .appendField(getMotorDropdown(), "MOTOR_NB");
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("à la position")
@@ -43,23 +47,7 @@ Blockly.Blocks['francaster_shift_motor_position'] = {
                 ["reculer", "BACKWARD"]
             ]), "DIRECTION")
             .appendField("le moteur")
-            .appendField(new Blockly.FieldDropdown([
-                ["0", "0"],
-                ["1", "1"],
-                ["2", "2"],
-                ["3", "3"],
-                ["4", "4"],
-                ["5", "5"],
-                ["6", "6"],
-                ["7", "7"],
-                ["8", "8"],
-                ["9", "9"],
-                ["10", "10"],
-                ["11", "11"],
-                ["12", "12"],
-                ["13", "13"],
-                ["14", "14"],
-                ["15", "15"]]), "MOTOR_NB");
+            .appendField(getMotorDropdown(), "MOTOR_NB");
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("à la position")
