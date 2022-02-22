@@ -28,8 +28,9 @@ Blockly.Blocks['francaster-set_motor_position'] = {
             .appendField(getMotorDropdown(), "MOTOR_NB");
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField("à la position")
-            .appendField(new Blockly.FieldTextInput("0"), "ANGLE");
+            .appendField("à")
+            .appendField(new Blockly.FieldTextInput("0"), "ANGLE")
+            .appendField("degrés.");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(FRANCASTER_COLOR);
@@ -50,8 +51,9 @@ Blockly.Blocks['francaster-shift_motor_position'] = {
             .appendField(getMotorDropdown(), "MOTOR_NB");
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField("à la position")
-            .appendField(new Blockly.FieldTextInput("0"), "SHIFT_ANGLE");
+            .appendField("de")
+            .appendField(new Blockly.FieldTextInput("0"), "SHIFT_ANGLE")
+            .appendField("degrés");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(FRANCASTER_COLOR);
