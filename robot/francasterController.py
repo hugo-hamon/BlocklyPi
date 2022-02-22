@@ -22,14 +22,16 @@ MOTORS = {
 }
 
 
-def set_motor_position(motor_nb: int, angle: int):
-    for v in MOTORS.values():
-        if v.id == motor_nb:
-            v.set_motor_position(angle)
+def set_motor_position(motor_nb: str, angle: str):
+    motor_nb, angle = int(motor_nb), int(angle)
+    for motor in MOTORS.values():
+        if motor.id == motor_nb:
+            motor.set_motor_position(angle)
             return
 
 
-def shift_motor_position(motor_nb: int, angle: int):
+def shift_motor_position(motor_nb: str, angle: str):
+    motor_nb, angle = int(motor_nb), int(angle)
     for v in MOTORS.values():
         if v.id == motor_nb:
             v.shift_motor_position(angle)
