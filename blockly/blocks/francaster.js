@@ -2,43 +2,68 @@ var FRANCASTER_COLOR = 60;
 
 Blockly.Blocks['francaster_set_motor_power'] = {
     init: function () {
-        this.setHelpUrl('http://www.example.com/');
+        this.appendDummyInput()
+            .appendField("Mettre le moteur")
+            .appendField(new Blockly.FieldDropdown([
+                ["0", "0"],
+                ["1", "1"],
+                ["2", "2"],
+                ["3", "3"],
+                ["4", "4"],
+                ["5", "5"],
+                ["6", "6"],
+                ["7", "7"],
+                ["8", "8"],
+                ["9", "9"],
+                ["10", "10"],
+                ["11", "11"],
+                ["12", "12"],
+                ["13", "13"],
+                ["14", "14"],
+                ["15", "15"]
+            ]), "MOTOR_NB");
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("à la position")
+            .appendField(new Blockly.FieldTextInput("0"), "ANGLE");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
         this.setColour(FRANCASTER_COLOR);
-        this.appendValueInput("POWER").setCheck("Number").appendField(
-            new Blockly.FieldDropdown([
-                ["Set the power of the left motor to", "LEFT"],
-                ["Set the power of the right motor to", "RIGHT"]]),
-            "MOTOR");
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip('');
+        this.setTooltip("");
+        this.setHelpUrl("");
     }
 };
 
 Blockly.Blocks['francaster_shift_motor_position'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("faire")
-            .appendField(new Blockly.FieldDropdown([["avancer", "av"], ["reculer", "re"]]), "MOVE")
-        this.appendValueInput("POWER2").setCheck("Number").appendField(
-            new Blockly.FieldDropdown([
-                ["le moteur 0 de", "0"],
-                ["le moteur 1 de", "1"],
-                ["le moteur 2 de", "2"],
-                ["le moteur 3 de", "3"],
-                ["le moteur 4 de", "4"],
-                ["le moteur 5 de", "5"],
-                ["le moteur 6 de", "6"],
-                ["le moteur 7 de", "7"],
-                ["le moteur 8 de", "8"],
-                ["le moteur 9 de", "9"],
-                ["le moteur 10 de", "10"],
-                ["le moteur 11 de", "11"],
-                ["le moteur 12 de", "12"],
-                ["le moteur 13 de", "13"],
-                ["le moteur 14 de", "14"],
-                ["le moteur 15 de", "15"]]),
-            "MOTOR2");
+            .appendField("Faire")
+            .appendField(new Blockly.FieldDropdown([
+                ["avancer", "FORWARD"],
+                ["reculer", "BACKWARD"]
+            ]), "DIRECTION")
+            .appendField("le moteur")
+            .appendField(new Blockly.FieldDropdown([
+                ["0", "0"],
+                ["1", "1"],
+                ["2", "2"],
+                ["3", "3"],
+                ["4", "4"],
+                ["5", "5"],
+                ["6", "6"],
+                ["7", "7"],
+                ["8", "8"],
+                ["9", "9"],
+                ["10", "10"],
+                ["11", "11"],
+                ["12", "12"],
+                ["13", "13"],
+                ["14", "14"],
+                ["15", "15"]]), "MOTOR_NB");
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("à la position")
+            .appendField(new Blockly.FieldTextInput("0"), "SHIFT_ANGLE");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(FRANCASTER_COLOR);

@@ -1,17 +1,21 @@
 Blockly.JavaScript['francaster_set_motor_power'] = function (block) {
-    var value_power = Blockly.JavaScript.valueToCode(block, 'POWER', Blockly.JavaScript.ORDER_ATOMIC);
-    var dropdown_motor = block.getFieldValue('MOTOR');
+    var dropdown_motor_nb = block.getFieldValue('MOTOR_NB');
+    var angle = block.getFieldValue('ANGLE');
 
     // Generate the code ...
-    return 'runPiRobotCommand("robotController.set_motor_position", "' + dropdown_motor + '",' + value_power + ');';
+    return `runPiRobotCommand("robotController.set_motor_position", "${dropdown_motor_nb}",${angle});`;
 };
 
 Blockly.JavaScript['francaster_shift_motor_position'] = function (block) {
-    var value_power = Blockly.JavaScript.valueToCode(block, 'POWER2', Blockly.JavaScript.ORDER_ATOMIC);
-    var dropdown_motor = block.getFieldValue('MOTOR2');
-    var move = block.getFieldValue('MOVE');
+    var dropdown_direction = block.getFieldValue('DIRECTION');
+    var dropdown_motor_nb = block.getFieldValue('MOTOR_NB');
+    var shift_angle = parseInt(block.getFieldValue('SHIFT_ANGLE'));
 
-    return 'runPiRobotCommand("robotController.shift_motor_position", "' + dropdown_motor + '",' + value_power + ');';
+    if (dropdown_direction === "BACKWARD") {
+        shift_angle = -shift_angle
+    }
+
+    return `runPiRobotCommand("robotController.shift_motor_position", "${dropdown_motor_nb}",${shift_angle});`;
 };
 
 Blockly.JavaScript['francaster_repeat_after_me'] = function (block) {
@@ -48,9 +52,7 @@ Blockly.JavaScript['francaster_say_hi'] = function (block) {
 
 Blockly.JavaScript['francaster_say_yes'] = function (block) {
     var dropdown_motor = block.getFieldValue('MOVE');
-    return dropdown_motor === "o"
-        ? 'runPiRobotCommand("FrancasterController.do_yes");'
-        : 'runPiRobotCommand("FrancasterController.do_no");';
+    return dropdown_motor === "o" ? 'runPiRobotCommand("FrancasterController.do_yes");' : 'runPiRobotCommand("FrancasterController.do_no");';
 };
 
 Blockly.JavaScript['francaster_reset_position'] = function (block) {
