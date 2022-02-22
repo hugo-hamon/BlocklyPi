@@ -57,12 +57,13 @@ def reset_position():
     MOTORS["HEAD_PITCH"].set_motor_position(90)
 
 
-def set_delay(seconds: int):
-    time.sleep(seconds)
+def set_delay(seconds: str):
+    time.sleep(int(seconds))
 
 
-def walk_n_steps(n):
-    for _ in range(0, n - 1):
+def walk_n_steps(nb_steps: str):
+    nb_steps = int(nb_steps)
+    for _ in range(0, nb_steps - 1):
         MOTORS["LEFT_SHOULDER_FLEXOR"].set_motor_position(60)
         sleep(.1)
         MOTORS["RIGHT_SHOULDER_FLEXOR"].set_motor_position(60)
@@ -81,22 +82,26 @@ def walk_n_steps(n):
         sleep(.5)
 
 
-def do_hi(ps):
+def do_hi(nb_greetings: str):
+    """
+    :param nb_greetings: the number of times the hand will wave
+    """
+    nb_greetings = int(nb_greetings)
     MOTORS["RIGHT_SHOULDER_ABDUCTOR"].set_motor_position(130)
     sleep(.1)
     MOTORS["RIGHT_SHOULDER_ROTATOR"].set_motor_position(180)
     sleep(.1)
-    for _ in range(0, ps - 1):
+    for _ in range(nb_greetings):
         MOTORS["RIGHT_ELBOW"].set_motor_position(90)
         sleep(0.5)
         MOTORS["RIGHT_ELBOW"].set_motor_position(0)
         sleep(0.5)
 
 
-def walk_n_steps_with_knee_lift(ps):
+def walk_n_steps_with_knee_lift(nb_steps):
     MOTORS["LEFT_SHOULDER_ROTATOR"].set_motor_position(170)
     MOTORS["RIGHT_SHOULDER_ABDUCTOR"].set_motor_position(10)
-    for _ in range(0, ps - 1):
+    for _ in range(nb_steps):
         MOTORS["LEFT_ELBOW"].set_motor_position(150)
         sleep(0.2)
         MOTORS["LEFT_SHOULDER_FLEXOR"].set_motor_position(90)
