@@ -41,6 +41,7 @@ def shift_motor_position(motor_nb: str, angle: str):
 def reset_position():
     for motor in MOTORS.values():
         motor.reset()
+        time.sleep(0.2)
 
 
 def set_delay(seconds: str):
