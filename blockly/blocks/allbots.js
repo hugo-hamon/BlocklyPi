@@ -1,22 +1,63 @@
 var ALLBOTS_COLOR = 0;
 
-Blockly.Blocks['allbots_shift_motor_position'] = {
+function getMotorDropdown() {
+    return new Blockly.FieldDropdown([
+        ["0", "0"],
+        ["1", "1"],
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+    ]);
+}
+
+Blockly.Blocks['allbots-set_motor_position'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("faire")
-            .appendField(new Blockly.FieldDropdown([["avancer", "av"], ["reculer", "re"]]), "MOVE")
-        this.appendValueInput("POWER2").setCheck("Number").appendField(
-            new Blockly.FieldDropdown([
-                ["le moteur 0 de", "0"],
-                ["le moteur 1 de", "1"],
-                ["le moteur 2 de", "2"],
-                ["le moteur 3 de", "3"],
-                ["le moteur 4 de", "4"],
-                ["le moteur 5 de", "5"],
-                ["le moteur 6 de", "6"],
-                ["le moteur 7 de", "7"],
-                ["le moteur 8 de", "8"]]),
-            "MOTOR2");
+            .appendField("Mettre le moteur")
+            .appendField(getMotorDropdown(), "MOTOR_NB");
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("à")
+            .appendField(new Blockly.FieldTextInput("0"), "ANGLE")
+            .appendField("degrés.");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(ALLBOTS_COLOR);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['allbots-shift_motor_position'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Faire")
+            .appendField(new Blockly.FieldDropdown([
+                ["avancer", "FORWARD"],
+                ["reculer", "BACKWARD"]
+            ]), "DIRECTION")
+            .appendField("le moteur")
+            .appendField(getMotorDropdown(), "MOTOR_NB");
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("de")
+            .appendField(new Blockly.FieldTextInput("0"), "SHIFT_ANGLE")
+            .appendField("degrés");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(ALLBOTS_COLOR);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['allbots-reset_position'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Remettre a la position initiale")
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(ALLBOTS_COLOR);

@@ -2,14 +2,14 @@ from robot.robotMotor import RobotMotor
 import time
 
 MOTORS = {
-    "FRONT_LEFT_ELBOW": RobotMotor(0, 0, 180),
-    "FRONT_LEFT_SHOULDER": RobotMotor(1, 30, 120),
-    "FRONT_RIGHT_ELBOW": RobotMotor(2, 0, 180),
-    "FRONT_RIGHT_SHOULDER": RobotMotor(3, 50, 150),
-    "BACK_LEFT_ELBOW": RobotMotor(4, 0, 180),
-    "BACK_LEFT_SHOULDER": RobotMotor(3, 50, 150),
-    "BACK_RIGHT_ELBOW": RobotMotor(6, 0, 180),
-    "BACK_RIGHT_SHOULDER": RobotMotor(7, 30, 120)
+    "FRONT_LEFT_ELBOW": RobotMotor(0, 0, 180, 0),
+    "FRONT_LEFT_SHOULDER": RobotMotor(1, 30, 120, 0),
+    "FRONT_RIGHT_ELBOW": RobotMotor(2, 0, 180, 0),
+    "FRONT_RIGHT_SHOULDER": RobotMotor(3, 50, 150, 0),
+    "BACK_LEFT_ELBOW": RobotMotor(4, 0, 180, 0),
+    "BACK_LEFT_SHOULDER": RobotMotor(3, 50, 150, 0),
+    "BACK_RIGHT_ELBOW": RobotMotor(6, 0, 180, 0),
+    "BACK_RIGHT_SHOULDER": RobotMotor(7, 30, 120, 0)
 }
 
 

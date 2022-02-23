@@ -2,7 +2,6 @@ Blockly.JavaScript['francaster-set_motor_position'] = function (block) {
     var dropdown_motor_nb = block.getFieldValue('MOTOR_NB');
     var angle = block.getFieldValue('ANGLE');
 
-    // Generate the code ...
     return `runPiRobotCommand("francaster-set_motor_position", "${dropdown_motor_nb}","${angle}");`;
 };
 

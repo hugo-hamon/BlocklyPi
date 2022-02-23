@@ -1,25 +1,22 @@
-Blockly.JavaScript['francaster_shift_motor_position'] = function (block) {
-    var value_power = Blockly.JavaScript.valueToCode(block, 'POWER2',
-        Blockly.JavaScript.ORDER_ATOMIC);
-    var dropdown_motor = block.getFieldValue('MOTOR2');
-    var move = block.getFieldValue('MOVE');
-    // Check the input ...
-    if (value_power > 180) {
-        alert("Maximum motor power for the robot is 180.");
-        return '';
-    }
-    if (value_power < 0) {
-        alert("Minimum motor power for the robot is 0.");
-        return '';
-    }
-    if (move == 're') {
-        value_power = value_power * -1;
-    }
-    if (dropdown_motor == 1) {
-        alert("l'angle est " + value_power + " voila!");
-        return '';
+Blockly.JavaScript['allbots-set_motor_position'] = function (block) {
+    var dropdown_motor_nb = block.getFieldValue('MOTOR_NB');
+    var angle = block.getFieldValue('ANGLE');
+
+    return `runPiRobotCommand("allbots-set_motor_position", "${dropdown_motor_nb}","${angle}");`;
+};
+
+Blockly.JavaScript['allbots-shift_motor_position'] = function (block) {
+    var dropdown_direction = block.getFieldValue('DIRECTION');
+    var dropdown_motor_nb = block.getFieldValue('MOTOR_NB');
+    var shift_angle = parseInt(block.getFieldValue('SHIFT_ANGLE'));
+
+    if (dropdown_direction === "BACKWARD") {
+        shift_angle = -shift_angle
     }
 
-    var code = 'runPiRobotCommand("francaster-shift_motor_position", "' + dropdown_motor + '",' + value_power + ');';
-    return code;
+    return `runPiRobotCommand("allbots-shift_motor_position", "${dropdown_motor_nb}", "${shift_angle}");`;
+};
+
+Blockly.JavaScript['allbots-reset_position'] = function (block) {
+    return `runPiRobotCommand("allbots-reset_position");`;
 };

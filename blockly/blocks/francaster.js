@@ -127,7 +127,7 @@ Blockly.Blocks['francaster-do_yes'] = {
 Blockly.Blocks['francaster-reset_position'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("remettre a la position initiale")
+            .appendField("Remettre a la position initiale")
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(FRANCASTER_COLOR);

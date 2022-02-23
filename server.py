@@ -16,7 +16,9 @@ def register_robot_xmlrpc_methods(server: SimpleXMLRPCServer):
     server.register_function(francasterController.do_yes, 'francaster-do_yes')
     server.register_function(francasterController.do_no, 'francaster-do_no')
 
-    server.register_function(allbotsController.reset_position, 'AllbotsController.reset_position')
+    server.register_function(allbotsController.reset_position, 'allbots-reset_position')
+    server.register_function(allbotsController.set_motor_position, 'allbots-set_motor_position')
+    server.register_function(allbotsController.shift_motor_position, 'allbots-shift_motor_position')
 
 
 # We define a custom server request handler, capable of both handling GET and XML-RPC requests.
