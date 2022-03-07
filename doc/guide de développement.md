@@ -21,7 +21,7 @@ instancié en exécutant la commande `python3 server.py` à la racine du projet.
 
 Pour ce qui nous intéresse concernant l'ajout d'actions à nos robots, voici l'arborescence du projet :
 
-- `/`
+- `BlocklyPi/`
     - `blockly/`
         - `blocks/`
           - `robot.js` : Le script contenant le code de définition des blocs.
