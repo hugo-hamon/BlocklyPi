@@ -23,8 +23,10 @@ Pour ce qui nous intéresse concernant l'ajout d'actions à nos robots, voici l'
 
 - `/`
     - `blockly/`
-        - `blocks/` : L'ensemble des scripts contenant le code de définition des blocs.
-        - `generators/` : L'ensemble des scripts contenant les générateurs de code des blocs associés.
+        - `blocks/`
+          - `robot.js` : Le script contenant le code de définition des blocs.
+        - `generators/`
+          - `robot.js` : Le script contenant les générateurs de code des blocs associés.
     - `robot/`
         - `robotController.py` : Le module contenant toutes les actions qu'un robot donné est capable d'exécuter.
         - `robotMotor.py` : Une classe contenant tout le code de base permettant de contrôler un servomoteur donné.
