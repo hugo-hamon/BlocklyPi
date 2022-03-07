@@ -5,13 +5,31 @@ boîtes à outils et permettre à ces composants d'intéragir avec le port GPIO 
 spécifiques au projet actuel et servent de mémo pour faciliter sa personnalisation, dans le cadre des missions réalisées
 par les Francas de Seine-Maritime.
 
-À titre d'exemple, Une catégorie nommée `francas_category` a été ajoutée à la boîte à outils, ainsi qu'un bloc nommé
-`francas_block`. Ils servent de modèle pour la création de nouveaux blocs et devraient être supprimés pour la mise en
-production.
-
 Si vous êtes débutant avec ce projet, lisez le guide de [Blockly](https://developers.google.com/blockly/guides/overview)
 pour avoir un guide faisant le tour des principaux concepts. Les notions de programmation en bloc, toolbox, workpace ou
 autres demandent à être comprises pour suivre ce guide, et ne seront pas redéfinies ici.
+
+## Architecture du projet
+
+Le projet est constitué de 2 parties :
+
+- Un frontend écrit en JavaScript qui fournit une interface à l'utilisateur pour communiquer avec son robot.
+- Un backend écrit en Python qui permet de communiquer avec le port GPIO de la Raspberry Pi.
+
+Ces 2 composants utilisent un serveur [XML-RPC](https://fr.wikipedia.org/wiki/XML-RPC) pour communiquer. Il doit être
+instancié en exécutant la commande `python3 server.py` à la racine du projet.
+
+pour ce qui nous intéresse concernant l'ajout d'actions à nos robots, voici l'arborescence du projet :
+
+- `/`
+    - `blockly/`
+        - `blocks/` : L'ensemble des scripts contenant le code de définition des blocs.
+        - `generators/` : L'ensemble des scripts contenant les générateurs de code des blocs associés.
+    - `robot/`
+        - `robotController.py` : Le module contenant toutes les action qu'un robot donné est capable d'exécuter.
+        - `robotMotor.py` : Une classe contenant tout le code de base permettant de contrôler un servomoteur donné.
+    - `server.py` : Le script où nous allons instancier notre serveur XML-RPC et définir l'ensemble des fonctions qu'il
+      peut interpréter.
 
 ## Ajout d'une nouvelle catégorie à la boîte à outils
 
@@ -22,9 +40,9 @@ Une catégorie a la syntaxe suivante :
 
  ```xml
 
-<category name="francas_category" colour="#ff8000">
-    <block type="francas_block1"></block>
-    <block type="francas_block2"></block>
+<category name="robot_category" colour="#ff8000">
+    <block type="robot_name-action_name1"></block>
+    <block type="robot_name-action_name2"></block>
     <!---etc.-->
 </category>
  ```
@@ -39,80 +57,81 @@ Le code décrivant un bloc a 3 composantes :
     - Sa couleur.
     - Ses éléments descriptifs (textes, images, etc).
     - Ses paramètres (entrées de valeurs, déclarations d'autres blocs, etc).
-- Le générateur de code associé au bloc : Le composant chargé de traduire l'interface du bloc en code exécutable par la
-  Raspberry Pi, en prenant en compte les paramètres de l'utilisateur.
+- Le générateur de code associé au bloc : Le composant chargé d'appeler la fonction liée à l'action que l'utilisateur
+  souhaite exécuter, en prenant en compte les paramètres de l'utilisateur.
 
-### Création de l'interface du bloc
+Par convention, le nom des blocs et de toutes les fonctions qui leur sont associées doivent respecter le format
+suivant : `"robot_name-action_name"`. Tous les blocs d'une même catégorie devront avoir la même teinte, qui pourra être
+définie par une constante `ROBOT_COLOR` dans le script de définition des blocs de cette catégorie,
+dans `blockly/blocks/`.
+
+### Définition et générateur de code du bloc
 
 Pour faciliter l'écriture du code définissant le comportement de notre bloc, nous pouvons utiliser
 l'outil [Blockly Factory](https://blockly-demo.appspot.com/static/demos/blockfactory/index.html).
-![](../Screenshot_20211209_131412.png)
+![](Screenshot_20211209_131412.png)
 
-Exemple de déclaration de bloc :
+Exemple de déclaration de bloc (en **rouge** sur la capture d'écran) :
 
 ```js
-Blockly.Blocks['francas_block'] = {
+Blockly.Blocks['robot_name-action_name'] = {
     init: function () {
-        this.appendDummyInput()
-            .setAlign(Blockly.ALIGN_CENTRE)
-            .appendField("Francas Bloc")
-            .appendField(
-                new Blockly.FieldImage("https://www.bafa-lesfrancas.fr/sites/default/files/2017-08/logo-francas_0.png",
-                    100, 50, {alt: "*", flipRtl: "FALSE"}));
-        this.appendDummyInput()
-            .appendField("Un bloc pour faire des tests");
-        this.appendDummyInput()
-            .appendField("Faire clignoter la led de la carte ")
-            .appendField(new Blockly.FieldTextInput("3"), "nbBlinks")
-            .appendField(" fois.");
+        this.appendValueInput("VALUE1");
+        this.appendValueInput("VALUE2");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(30);
+        this.setColour(ROBOT_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
 };
 ```
 
-### Ajout du bloc au projet
+Le générateur de bloc (en **bleu** sur la capture d'écran) devra toujours respecter ce format :
+
+```js
+Blockly.JavaScript['robot_name-action_name'] = function (block) {
+    var arg1 = Blockly.JavaScript.valueToCode(block, 'VALUE1', Blockly.JavaScript.ORDER_ATOMIC);
+    var arg2 = Blockly.JavaScript.valueToCode(block, 'VALUE2', Blockly.JavaScript.ORDER_ATOMIC);
+    return `runPiRobotCommand("robot_name-action_name", "${arg1}", "${arg2}");`;
+};
+```
+
+`runPiRobotCommand` est la commande utilisée pour communiquer avec le serveur XML-RPC. Ses arguments sont le nom de la
+fonction appellée dans le backend, ainsi que la liste des valeurs des ses paramètres.
 
 Une fois le bloc créé, différents morceaux de code sont à insérer dans le projet de la manière suivante :
 
-- Le code dans la zone en **rouge**, celui de définition du bloc, doit être mis dans le fichier
-  [`blockly/blocks`](../blockly/blocks).
-- Le code dans la zone en **bleu**, celui qui génère le code à envoyer à la Raspberry Pi en fonction des paramètres du
-  bloc, doit être mis dans le fichier
-  [`blockly/generators/javascript`](../blockly/generators/javascript).
-- La ligne `<block type="francas_block1"></block>` doit être ajoutée dans le fichier
-  [`index.html`](../index.html), au sein de la catégorie voulue.
+- La définition du bloc : [`blockly/blocks`](../blockly/blocks).
+- Le générateur de code du bloc : [`blockly/generators/javascript`](../blockly/generators/javascript).
+- La ligne `<block type="robot_name-action_name"></block>` : [`index.html`](../index.html), au sein de la catégorie
+  voulue.
 
-Il est bienvenu de rassembler le code des blocs d'une même catégorie au sein d'un même fichier. Par exemple, pour tous
-les blocs de la catégorie `Francas`, on aurait la configuration suivante :
+Ne pas oublier de faire appel à ces scripts, en ajoutant :
 
-- Le code de définition de bloc dans le fichier [`blockly/blocks/francas.js`](../blockly/blocks/francas.js).
-- Le code générateur dans le
-  fichier [`blockly/generators/javascript/francas.js`](../blockly/generators/javascript/francas.js).
+- `<script src="blockly/blocks/francaster.js"></script>`
+- `<script src="blockly/generators/javascript/francaster.js"></script>`
 
-Ne pas oublier de faire appel à ces fichiers, en ajoutant
+dans la balise `<head>` de [`index.html`](../index.html).
 
-- `<script src="blockly/blocks/francas.js"></script>`
-- `<script src="blockly/generators/javascript/francas.js"></script>`
+### Déclaration et description d'une fonction côté backend
 
-dans la balise `<head>` de [`index.html`](../index.html)
+Toutes les fonctions relatives à un robot doivent être décrites dans un module `robotController.py` dans `robot/`.
+Chaque action que le robot peut exécuter est décrite par une fonction de la manière suivante :
 
-### Personnalisation du générateur de code
-
-Le générateur de code est une fonction qui retourne une variable de type `String` dont le contenu est le code écrit en
-***, à destination du GPIO de la Raspberry Pi.
-
-Exemple de code générateur :
-
-```js
-Blockly.JavaScript['francas_block'] = function (block) {
-    var code = ''; // instructions à venir...
-    return code
-}
+```Python
+def action_name(arg1: str, arg2: str):
+# actions...
 ```
 
-Se référer au guide de Blockly donné au début du document pour avoir toutes les informations sur la façon de récupérer
-les valeurs des arguments renségnés par l'utilisateur.
+Pour que la fonction soit reconnue par le serveur XML-RPC, assurez-vous que votre module est bien importé
+dans `server.py`, puis ajouter la ligne de déclaration suivante :
+
+```Python
+from robot import robotController  # le module de votre contrôleur
+
+
+def register_robot_xmlrpc_methods(server: SimpleXMLRPCServer):
+    server.register_function(robotController.action_name, 'robot_name-action_name')  # Ajouter ici
+    # ...
+```
