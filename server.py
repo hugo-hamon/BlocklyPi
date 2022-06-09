@@ -1,6 +1,6 @@
 from http.server import SimpleHTTPRequestHandler
 from xmlrpc.server import SimpleXMLRPCRequestHandler, SimpleXMLRPCServer
-from robot import francasterController, allbotsController
+from robot.controllers import francasterController, allbotsController
 
 
 def register_robot_xmlrpc_methods(server: SimpleXMLRPCServer):
