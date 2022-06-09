@@ -9,7 +9,7 @@ import webbrowser
 
 def answer(a=""):
     if a == "":
-        a = record_audio("recording...")
+        a = _record_audio("recording...")
     if "comment tu t'appelle" in a:
         francaster_speak("je m'appelle francaster")
     if "quelle heure est-il" in a:
@@ -34,12 +34,12 @@ def answer(a=""):
         francaster_speak(today)
     if "recherche" in a:
         francaster_speak("Que chcerchez-vous ?")
-        search = record_audio("recording...")
+        search = _record_audio("recording...")
         url = "https://google.com/search?q={}".format(search)
         webbrowser.get().open(url)
         print("Voilà ce que j'ai trouver pour {}".format(search))
     if "trouve une adresse" in a:
-        location = record_audio("vous voulez rechercher quoi?")
+        location = _record_audio("vous voulez rechercher quoi?")
         url = 'https://www.google.fr/maps/place/' + location + '/'
         webbrowser.get().open(url)
         francaster_speak("Voilà ce que j'ai trouvé")
@@ -50,7 +50,7 @@ def answer(a=""):
         exit()
 
 
-def record_audio(ask=False, lang='fr'):
+def _record_audio(ask=False, lang='fr'):
     with sr.Microphone() as source:
         recognizer = sr.Recognizer()
         recognizer.adjust_for_ambient_noise(source)
@@ -84,5 +84,5 @@ def francaster_speak(audio_string, lang='fr'):
 
 
 def francaster_repeat(lang='fr'):
-    a = record_audio("recording...", lang=lang)
+    a = _record_audio("recording...", lang=lang)
     francaster_speak(a, lang=lang)

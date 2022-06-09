@@ -17,6 +17,11 @@ Blockly.JavaScript['francaster-shift_motor_position'] = function (block) {
     return `runPiRobotCommand("francaster-shift_motor_position", "${dropdown_motor_nb}", "${shift_angle}");`;
 };
 
+Blockly.JavaScript['francaster-speak'] = function (block) {
+    var text_qstn = block.getFieldValue('QSTN');
+    return `runPiRobotCommand("francaster-speak", "${text_qstn}");`;
+};
+
 Blockly.JavaScript['francaster-repeat'] = function (block) {
     return `runPiRobotCommand("repeat");`;
 };

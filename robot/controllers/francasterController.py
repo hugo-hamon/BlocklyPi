@@ -1,6 +1,7 @@
 import time
 from time import sleep
 from robot.robotMotor import RobotMotor
+import robot.speech.francasterSpeech as Speech
 
 MOTORS = {
     "lEFT_ELBOW": RobotMotor(0, 0, 180, 180),
@@ -137,3 +138,15 @@ def do_yes():
         MOTORS["HEAD_PITCH"].set_motor_position(45)
         sleep(.5)
         MOTORS["HEAD_PITCH"].set_motor_position(90)
+
+
+def speak(text):
+    Speech.francaster_speak(text)
+
+
+def repeat():
+    Speech.francaster_repeat()
+
+
+def answer_to_question(question=""):
+    Speech.answer(question)

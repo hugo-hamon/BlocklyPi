@@ -136,10 +136,23 @@ Blockly.Blocks['francaster-reset_position'] = {
     }
 };
 
+Blockly.Blocks['francaster-speak'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Dire ")
+            .appendField(new Blockly.FieldTextInput("Je suis Francaster"), "QSTN");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(FRANCASTER_COLOR);
+        this.setTooltip("Donne la phrase que le robot doit dire");
+        this.setHelpUrl("");
+    }
+};
+
 Blockly.Blocks['francaster-repeat'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Répète après moi");
+            .appendField("Répéter");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(FRANCASTER_COLOR);
@@ -151,12 +164,12 @@ Blockly.Blocks['francaster-repeat'] = {
 Blockly.Blocks['francaster-answer_question'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Demande")
-            .appendField(new Blockly.FieldTextInput("comment tu t'appelles?"), "QSTN");
+            .appendField("Demander")
+            .appendField(new Blockly.FieldTextInput(""), "QSTN");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(FRANCASTER_COLOR);
-        this.setTooltip("Pose une question au robot");
+        this.setTooltip("Pose une question au robot, par écrit ou oral");
         this.setHelpUrl("");
     }
 };
