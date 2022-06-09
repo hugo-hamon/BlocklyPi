@@ -27,24 +27,24 @@ Blockly.JavaScript['francaster-answer_question'] = function (block) {
 };
 
 Blockly.JavaScript['francaster-sleep'] = function (block) {
-    var sleepTime = Blockly.JavaScript.valueToCode(block, 'NBR_SEC', Blockly.JavaScript.ORDER_ATOMIC);
+    var sleepTime = block.getFieldValue("NB_SEC");
     return `runPiRobotCommand("francaster-sleep", "${sleepTime}");`;
 };
 
 Blockly.JavaScript['francaster_walk_n_steps'] = function (block) {
-    var nb_steps = Blockly.JavaScript.valueToCode(block, 'NBR_PAS_FORWARD', Blockly.JavaScript.ORDER_ATOMIC);
+    var nb_steps = block.getFieldValue('NB_STEPS');
 
     return `runPiRobotCommand("francaster-walk_n_steps", "${nb_steps}");`;
 };
 
 Blockly.JavaScript['francaster_walk_n_steps_with_knee_lift'] = function (block) {
-    var value_nb_steps = Blockly.JavaScript.valueToCode(block, 'NBR_PAS_FORWARD', Blockly.JavaScript.ORDER_ATOMIC);
+    var nb_steps = block.getFieldValue('NB_STEPS');
 
-    return `runPiRobotCommand("francaster-walk_n_steps_with_knee_lift", "${value_nb_steps}");`;
+    return `runPiRobotCommand("francaster-walk_n_steps_with_knee_lift", "${nb_steps}");`;
 };
 
 Blockly.JavaScript['francaster-do_hi'] = function (block) {
-    var value_nb_hi = Blockly.JavaScript.valueToCode(block, 'NBR_HI', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_nb_hi = block.getFieldValue('NB_HI');
 
     return `runPiRobotCommand("francaster-do_hi", "${value_nb_hi}");`;
 };
