@@ -64,10 +64,10 @@ Blockly.Blocks['francaster-shift_motor_position'] = {
 
 Blockly.Blocks['francaster-sleep'] = {
     init: function () {
-        this.appendValueInput("NBR_SEC").appendField("Dormir pendant");
-        this.appendDummyInput().appendField("secondes");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
+        this.appendDummyInput()
+            .appendField("Dormir pendant ")
+            .appendField(new Blockly.FieldTextInput("1"), "NB_SEC")
+            .appendField(" secondes");
         this.setColour(FRANCASTER_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
@@ -76,8 +76,10 @@ Blockly.Blocks['francaster-sleep'] = {
 
 Blockly.Blocks['francaster_walk_n_steps'] = {
     init: function () {
-        this.appendValueInput("NBR_PAS_FORWARD").appendField("Avancer de");
-        this.appendDummyInput().appendField("pas");
+        this.appendDummyInput()
+            .appendField("Avancer de ")
+            .appendField(new Blockly.FieldTextInput("1"), "NB_STEPS")
+            .appendField(" pas");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(FRANCASTER_COLOR);
@@ -88,8 +90,10 @@ Blockly.Blocks['francaster_walk_n_steps'] = {
 
 Blockly.Blocks['francaster-do_hi'] = {
     init: function () {
-        this.appendValueInput("NBR_HI").appendField("Saluer");
-        this.appendDummyInput().appendField("fois");
+        this.appendDummyInput()
+            .appendField("Dire bonjour ")
+            .appendField(new Blockly.FieldTextInput("1"), "NB_HI")
+            .appendField(" fois");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(FRANCASTER_COLOR);
@@ -100,8 +104,10 @@ Blockly.Blocks['francaster-do_hi'] = {
 
 Blockly.Blocks['francaster_walk_n_steps_with_knee_lift'] = {
     init: function () {
-        this.appendValueInput("NBR_PAS_FORWARD").appendField("Avancer de");
-        this.appendDummyInput().appendField("pas avec lever de genoux");
+        this.appendDummyInput()
+            .appendField("Avancer de ")
+            .appendField(new Blockly.FieldTextInput("1"), "NB_STEPS")
+            .appendField(" pas avec levés de genoux");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(FRANCASTER_COLOR);
