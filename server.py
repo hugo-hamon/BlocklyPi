@@ -19,6 +19,16 @@ def register_robot_xmlrpc_methods(server: SimpleXMLRPCServer):
     server.register_function(allbotsController.reset_position, 'allbots-reset_position')
     server.register_function(allbotsController.set_motor_position, 'allbots-set_motor_position')
     server.register_function(allbotsController.shift_motor_position, 'allbots-shift_motor_position')
+    
+    server.register_function(allbotsController.avancer, 'allbotsController.avancer')
+    server.register_function(allbotsController.reculer, 'allbotsController.reculer')
+    server.register_function(allbotsController.tourner_gauche, 'allbotsController.tourner_gauche')
+    server.register_function(allbotsController.tourner_droite, 'allbotsController.tourner_droite')
+    server.register_function(robotController.shift_motor_position, 'robotController.shift_motor_position')
+    server.register_function(robotController.set_motor_position, 'robotController.set_motor_position')
+    server.register_function(allbotsController.angle_motor, 'allbotsController.angle_motor')
+    server.register_function(allbotsController.reset_position, 'allbotsController.reset_position')
+    server.register_function(allbotsController.coucou, 'allbotsController.coucou')
 
 
 # We define a custom server request handler, capable of both handling GET and XML-RPC requests.

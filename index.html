@@ -16,7 +16,7 @@
     <!-- Blockly core imports -->
     <script src="./blockly/blockly_compressed.js"></script>
     <script src="./blockly/blocks_compressed.js"></script>
-    <script src="./blockly/msg/js/en.js"></script>
+    <script src="./blockly/msg/js/fr.js"></script>
     <script src="./blockly/storage.js"></script>
 
     <!-- Blockly JS code generator -->
@@ -32,6 +32,8 @@
     <script src="blockly/generators/javascript/francaster.js"></script>
     <script src="blockly/blocks/allbots.js"></script>
     <script src="blockly/generators/javascript/allbots.js"></script>
+    <script src="blockly/blocks/AllBot.js"></script>
+    <script src="blockly/generators/javascript/AllBot.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="./css/lib/bootstrap.min.css" rel="stylesheet">
@@ -326,7 +328,23 @@
         <block type="allbots-shift_motor_position"></block>
         <block type="allbots-reset_position"></block>
     </category>
+    <sep></sep>
+    <category id="AllBot" name="AllBot">
+            <block type="avancer"></block>
+            <block type="reculer"></block>
+            <block type="tourner_a_gauche"></block>
+            <block type="tourner_a_droite"></block>
+            <block type="angle_motor">
+            <block type="reset_position"></block>
+            <value name="angle">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+            </block> 
+            <block type="coucou_motor"></block>
 
+        </category>
 </xml>
 
 
