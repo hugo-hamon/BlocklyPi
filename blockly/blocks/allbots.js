@@ -65,3 +65,81 @@ Blockly.Blocks['allbots-reset_position'] = {
         this.setHelpUrl("");
     }
 };
+
+Blockly.Blocks['avancer'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Avancer le Robot ");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(315);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['reculer'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Reculer le Robot ");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(315);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['tourner_a_gauche'] = {
+    init: function() {
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_CENTRE)
+            .appendField("Tourner à gauche");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(315);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['tourner_a_droite'] = {
+    init: function() {
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_CENTRE)
+            .appendField("Tourner à droite");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(315);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['coucou_motor'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Faire coucou avec la patte ")
+            .appendField(new Blockly.FieldDropdown([["gauche","0"], ["droite","1"]]), "motor");
+
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(180);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+Blockly.Blocks['allbot_sleep'] = {
+    init: function () {
+        this.appendValueInput("NBR_SEC").appendField("Dormir pendant");
+        this.appendDummyInput().appendField("secondes");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(220);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
