@@ -20,3 +20,34 @@ Blockly.JavaScript['allbots-shift_motor_position'] = function (block) {
 Blockly.JavaScript['allbots-reset_position'] = function (block) {
     return `runPiRobotCommand("allbots-reset_position");`;
 };
+
+Blockly.JavaScript['avancer'] = function(block) {
+    var code = 'runPiRobotCommand("allbotsController.avancer");';
+    return code;
+};
+
+Blockly.JavaScript['reculer'] = function(block) {
+    var code = 'runPiRobotCommand("allbotsController.reculer");';
+    return code;
+};
+
+Blockly.JavaScript['tourner_a_gauche'] = function(block) {
+    var code = 'runPiRobotCommand("allbotsController.tourner_gauche");';
+    return code;
+};
+
+Blockly.JavaScript['tourner_a_droite'] = function(block) {
+    var code = 'runPiRobotCommand("allbotsController.tourner_droite");';
+    return code;
+};
+
+Blockly.JavaScript['coucou_motor'] = function(block) {
+    var dropdown_motor = block.getFieldValue('motor');
+    var code = 'runPiRobotCommand("allbotsController.coucou", "' + dropdown_motor + '");';
+    return code;
+};
+
+Blockly.JavaScript['allbot_sleep'] = function (block) {
+    var value_time = Blockly.JavaScript.valueToCode(block, 'NBR_SEC', Blockly.JavaScript.ORDER_ATOMIC);
+    return 'runPiRobotCommand("FrancasterController.allbot_sleep", ' + value_time + ');';
+};
