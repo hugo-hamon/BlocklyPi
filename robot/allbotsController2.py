@@ -1,14 +1,14 @@
 from time import *
 from robotMotor import RobotMotor
 
-motor1 = RobotMotor(0, 0, 135)
-motor2 = RobotMotor(1, 25, 180)
-motor3 = RobotMotor(2, 0, 135)
-motor4 = RobotMotor(3, 25, 180)
-motor5 = RobotMotor(4, 0, 180)
-motor6 = RobotMotor(5, 0, 180)
-motor7 = RobotMotor(6, 0, 180)
-motor8 = RobotMotor(7, 0, 180)
+motor1 = RobotMotor(0, 0, 135)  # BACK_RIGHT_SHOULDER
+motor2 = RobotMotor(1, 25, 180)  # FRONT_RIGHT_SHOULDER
+motor3 = RobotMotor(2, 0, 135)  # FRONT_LEFT_SHOULDER
+motor4 = RobotMotor(3, 25, 180)  # BACK_LEFT_SHOULDER
+motor5 = RobotMotor(4, 0, 180)  # BACK_RIGHT_ELBOW
+motor6 = RobotMotor(5, 0, 180)  # FRONT_RIGHT_ELBOW
+motor7 = RobotMotor(6, 0, 180)  # FRONT_LEFT_ELBOW
+motor8 = RobotMotor(7, 0, 180)  # BACK_LEFT_ELBOW
 
 
 def angle_motor(motor, angle):
