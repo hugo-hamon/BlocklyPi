@@ -32,7 +32,7 @@ def shift_motor_position(motor_nb: str, angle: str):
 def reset_position():
     for motor in MOTORS.values():
         motor.reset()
-        time.time.sleep(0.2)
+        time.sleep(0.2)
 
 
 def walk_n_steps(nb_steps: str):
