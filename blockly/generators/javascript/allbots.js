@@ -21,33 +21,33 @@ Blockly.JavaScript['allbots-reset_position'] = function (block) {
     return `runPiRobotCommand("allbots-reset_position");`;
 };
 
-Blockly.JavaScript['avancer'] = function(block) {
-    var code = 'runPiRobotCommand("allbotsController.avancer");';
+Blockly.JavaScript['allbots-move_forward'] = function(block) {
+    var code = 'runPiRobotCommand("allbots-move_forward");';
     return code;
 };
 
-Blockly.JavaScript['reculer'] = function(block) {
-    var code = 'runPiRobotCommand("allbotsController.reculer");';
+Blockly.JavaScript['allbots-move_backward'] = function(block) {
+    var code = 'runPiRobotCommand("allbots-move_backward");';
     return code;
 };
 
-Blockly.JavaScript['tourner_a_gauche'] = function(block) {
-    var code = 'runPiRobotCommand("allbotsController.tourner_gauche");';
+Blockly.JavaScript['allbots-turn_left'] = function(block) {
+    var code = 'runPiRobotCommand("allbots-turn_left");';
     return code;
 };
 
-Blockly.JavaScript['tourner_a_droite'] = function(block) {
-    var code = 'runPiRobotCommand("allbotsController.tourner_droite");';
+Blockly.JavaScript['allbots-turn_right'] = function(block) {
+    var code = 'runPiRobotCommand("allbots-turn_right");';
     return code;
 };
 
-Blockly.JavaScript['coucou_motor'] = function(block) {
+Blockly.JavaScript['allbots-do_hi'] = function(block) {
     var dropdown_motor = block.getFieldValue('motor');
-    var code = 'runPiRobotCommand("allbotsController.coucou", "' + dropdown_motor + '");';
+    var code = 'runPiRobotCommand("allbots-do_hi", "' + dropdown_motor + '");';
     return code;
 };
 
-Blockly.JavaScript['allbot_sleep'] = function (block) {
+Blockly.JavaScript['allbots-sleep'] = function (block) {
     var value_time = Blockly.JavaScript.valueToCode(block, 'NBR_SEC', Blockly.JavaScript.ORDER_ATOMIC);
-    return 'runPiRobotCommand("FrancasterController.allbot_sleep", ' + value_time + ');';
+    return 'runPiRobotCommand("FrancasterController.allbots-sleep", ' + value_time + ');';
 };

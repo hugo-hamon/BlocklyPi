@@ -42,7 +42,7 @@ def walk_n_steps(nb_steps: str):
         # TODO: implement walk_n_steps for AllbotsController
 
 
-def reculer():
+def move_backward():
     MOTORS["FRONT_RIGHT_ELBOW"].set_motor_position(50)
     MOTORS["BACK_LEFT_ELBOW"].set_motor_position(50)
     time.sleep(0.2)
@@ -79,7 +79,7 @@ def reculer():
     reset_position()
 
 
-def coucou(motor):
+def do_hi(motor):
     if motor == '0':
         motor = MOTORS["FRONT_LEFT_SHOULDER"]
         other_motor = MOTORS["FRONT_LEFT_ELBOW"]
@@ -101,7 +101,7 @@ def coucou(motor):
     reset_position()
 
 
-def tourner_gauche():
+def turn_left():
     MOTORS["FRONT_LEFT_ELBOW"].set_motor_position(120)
     MOTORS["BACK_RIGHT_ELBOW"].set_motor_position(60)
     time.sleep(0.1)
@@ -136,7 +136,7 @@ def tourner_gauche():
     reset_position()
 
 
-def tourner_droite():
+def turn_right():
     MOTORS["FRONT_LEFT_ELBOW"].set_motor_position(120)
     MOTORS["BACK_RIGHT_ELBOW"].set_motor_position(60)
     time.sleep(0.1)
@@ -171,7 +171,7 @@ def tourner_droite():
     reset_position()
 
 
-def avancer():
+def move_forward():
     MOTORS["FRONT_RIGHT_ELBOW"].set_motor_position(50)
     MOTORS["BACK_LEFT_ELBOW"].set_motor_position(50)
     time.sleep(0.2)

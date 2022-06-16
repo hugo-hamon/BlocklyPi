@@ -66,59 +66,59 @@ Blockly.Blocks['allbots-reset_position'] = {
     }
 };
 
-Blockly.Blocks['avancer'] = {
+Blockly.Blocks['allbots-move_forward'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("Avancer le Robot ");
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(315);
+        this.setColour(ALLBOTS_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
 };
 
-Blockly.Blocks['reculer'] = {
+Blockly.Blocks['allbots-move_backward'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("Reculer le Robot ");
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(315);
+        this.setColour(ALLBOTS_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
 };
 
-Blockly.Blocks['tourner_a_gauche'] = {
+Blockly.Blocks['allbots-turn_left'] = {
     init: function() {
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_CENTRE)
             .appendField("Tourner à gauche");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(315);
+        this.setColour(ALLBOTS_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
 };
 
-Blockly.Blocks['tourner_a_droite'] = {
+Blockly.Blocks['allbots-turn_right'] = {
     init: function() {
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_CENTRE)
             .appendField("Tourner à droite");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(315);
+        this.setColour(ALLBOTS_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
 };
 
-Blockly.Blocks['coucou_motor'] = {
+Blockly.Blocks['allbots-do_hi'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("Faire coucou avec la patte ")
@@ -127,18 +127,18 @@ Blockly.Blocks['coucou_motor'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(180);
+        this.setColour(ALLBOTS_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
 };
-Blockly.Blocks['allbot_sleep'] = {
+Blockly.Blocks['allbots-sleep'] = {
     init: function () {
         this.appendValueInput("NBR_SEC").appendField("Dormir pendant");
         this.appendDummyInput().appendField("secondes");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(220);
+        this.setColour(ALLBOTS_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
     }
