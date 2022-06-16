@@ -1,4 +1,4 @@
-var ALLBOTS_COLOR = 0;
+const ALLBOTS_COLOR = 0;
 
 function getMotorDropdown() {
     return new Blockly.FieldDropdown([

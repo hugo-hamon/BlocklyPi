@@ -22,29 +22,24 @@ Blockly.JavaScript['allbots-reset_position'] = function (block) {
 };
 
 Blockly.JavaScript['allbots-move_forward'] = function(block) {
-    var code = 'runPiRobotCommand("allbots-move_forward");';
-    return code;
+    return 'runPiRobotCommand("allbots-move_forward");';
 };
 
 Blockly.JavaScript['allbots-move_backward'] = function(block) {
-    var code = 'runPiRobotCommand("allbots-move_backward");';
-    return code;
+    return 'runPiRobotCommand("allbots-move_backward");';
 };
 
 Blockly.JavaScript['allbots-turn_left'] = function(block) {
-    var code = 'runPiRobotCommand("allbots-turn_left");';
-    return code;
+    return 'runPiRobotCommand("allbots-turn_left");';
 };
 
 Blockly.JavaScript['allbots-turn_right'] = function(block) {
-    var code = 'runPiRobotCommand("allbots-turn_right");';
-    return code;
+    return 'runPiRobotCommand("allbots-turn_right");';
 };
 
 Blockly.JavaScript['allbots-do_hi'] = function(block) {
     var dropdown_motor = block.getFieldValue('motor');
-    var code = 'runPiRobotCommand("allbots-do_hi", "' + dropdown_motor + '");';
-    return code;
+    return 'runPiRobotCommand("allbots-do_hi", "' + dropdown_motor + '");';
 };
 
 Blockly.JavaScript['allbots-sleep'] = function (block) {
