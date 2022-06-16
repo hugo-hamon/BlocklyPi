@@ -224,6 +224,7 @@ BlocklyPiPage.prototype.runPiRobotCommand = function () {
             // Do nothing, interested? Use returnPiRobotCommandResult.
         },
         error: function (jqXHR, status, error) {
+            console.log(`jqXHR: ${jqXHR}\nstatus: ${status}\nerror: ${error}`)
             self.displayErrorMsg(error);
         }
     });
