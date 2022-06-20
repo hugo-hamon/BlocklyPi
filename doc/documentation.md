@@ -71,7 +71,8 @@ dans `blockly/blocks/`.
 
 Pour faciliter l'écriture du code définissant le comportement de notre bloc, nous pouvons utiliser
 l'outil [Blockly Factory](https://blockly-demo.appspot.com/static/demos/blockfactory/index.html).
-![](Screenshot_20211209_131412.png)
+
+![](res/Blockly%20developer%20tools.png)
 
 Exemple de déclaration de bloc (en **rouge** sur la capture d'écran) :
 
