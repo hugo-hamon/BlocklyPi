@@ -1,7 +1,6 @@
 import time
 from time import sleep
 import speech_recognition as sr
-from francasterSpeech import francaster_speak
 from robot.robotMotor import RobotMotor
 import robot.speech.francasterSpeech as Speech
 
@@ -180,13 +179,13 @@ def action():
     if "fais coucou" in b:
         do_hi(1)
         print("j'ai fait coucou")
-        francaster_speak("j'ai fait coucou", 'fr')
+        Speech.francaster_speak("j'ai fait coucou", 'fr')
     elif "fais oui" in b:
         do_yes()
-        francaster_speak("j'ai fait oui")
+        Speech.francaster_speak("j'ai fait oui")
     elif "fais non" in b:
         do_no()
-        francaster_speak("j'ai fait non")
+        Speech.francaster_speak("j'ai fait non")
     elif "arrete" in b:
         reset_position()
         exit()
