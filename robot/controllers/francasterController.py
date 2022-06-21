@@ -1,5 +1,7 @@
 import time
 from time import sleep
+import speech_recognition as sr
+from francasterSpeech import francaster_speak
 from robot.robotMotor import RobotMotor
 import robot.speech.francasterSpeech as Speech
 
@@ -150,3 +152,60 @@ def repeat():
 
 def answer_to_question(question=""):
     Speech.answer(question)
+
+
+def record_au():
+    r = sr.Recognizer()
+    micro = sr.Microphone()
+    with micro as source:
+        r.adjust_for_ambient_noise(source)
+        print("vas-y")
+        audio = r.listen(source)
+        print("attend")
+        voice_data = ''
+    try:
+        voice_data = r.recognize_google(audio, language="fr-FR")
+        print(voice_data)
+        if (voice_data == "fais coucou"):
+            do_hi(2)
+    except sr.UnknownValueError:
+        print("Désolé je n'ai pas compris")
+    except sr.RequestError:
+        print("Une erreur c'est produite")
+    return voice_data
+
+
+def action():
+    b = record_au()
+    if "fais coucou" in b:
+        do_hi(1)
+        print("j'ai fait coucou")
+        francaster_speak("j'ai fait coucou", 'fr')
+    elif "fais oui" in b:
+        do_yes()
+        francaster_speak("j'ai fait oui")
+    elif "fais non" in b:
+        do_no()
+        francaster_speak("j'ai fait non")
+    elif "arrete" in b:
+        reset_position()
+        exit()
+    else:
+        exit()
+
+
+def gifle_g():
+    MOTORS["LEFT_ELBOW"].set_motor_position(100)
+    sleep(0.3)
+    MOTORS["LEFT_SHOULDER_ROTATOR"].set_motor_position(0)
+    sleep(0.3)
+    MOTORS["LEFT_SHOULDER_FLEXOR"].set_motor_position(0)
+    sleep(0.3)
+    MOTORS["LEFT_SHOULDER_ROTATOR"].set_motor_position(180)
+    sleep(2)
+    reset_position()
+
+
+def leve_le_pied_droit():
+    MOTORS["RIGHT_HIP"].set_motor_posion(180)
+    MOTORS["RIGHT_KNEE"].set_motor_posion(90)
