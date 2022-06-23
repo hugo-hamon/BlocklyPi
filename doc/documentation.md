@@ -149,9 +149,10 @@ l'aide de la classe `RobotMotor`, dans le champ `id`.
 
 ### Déploiement
 
-Le dossier du projet peut simplement être placé dans le répertoire personnel de l'utiliser (`~/BlocklyPi`). Si le code
-est mis à jour vers une nouvelle version, il peut arriver que les changements soient mal pris en compte. La meilleure
-solution dans ce cas est de redémarrer le système et de relancer le serveur XML-RPC.
+Le dossier du projet peut simplement être placé dans le répertoire personnel de l'utiliser (`~/BlocklyPi`). Des
+informations plus détaillées sont déjà présentes dans le [README](../README.md) du projet. Si le code est mis à jour
+vers une nouvelle version, il peut arriver que les changements soient mal pris en compte. La meilleure solution dans ce
+cas est de redémarrer le système et de relancer le serveur XML-RPC.
 
 ## Robots
 
