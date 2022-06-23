@@ -9,7 +9,9 @@ Si vous êtes débutant avec ce projet, lisez le guide de [Blockly](https://deve
 pour avoir un guide faisant le tour des principaux concepts. Les notions de programmation en bloc, toolbox, workspace ou
 autres demandent à être comprises pour suivre ce guide, et ne seront pas redéfinies ici.
 
-## Architecture du projet
+## Contribution
+
+### Architecture du projet
 
 Le projet est constitué de 2 parties :
 
@@ -24,16 +26,16 @@ Pour ce qui nous intéresse concernant l'ajout d'actions à nos robots, voici l'
 - `BlocklyPi/`
     - `blockly/`
         - `blocks/`
-          - `robot.js` : Le script contenant le code de définition des blocs.
+            - `robot.js` : Le script contenant le code de définition des blocs.
         - `generators/`
-          - `robot.js` : Le script contenant les générateurs de code des blocs associés.
+            - `robot.js` : Le script contenant les générateurs de code des blocs associés.
     - `robot/`
         - `robotController.py` : Le module contenant toutes les actions qu'un robot donné est capable d'exécuter.
         - `robotMotor.py` : Une classe contenant tout le code de base permettant de contrôler un servomoteur donné.
     - `server.py` : Le script où nous allons instancier notre serveur XML-RPC et définir l'ensemble des fonctions qu'il
       peut interpréter.
 
-## Ajout d'une nouvelle catégorie à la boîte à outils
+### Ajout d'une nouvelle catégorie à la boîte à outils
 
 La boîte à outils par défaut utilisée par le projet est dans le fichier
 [index.html](../index.html). Chaque nouvelle catégorie doit être placée dans ce fichier, dans la balise `<xml>`.
@@ -49,7 +51,7 @@ Une catégorie a la syntaxe suivante :
 </category>
  ```
 
-## Création d'un bloc
+### Création d'un bloc
 
 Le code décrivant un bloc a 3 composantes :
 
@@ -67,7 +69,7 @@ suivant : `"robot_name-action_name"`. Tous les blocs d'une même catégorie devr
 définie par une constante `ROBOT_COLOR` dans le script de définition des blocs de cette catégorie,
 dans `blockly/blocks/`.
 
-### Définition et générateur de code du bloc
+#### Définition et générateur de code du bloc
 
 Pour faciliter l'écriture du code définissant le comportement de notre bloc, nous pouvons utiliser
 l'outil [Blockly Factory](https://blockly-demo.appspot.com/static/demos/blockfactory/index.html).
@@ -115,7 +117,7 @@ Ne pas oublier de faire appel à ces scripts, en ajoutant dans la balise `<head>
 - `<script src="blockly/blocks/francaster.js"></script>`
 - `<script src="blockly/generators/javascript/francaster.js"></script>`
 
-### Déclaration et description d'une fonction côté backend
+#### Déclaration et description d'une fonction côté backend
 
 Toutes les fonctions relatives à un robot doivent être décrites dans un module `robotController.py` dans `robot/`.
 Chaque action que le robot peut exécuter est décrite par une fonction de la manière suivante :
@@ -137,7 +139,7 @@ def register_robot_xmlrpc_methods(server: SimpleXMLRPCServer):
     # ...
 ```
 
-## Configuration du matériel
+### Configuration du matériel
 
 Le Raspberry Pi utilise une carte de commande
 nommée [pca9685](https://www.aranacorp.com/en/using-a-pca9685-module-with-raspberry-pi/) pour pouvoir piloter les
@@ -145,8 +147,14 @@ moteurs du robot depuis son port GPIO. Chaque moteur est nommé selon le numéro
 sur cette carte. C'est le numéro à indiquer lorsque l'on instancie un moteur dans le module de contrôle du robot à
 l'aide de la classe `RobotMotor`, dans le champ `id`.
 
-## Déploiement
+### Déploiement
 
 Le dossier du projet peut simplement être placé dans le répertoire personnel de l'utiliser (`~/BlocklyPi`). Si le code
 est mis à jour vers une nouvelle version, il peut arriver que les changements soient mal pris en compte. La meilleure
 solution dans ce cas est de redémarrer le système et de relancer le serveur XML-RPC.
+
+## Robots
+
+### Francaster
+
+### Allbots
