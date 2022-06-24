@@ -157,6 +157,22 @@ cas est de redémarrer le système et de relancer le serveur XML-RPC.
 
 ## Robots
 
+Comme chaque robot est censé être commandable à l'aide d'une interface graphique, on a besoin de connecter au
+Raspberry Pi installé sur le robot les éléments suivants :
+
+- Un écran, avec son cable d'alimentation et vidéo.
+- Un clavier.
+- Une souris.
+- Un micro USB.
+- Une petite enceinte.
+- Une alimentation pour le Raspberry Pi.
+- Une alimentation adaptée aux moteurs du robot, à brancher sur le shield du Raspberry Pi.
+
+Veillez à ce que la tension de l'alimentation soit adaptée aux moteurs, et à ce que l'intensité électrique disponible
+soit suffisante pour les alimenter. Si lors de l'exécution, le Robot se fige en plein mouvement, ou que le Raspberry Pi
+redémarre subitement, alors il faut opter pour une alimentation plus puissante à tension égale, c'est-à-dire avec une
+plus grande intensité électrique disponible.
+
 ### Francaster
 
 ### Allbots
