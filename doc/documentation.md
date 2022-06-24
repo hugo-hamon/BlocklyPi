@@ -178,11 +178,19 @@ plus grande intensité électrique disponible.
 //TODO Ajouter une photo de Francaster
 
 Francaster est le nom donné au robot dont le modèle est celui d'Aster, un androïde dont les différentes parties du corps
-sont imprimables en 3D. Les plans sont disponibles sur [Thingiverse](https://www.thingiverse.com/thing:3992150).
+sont imprimables en 3D.
+
+Liens utiles :
+- [Thingiverse](https://www.thingiverse.com/thing:3992150)
+- [GitHub](https://github.com/poppy-project/poppy-humanoid)
+- [poppy-project.org](https://www.poppy-project.org/en/robots/poppy-humanoid/)
 
 ### Allbots
 
-//TODO Ajouter une photo de Francaster
+//TODO Ajouter une photo de Allbots
 
 Allbots est un robot à quatre pattes imprimable en 3D, dont l'apparence peut faire penser à une araignée ou à un crabe.
-Les plans sont sur [Thingiverse](https://www.thingiverse.com/thing:1434665).
+
+Liens utiles :
+- [Thingiverse](https://www.thingiverse.com/thing:1434665)
+- [Manuel](https://manuals.whadda.com/category.php?id=85)
