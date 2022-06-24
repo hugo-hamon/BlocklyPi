@@ -124,13 +124,14 @@ Chaque action que le robot peut exécuter est décrite par une fonction de la ma
 
 ```Python
 def action_name(arg1: str, arg2: str):
-    # actions...
+# actions...
 ```
 
 Pour que la fonction soit reconnue par le serveur XML-RPC, assurez-vous que votre module est bien importé
 dans `server.py`, puis ajouter la ligne de déclaration suivante :
 
 ```Python
+from xmlrpc.server import SimpleXMLRPCRequestHandler, SimpleXMLRPCServer
 from robot import robotController  # le module de votre contrôleur
 
 
