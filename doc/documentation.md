@@ -175,4 +175,14 @@ plus grande intensité électrique disponible.
 
 ### Francaster
 
+//TODO Ajouter une photo de Francaster
+
+Francaster est le nom donné au robot dont le modèle est celui d'Aster, un androïde dont les différentes parties du corps
+sont imprimables en 3D. Les plans sont disponibles sur [Thingiverse](https://www.thingiverse.com/thing:3992150).
+
 ### Allbots
+
+//TODO Ajouter une photo de Francaster
+
+Allbots est un robot à quatre pattes imprimable en 3D, dont l'apparence peut faire penser à une araignée ou à un crabe.
+Les plans sont sur [Thingiverse](https://www.thingiverse.com/thing:1434665).
