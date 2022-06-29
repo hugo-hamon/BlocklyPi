@@ -9,7 +9,9 @@ Si vous êtes débutant avec ce projet, lisez le guide de [Blockly](https://deve
 pour avoir un guide faisant le tour des principaux concepts. Les notions de programmation en bloc, toolbox, workspace ou
 autres demandent à être comprises pour suivre ce guide, et ne seront pas redéfinies ici.
 
-## Architecture du projet
+## Contribution
+
+### Architecture du projet
 
 Le projet est constitué de 2 parties :
 
@@ -24,16 +26,16 @@ Pour ce qui nous intéresse concernant l'ajout d'actions à nos robots, voici l'
 - `BlocklyPi/`
     - `blockly/`
         - `blocks/`
-          - `robot.js` : Le script contenant le code de définition des blocs.
+            - `robot.js` : Le script contenant le code de définition des blocs.
         - `generators/`
-          - `robot.js` : Le script contenant les générateurs de code des blocs associés.
+            - `robot.js` : Le script contenant les générateurs de code des blocs associés.
     - `robot/`
         - `robotController.py` : Le module contenant toutes les actions qu'un robot donné est capable d'exécuter.
         - `robotMotor.py` : Une classe contenant tout le code de base permettant de contrôler un servomoteur donné.
     - `server.py` : Le script où nous allons instancier notre serveur XML-RPC et définir l'ensemble des fonctions qu'il
       peut interpréter.
 
-## Ajout d'une nouvelle catégorie à la boîte à outils
+### Ajout d'une nouvelle catégorie à la boîte à outils
 
 La boîte à outils par défaut utilisée par le projet est dans le fichier
 [index.html](../index.html). Chaque nouvelle catégorie doit être placée dans ce fichier, dans la balise `<xml>`.
@@ -49,7 +51,7 @@ Une catégorie a la syntaxe suivante :
 </category>
  ```
 
-## Création d'un bloc
+### Création d'un bloc
 
 Le code décrivant un bloc a 3 composantes :
 
@@ -67,11 +69,12 @@ suivant : `"robot_name-action_name"`. Tous les blocs d'une même catégorie devr
 définie par une constante `ROBOT_COLOR` dans le script de définition des blocs de cette catégorie,
 dans `blockly/blocks/`.
 
-### Définition et générateur de code du bloc
+#### Définition et générateur de code du bloc
 
 Pour faciliter l'écriture du code définissant le comportement de notre bloc, nous pouvons utiliser
 l'outil [Blockly Factory](https://blockly-demo.appspot.com/static/demos/blockfactory/index.html).
-![](Screenshot_20211209_131412.png)
+
+![](res/Blockly%20developer%20tools.png)
 
 Exemple de déclaration de bloc (en **rouge** sur la capture d'écran) :
 
@@ -114,7 +117,7 @@ Ne pas oublier de faire appel à ces scripts, en ajoutant dans la balise `<head>
 - `<script src="blockly/blocks/francaster.js"></script>`
 - `<script src="blockly/generators/javascript/francaster.js"></script>`
 
-### Déclaration et description d'une fonction côté backend
+#### Déclaration et description d'une fonction côté backend
 
 Toutes les fonctions relatives à un robot doivent être décrites dans un module `robotController.py` dans `robot/`.
 Chaque action que le robot peut exécuter est décrite par une fonction de la manière suivante :
@@ -128,6 +131,7 @@ Pour que la fonction soit reconnue par le serveur XML-RPC, assurez-vous que votr
 dans `server.py`, puis ajouter la ligne de déclaration suivante :
 
 ```Python
+from xmlrpc.server import SimpleXMLRPCRequestHandler, SimpleXMLRPCServer
 from robot import robotController  # le module de votre contrôleur
 
 
@@ -136,7 +140,7 @@ def register_robot_xmlrpc_methods(server: SimpleXMLRPCServer):
     # ...
 ```
 
-## Configuration du matériel
+### Configuration du matériel
 
 Le Raspberry Pi utilise une carte de commande
 nommée [pca9685](https://www.aranacorp.com/en/using-a-pca9685-module-with-raspberry-pi/) pour pouvoir piloter les
@@ -144,8 +148,49 @@ moteurs du robot depuis son port GPIO. Chaque moteur est nommé selon le numéro
 sur cette carte. C'est le numéro à indiquer lorsque l'on instancie un moteur dans le module de contrôle du robot à
 l'aide de la classe `RobotMotor`, dans le champ `id`.
 
-## Déploiement
+### Déploiement
 
-Le dossier du projet peut simplement être placé dans le répertoire personnel de l'utiliser (`~/BlocklyPi`). Si le code
-est mis à jour vers une nouvelle version, il peut arriver que les changements soient mal pris en compte. La meilleure
-solution dans ce cas est de redémarrer le système et de relancer le serveur XML-RPC.
+Le dossier du projet peut simplement être placé dans le répertoire personnel de l'utiliser (`~/BlocklyPi`). Des
+informations plus détaillées sont déjà présentes dans le [README](../README.md) du projet. Si le code est mis à jour
+vers une nouvelle version, il peut arriver que les changements soient mal pris en compte. La meilleure solution dans ce
+cas est de redémarrer le système et de relancer le serveur XML-RPC.
+
+## Robots
+
+Comme chaque robot est censé être commandable à l'aide d'une interface graphique, on a besoin de connecter au
+Raspberry Pi installé sur le robot les éléments suivants :
+
+- Un écran, avec son cable d'alimentation et vidéo.
+- Un clavier.
+- Une souris.
+- Un micro USB.
+- Une petite enceinte.
+- Une alimentation pour le Raspberry Pi.
+- Une alimentation adaptée aux moteurs du robot, à brancher sur le shield du Raspberry Pi.
+
+Veillez à ce que la tension de l'alimentation soit adaptée aux moteurs, et à ce que l'intensité électrique disponible
+soit suffisante pour les alimenter. Si lors de l'exécution, le Robot se fige en plein mouvement, ou que le Raspberry Pi
+redémarre subitement, alors il faut opter pour une alimentation plus puissante à tension égale, c'est-à-dire avec une
+plus grande intensité électrique disponible.
+
+### Francaster
+
+![](res/photo-francaster.jpg)
+
+Francaster est le nom donné au robot dont le modèle est celui d'Aster, un androïde dont les différentes parties du corps
+sont imprimables en 3D.
+
+Liens utiles :
+- [Thingiverse](https://www.thingiverse.com/thing:3992150)
+- [GitHub](https://github.com/poppy-project/poppy-humanoid)
+- [poppy-project.org](https://www.poppy-project.org/en/robots/poppy-humanoid/)
+
+### Allbots
+
+![](res/photo-allbots.jpg)
+
+Allbots est un robot à quatre pattes imprimable en 3D, dont l'apparence peut faire penser à une araignée ou à un crabe.
+
+Liens utiles :
+- [Thingiverse](https://www.thingiverse.com/thing:1434665)
+- [Manuel](https://manuals.whadda.com/category.php?id=85)
