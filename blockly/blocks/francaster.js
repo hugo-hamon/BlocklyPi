@@ -69,6 +69,8 @@ Blockly.Blocks['francaster-sleep'] = {
             .appendField(new Blockly.FieldTextInput("1"), "NB_SEC")
             .appendField(" secondes");
         this.setColour(FRANCASTER_COLOR);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
         this.setTooltip("");
         this.setHelpUrl("");
     }
