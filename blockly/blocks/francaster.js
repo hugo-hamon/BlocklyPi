@@ -69,8 +69,6 @@ Blockly.Blocks['francaster-sleep'] = {
             .appendField(new Blockly.FieldTextInput("1"), "NB_SEC")
             .appendField(" secondes");
         this.setColour(FRANCASTER_COLOR);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -121,7 +119,7 @@ Blockly.Blocks['francaster_walk_n_steps_with_knee_lift'] = {
 Blockly.Blocks['francaster-do_yes'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("dire ")
+            .appendField("Dire ")
             .appendField(new Blockly.FieldDropdown([["oui", "o"], ["non", "n"]]), "MOVE")
             .appendField("de la tete")
         this.setPreviousStatement(true, null);
@@ -159,7 +157,7 @@ Blockly.Blocks['francaster-repeat'] = {
 Blockly.Blocks['francaster-answer_question'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Demande")
+            .appendField("Demander")
             .appendField(new Blockly.FieldTextInput("comment tu t'appelles?"), "QSTN");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
