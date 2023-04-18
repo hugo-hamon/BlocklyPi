@@ -1,41 +1,26 @@
 from adafruit_servokit import ServoKit
+import logging
 
 
 class RobotMotor:
     """
-    RobotController stores all the data relative to a motor.
+    RobotMotor stores all the data relative to a motor
     """
-
-    # the number of the connector on which the motor is connected on the card
-    id: int
-
-    min_angle: int
-    max_angle: int
-
-    initial_angle: int
 
     # constants used for the is_in_range function
     IN_RANGE = 0
     BELOW_RANGE = -1
     ABOVE_RANGE = 1
 
-    servo_kit = ServoKit(channels=16)
-
     def __init__(self, id: int, min_angle: int, max_angle: int, initial_angle: int):
         self.id = id
         self.min_angle = min_angle
         self.max_angle = max_angle
         self.initial_angle = initial_angle
+        self.servo_kit = ServoKit(channels=16)
 
-    def is_in_range(self, angle: int):
-        """
-        @:param
-            - angle: the set-point angle.
-        @:return
-            - IN_RANGE if angle is within the value provided by angle is between the values provided by range.
-            - BELOW_RANGE if it is below the minimum value.
-            - ABOVE_RANGE if it is above the maximum value.
-        """
+    def is_in_range(self, angle: int) -> int:
+        """Check if the given angle is in the range of the motor"""
         if self.min_angle <= angle <= self.max_angle:
             return self.IN_RANGE
         elif self.min_angle > angle:
@@ -43,7 +28,8 @@ class RobotMotor:
         else:
             return self.ABOVE_RANGE
 
-    def set_motor_position(self, angle: int):
+    def set_motor_position(self, angle: int) -> None:
+        """Set the motor position to the given angle"""
         in_range = self.is_in_range(angle)
         if in_range == 0:
             self.servo_kit.servo[self.id].angle = angle
@@ -52,15 +38,22 @@ class RobotMotor:
         elif in_range == 1:
             self.servo_kit.servo[self.id].angle = self.max_angle
 
-    def shift_motor_position(self, angle: int):
-        shifted_angle = self.servo_kit.servo[self.id].angle + angle
-        in_range = self.is_in_range(shifted_angle)
+    def shift_motor_position(self, angle: int) -> None:
+        """Shift the motor position by the given angle"""
+        servo_angle = self.servo_kit.servo[self.id].angle
+        if servo_angle is None:
+            logging.warning("Servo is not initialized")
+            return
+        shifted_angle = servo_angle + angle
+        in_range = self.is_in_range(round(shifted_angle))
         if in_range == 0:
-            self.servo_kit.servo[self.id].angle += angle
+            servo_angle += angle
         elif in_range == -1:
-            self.servo_kit.servo[self.id].angle = self.min_angle
+            servo_angle = self.min_angle
         elif in_range == 1:
-            self.servo_kit.servo[self.id].angle = self.max_angle
+            servo_angle = self.max_angle
+        self.servo_kit.servo[self.id].angle = round(servo_angle)
 
-    def reset(self):
+    def reset(self) -> None:
+        """Reset the motor position to the initial angle"""
         self.set_motor_position(self.initial_angle)

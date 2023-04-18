@@ -21,7 +21,7 @@ function getMotorDropdown() {
     ]);
 }
 
-Blockly.Blocks['francaster-set_motor_position'] = {
+Blockly.Blocks['francaster_set_motor_position'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Mettre le moteur")
@@ -39,7 +39,7 @@ Blockly.Blocks['francaster-set_motor_position'] = {
     }
 };
 
-Blockly.Blocks['francaster-shift_motor_position'] = {
+Blockly.Blocks['francaster_shift_motor_position'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Faire")
@@ -62,7 +62,7 @@ Blockly.Blocks['francaster-shift_motor_position'] = {
     }
 };
 
-Blockly.Blocks['francaster-sleep'] = {
+Blockly.Blocks['francaster_sleep'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Dormir pendant ")
@@ -88,7 +88,7 @@ Blockly.Blocks['francaster_walk_n_steps'] = {
     }
 };
 
-Blockly.Blocks['francaster-do_hi'] = {
+Blockly.Blocks['francaster_do_hi'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Dire bonjour ")
@@ -116,7 +116,7 @@ Blockly.Blocks['francaster_walk_n_steps_with_knee_lift'] = {
     }
 };
 
-Blockly.Blocks['francaster-do_yes'] = {
+Blockly.Blocks['francaster_do_yes'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Dire ")
@@ -130,7 +130,7 @@ Blockly.Blocks['francaster-do_yes'] = {
     }
 };
 
-Blockly.Blocks['francaster-reset_position'] = {
+Blockly.Blocks['francaster_reset_position'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Remettre a la position initiale")
@@ -142,7 +142,7 @@ Blockly.Blocks['francaster-reset_position'] = {
     }
 };
 
-Blockly.Blocks['francaster-repeat'] = {
+Blockly.Blocks['francaster_repeat'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Répète après moi");
@@ -154,7 +154,7 @@ Blockly.Blocks['francaster-repeat'] = {
     }
 };
 
-Blockly.Blocks['francaster-answer_question'] = {
+Blockly.Blocks['francaster_answer_question'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Demander")
