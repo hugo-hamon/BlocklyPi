@@ -76,6 +76,7 @@ def event_handler(francaster: FrancasterSpeech, question: str) -> None:
         francaster.speak("Au revoir et à bientot")
         sys.exit(0)
     else:
+        print(f"Question: {question}")
         francaster.speak("Désolé, je n'ai pas compris votre demande")
 
 
