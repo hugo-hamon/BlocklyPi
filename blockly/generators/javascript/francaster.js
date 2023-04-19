@@ -62,3 +62,7 @@ Blockly.JavaScript['francaster_do_yes'] = function (block) {
 Blockly.JavaScript['francaster_reset_position'] = function (block) {
     return `runPiRobotCommand("francaster_reset_position");`;
 };
+
+Blockly.JavaScript['francaster_listen_and_answer'] = function (block) {
+    return `runPiRobotCommand("francaster_listen_and_answer");`;
+}

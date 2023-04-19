@@ -166,3 +166,15 @@ Blockly.Blocks['francaster_answer_question'] = {
         this.setHelpUrl("");
     }
 };
+
+Blockly.Blocks['francaster_listen_and_answer'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Pose moi une question");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(FRANCASTER_COLOR);
+        this.setTooltip("Parle et le robot te répondra");
+        this.setHelpUrl("");
+    }
+};

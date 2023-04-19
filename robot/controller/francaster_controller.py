@@ -201,3 +201,7 @@ class FrancasterController:
             sleep(0.5)
             MOTORS["RIGHT_ELBOW"].set_motor_position(0)
             sleep(0.5)
+
+    def francaster_listen_and_answer(self) -> None:
+        """Listen and answer"""
+        self.francaster_answer_question(FrancasterSpeech().record())

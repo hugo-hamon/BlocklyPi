@@ -21,7 +21,7 @@ class FrancasterSpeech:
             self.recognizer.adjust_for_ambient_noise(source)
             if ask != "":
                 self.speak(ask)
-            audio = self.recognizer.listen(source, timeout=10)
+            audio = self.recognizer.listen(source, timeout=5)
             voice_data = ""
             try:
                 voice_data = self.recognizer.recognize_google(
