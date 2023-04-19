@@ -50,6 +50,7 @@ class FrancasterSpeech:
         pg.mixer.music.play()
         while pg.mixer.music.get_busy():
             time.sleep(0.1)
+        print(f"Speaking: {text}")
         os.remove(audio_file)
 
     def repeat(self) -> None:
