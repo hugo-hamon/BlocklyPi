@@ -204,4 +204,4 @@ class FrancasterController:
 
     def francaster_listen_and_answer(self) -> None:
         """Listen and answer"""
-        self.francaster_answer_question(FrancasterSpeech().record())
+        self.francaster_answer_question(FrancasterSpeech().record("Pose moi une question."))
