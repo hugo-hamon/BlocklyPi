@@ -1,4 +1,4 @@
-var FRANCASTER_COLOR = 60;
+const FRANCASTER_COLOR = 60;
 
 function getMotorDropdownFrancaster() {
     return new Blockly.FieldDropdown([
@@ -10,14 +10,14 @@ function getMotorDropdownFrancaster() {
         ["Epaule droite 2", "5"],
         ["Epaule droite 3", "6"],
         ["Coudre droit", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14", "14"],
-        ["15", "15"]
+        ["Hanche gauche", "8"],
+        ["Genou gauche", "9"],
+        ["Pied gauche", "10"],
+        ["Hanche droite", "11"],
+        ["Genou droit", "12"],
+        ["Pied droit", "13"],
+        ["Nuque", "14"],
+        ["Tete", "15"]
     ]);
 }
 
@@ -30,7 +30,7 @@ Blockly.Blocks['francaster_set_motor_position'] = {
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("à")
             .appendField(new Blockly.FieldTextInput("0"), "ANGLE")
-            .appendField("degrés.");
+            .appendField("degrés.");        
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(FRANCASTER_COLOR);

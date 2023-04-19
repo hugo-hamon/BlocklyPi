@@ -20,7 +20,7 @@ MOTORS = {
     "RIGHT_KNEE": RobotMotor(12, 45, 180, 180),
     "RIGHT_ANKLE": RobotMotor(13, 0, 120, 75),
     "HEAD_YAW": RobotMotor(14, 0, 180, 90),
-    "HEAD_PITCH": RobotMotor(15, 35, 140, 90),
+    "HEAD_PITCH": RobotMotor(15, 0, 140, 90),
 }
 
 def str_to_int(value: str) -> int:
