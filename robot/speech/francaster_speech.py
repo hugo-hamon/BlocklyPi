@@ -23,8 +23,7 @@ class FrancasterSpeech:
                 if ask != "":
                     self.speak(ask)
                 print("go")
-                audio = self.recognizer.listen(
-                    source, timeout=10, phrase_time_limit=10)
+                audio = self.recognizer.listen(source)
                 voice_data = self.recognizer.recognize_google(
                     audio, language=self.language)
                 if type(voice_data) != str:
