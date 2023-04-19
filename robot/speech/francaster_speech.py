@@ -22,7 +22,7 @@ class FrancasterSpeech:
             self.recognizer.adjust_for_ambient_noise(source)
             if ask != "":
                 self.speak(ask)
-            audio = self.recognizer.listen(source, timeout=5)
+            audio = self.recognizer.listen(source, timeout=5, phrase_time_limit=10)
             voice_data = ""
             print("2")
             try:
@@ -54,7 +54,6 @@ class FrancasterSpeech:
         pg.mixer.music.play()
         while pg.mixer.music.get_busy():
             time.sleep(0.1)
-        print("fin")
         os.remove(audio_file)
 
     def repeat(self) -> None:
