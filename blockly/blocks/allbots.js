@@ -1,6 +1,6 @@
 const ALLBOTS_COLOR = 0;
 
-function getMotorDropdown() {
+function getMotorDropdownAllBot() {
     return new Blockly.FieldDropdown([
         ["0", "0"],
         ["1", "1"],
@@ -17,7 +17,7 @@ Blockly.Blocks['allbot_set_motor_position'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Mettre le moteur")
-            .appendField(getMotorDropdown(), "MOTOR_NB");
+            .appendField(getMotorDropdownAllBot(), "MOTOR_NB");
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("à")
@@ -40,7 +40,7 @@ Blockly.Blocks['allbot_shift_motor_position'] = {
                 ["reculer", "BACKWARD"]
             ]), "DIRECTION")
             .appendField("le moteur")
-            .appendField(getMotorDropdown(), "MOTOR_NB");
+            .appendField(getMotorDropdownAllBot(), "MOTOR_NB");
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("de")
