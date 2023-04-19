@@ -23,6 +23,9 @@ WHEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?"
 
 
 def event_handler(francaster: FrancasterSpeech, question: str) -> None:
+    if not question:
+        francaster.speak("Je n'ai pas compris votre demande")
+        return
     if "comment tu t'appelle" in question:
         francaster.speak("Je m'appelle Francaster")
     elif "quel heure" in question:
