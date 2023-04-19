@@ -31,12 +31,13 @@ Blockly.Blocks['francaster_set_motor_position'] = {
             .appendField("à")
             .appendField(new Blockly.FieldTextInput("0"), "ANGLE")
             .appendField("degrés.");
-        this.appendField(
-            new Blockly.FieldDropdown([
-                ["relatif", "RELATIVE"],
-                ["absolu", "ABSOLUTE"]
-            ]), "MODE"
-        )
+        this.appendDummyInput()
+            .appendField('drop down:')
+            .appendField(new Blockly.FieldDropdown([
+                ['first item', 'ITEM1'],
+                ['second item', 'ITEM2']
+            ]), 'FIELDNAME');
+    
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(FRANCASTER_COLOR);
