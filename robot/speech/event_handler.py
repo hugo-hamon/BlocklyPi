@@ -75,6 +75,8 @@ def event_handler(francaster: FrancasterSpeech, question: str) -> None:
     elif "stop" in question or "arrête" in question:
         francaster.speak("Au revoir et à bientot")
         sys.exit(0)
+    else:
+        francaster.speak("Désolé, je n'ai pas compris votre demande")
 
 
 def webbrowser_event(francaster: FrancasterSpeech, url: str, message: str) -> None:
