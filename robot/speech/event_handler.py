@@ -26,6 +26,7 @@ def event_handler(francaster: FrancasterSpeech, question: str) -> None:
     if not question:
         francaster.speak("Je n'ai pas compris votre demande")
         return
+    question = question.lower()
     if "comment tu t'appelle" in question:
         francaster.speak("Je m'appelle Francaster")
     elif "quel heure" in question:
@@ -43,7 +44,7 @@ def event_handler(francaster: FrancasterSpeech, question: str) -> None:
         webbrowser.get().open(url)
         francaster.speak(f"Voici ce que j'ai trouvé pour {search}")
     elif "trouve une adresse" in question:
-        location = francaster.record("Où chercher ?")
+        location = francaster.record("Ou est-ce que je dois chercher ?")
         url = f"https://google.nl/maps/place/{location}"
         webbrowser.get().open(url)
         francaster.speak(f"Voici l'adresse de {location}")

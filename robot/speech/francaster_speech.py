@@ -28,6 +28,7 @@ class FrancasterSpeech:
                 voice_data = self.recognizer.recognize_google(
                     audio, language=self.language)
                 if type(voice_data) != str:
+                    print(voice_data)
                     self.speak("Désolé, je n'ai pas compris")
                     return ""
                 return voice_data
