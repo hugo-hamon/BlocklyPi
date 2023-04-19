@@ -27,7 +27,7 @@ if __name__ == "__main__":
     logging.basicConfig(**LOGGING_CONFIG)
 
     # Create our XML-RPC server.using out custom request handler that is also able to serve web pages over GET.
-    port = 8080
+    port = 8090
     server = SimpleXMLRPCServer(("", port), RequestHandler, allow_none=True)
 
     # Register standard XML-RPC methods.
