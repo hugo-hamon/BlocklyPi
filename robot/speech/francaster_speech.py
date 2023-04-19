@@ -22,13 +22,12 @@ class FrancasterSpeech:
                 self.recognizer.adjust_for_ambient_noise(source)
                 if ask != "":
                     self.speak(ask)
+                print("go")
                 audio = self.recognizer.listen(
                     source, timeout=10, phrase_time_limit=10)
-                voice_data = ""
                 voice_data = self.recognizer.recognize_google(
                     audio, language=self.language)
                 if type(voice_data) != str:
-                    print(voice_data)
                     self.speak("Désolé, je n'ai pas compris")
                     return ""
                 return voice_data
