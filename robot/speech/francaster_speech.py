@@ -18,11 +18,13 @@ class FrancasterSpeech:
     def record(self, ask="") -> str:
         """Record audio from the microphone and return the recognized text"""
         with self.microphone as source:
+            print("1")
             self.recognizer.adjust_for_ambient_noise(source)
             if ask != "":
                 self.speak(ask)
             audio = self.recognizer.listen(source, timeout=5)
             voice_data = ""
+            print("2")
             try:
                 voice_data = self.recognizer.recognize_google(
                     audio, language=self.language)
@@ -33,9 +35,11 @@ class FrancasterSpeech:
                     "Désolé, le service de reconnaissance vocale est indisponible")
             except Exception as e:
                 self.speak("Désolé, une erreur est survenue")
+            print("3")
             if type(voice_data) != str:
                 self.speak("Désolé, je n'ai pas compris")
                 return ""
+            print("4")
             return voice_data
 
     def speak(self, text: str) -> None:
