@@ -31,6 +31,8 @@ class FrancasterSpeech:
             except sr.RequestError:
                 self.speak(
                     "Désolé, le service de reconnaissance vocale est indisponible")
+            except Exception as e:
+                self.speak("Désolé, une erreur est survenue")
             if type(voice_data) != str:
                 self.speak("Désolé, je n'ai pas compris")
                 return ""
