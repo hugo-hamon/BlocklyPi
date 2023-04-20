@@ -34,7 +34,7 @@ def str_to_int(value: str) -> int:
 class FrancasterController:
 
     def __init__(self) -> None:
-        self.speech = FrancasterSpeech()
+        self.speech = FrancasterSpeech(self)
 
     def francaster_set_motor_position(self, motor_nb: str, angle: str) -> None:
         """Set the position of a motor by id and angle"""
