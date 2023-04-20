@@ -35,7 +35,7 @@ class FrancasterEvent:
 
     def load_question_answer(self) -> Dict[str, str]:
         """Load the question answer"""
-        with open("robot/speech/json/normalized_question.json", "r") as file:
+        with open("robot/speech/json/normalized_questions.json", "r") as file:
             return json.load(file)
 
     def load_jokes(self) -> Dict[str, str]:
