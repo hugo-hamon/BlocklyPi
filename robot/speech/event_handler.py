@@ -1,17 +1,9 @@
 from __future__ import annotations
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 from typing import Dict, TYPE_CHECKING, List
-import webbrowser
-import requests
-import random
-import json
-from unidecode import unidecode
-import string
-import nltk
-import time
-import sys
+import webbrowser, requests, random
 from difflib import SequenceMatcher
+from unidecode import unidecode
+import string, json, time, sys
 if TYPE_CHECKING:
     from .francaster_speech import FrancasterSpeech
     from ..controller.francaster_controller import FrancasterController
