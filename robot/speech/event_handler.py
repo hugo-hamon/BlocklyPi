@@ -11,6 +11,7 @@ import string
 import nltk
 import time
 import sys
+from difflib import SequenceMatcher
 if TYPE_CHECKING:
     from .francaster_speech import FrancasterSpeech
     from ..controller.francaster_controller import FrancasterController
@@ -38,20 +39,7 @@ class FrancasterEvent:
         self.quotes = self.load_quotes()
         self.question_answer = self.load_question_answer()
 
-        self.stemmer = nltk.stem.PorterStemmer()
         self.questions = list(self.question_answer.keys())
-        self.vect = TfidfVectorizer(min_df=1, tokenizer=self.normalize)
-        self.tfidf_matrix = self.vect.fit_transform(self.questions)
-        self.remove_punctuation_map = {
-            ord(char): None for char in string.punctuation}
-
-    def stem_tokens(self, tokens):
-        """Stem the given tokens"""
-        return [self.stemmer.stem(item) for item in tokens]
-
-    def normalize(self, text: str):
-        """Normalize the given text"""
-        return self.stem_tokens(nltk.word_tokenize(text.lower().translate(self.remove_punctuation_map)))
 
     def load_question_answer(self) -> Dict[str, str]:
         """Load the question answer"""
@@ -202,12 +190,15 @@ class FrancasterEvent:
 
     # Question answer part
     def find_most_similar_question(self, input_question: str):
-        input_tfidf = self.vect.transform([input_question])
-        similarities = cosine_similarity(input_tfidf, self.tfidf_matrix)
-        print(similarities)
-        max_similarity_index = similarities.argmax()
-        max_similarity_value = similarities.max()
+        similarities = [self.percentage_similarity(input_question, question)
+                        for question in self.questions]
+        max_similarity_index = similarities.index(max(similarities))
+        max_similarity_value = max(similarities)
         return self.questions[max_similarity_index], max_similarity_value
+    
+    def percentage_similarity(self, text1: str, text2: str) -> float:
+        """Return the percentage of similarity between two texts"""
+        return SequenceMatcher(None, text1, text2).ratio()
 
     def normalize_text(self, text: str) -> str:
         text = text.lower()
@@ -222,7 +213,7 @@ class FrancasterEvent:
         normalize_question = self.normalize_text(question)
         most_similar_question, similarity = self.find_most_similar_question(
             normalize_question)
-        if similarity > 0.5:
+        if similarity >= 0.5:
             answers = self.question_answer[most_similar_question]
             self.francaster.speak(answers)
         else:

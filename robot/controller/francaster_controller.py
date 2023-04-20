@@ -163,11 +163,11 @@ class FrancasterController:
 
     def francaster_repeat(self) -> None:
         """Repeat what you said"""
-        FrancasterSpeech().repeat()
+        FrancasterSpeech(self).repeat()
 
     def francaster_answer_question(self, question="") -> None:
         """Answer to a question"""
-        FrancasterSpeech().answer(question)
+        FrancasterSpeech(self).answer(question)
 
     def francaster_slap(self) -> None:
         MOTORS["LEFT_ELBOW"].set_motor_position(100)
@@ -204,4 +204,4 @@ class FrancasterController:
 
     def francaster_listen_and_answer(self) -> None:
         """Listen and answer"""
-        self.francaster_answer_question(FrancasterSpeech().record("Pose moi une question."))
+        self.francaster_answer_question(FrancasterSpeech(self).record("Pose moi une question."))
