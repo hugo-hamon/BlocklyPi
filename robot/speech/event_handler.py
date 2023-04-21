@@ -1,10 +1,9 @@
 from __future__ import annotations
 from typing import Dict, TYPE_CHECKING, List
+from unidecode import unidecode
 import webbrowser
 import requests
 import random
-from difflib import SequenceMatcher
-from unidecode import unidecode
 import string
 import json
 import time
