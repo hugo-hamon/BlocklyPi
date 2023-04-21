@@ -169,12 +169,9 @@ class FrancasterEvent:
         """Speak the weather"""
         y = data["main"]
         current_humidity = y["humidity"]
-        z = data["weather"]
-        weather_description = z[0]["description"]
         current_temperature = y["temp"] - 273.15
-        text = f"La température est de {current_temperature} degrés" \
-            f" avec une humidité de {current_humidity} pourcent" \
-            f" et {weather_description}"
+        text = f"La température est de {round(current_temperature, 3)} degrés" \
+            f" avec une humidité de {current_humidity} pourcent"
         self.francaster.speak(text)
 
     def process_stop(self) -> None:
