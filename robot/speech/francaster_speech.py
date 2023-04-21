@@ -39,7 +39,7 @@ class FrancasterSpeech:
             audio, language=self.language)
         if type(voice_data) != str:
             self.speak("Désolé, je n'ai pas compris")
-            return self.record(ask)
+            return self.record("Veuillez répéter s'il vous plaît")
         voice_data = voice_data.lower()
         voice_data = unidecode(voice_data)
         return voice_data

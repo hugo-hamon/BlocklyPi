@@ -134,3 +134,42 @@ Allbots est un robot à quatre pattes imprimable en 3D, dont l'apparence peut fa
 Liens utiles :
 - [Thingiverse](https://www.thingiverse.com/thing:1434665)
 - [Manuel](https://manuals.whadda.com/category.php?id=85)
+
+## Ajout de questions / réponses et événements pour le robot Francaster
+
+### Ajout de questions / réponses
+
+Afin de rendre le robot plus interactif, il est possible d'ajouter des questions et des réponses. Pour ce faire, if suffit de suivre les étapes suivantes :
+
+1. Ajoutez la question et la réponse dans le fichier `robot/speech/json/questions.json`.
+2. Une fois le fichier modifié, un script Python se trouve dans le dossier `robot/speech` permettant de générer le fichier `normalized_questions.json`. Ce fichier a pour objectif de normaliser les questions et les réponses. Pour exécuter ce script, placez-vous dans le dossier `robot/speech` et lancez la commande `python3 normalize_questions.py`.
+
+### Ajout d'événements
+
+L'ajout d'événements au robot permet de lui donner des réactions spécifiques lorsqu'il détecte un mot-clé ou une partie de phrase. Pour ce faire, suivez les étapes ci-dessous :
+
+1. Ajoutez l'événement dans le fichier `robot/speech/event_handler.py`, au sein de la fonction `process_question`.
+2. Ajoutez la fonction qui sera appelée lors de l'événement dans le fichier `robot/speech/event_handler.py`.
+
+Voici un exemple d'événement :
+
+```Python
+def process_question(self, question: str) -> None:
+    ...
+    elif "blague" in question:
+        self.process_joke()
+    ...
+```
+
+Et un exemple de fonction associée :
+
+```Python
+def process_joke(self) -> None:
+    """Traite l'événement blague"""
+    joke = random.choice(list(self.jokes.items()))
+    self.francaster.speak(joke[0])
+    time.sleep(2)
+    self.francaster.speak(joke[1])
+```
+
+Les questions étant normalisées, les mots-clés ne doivent pas contenir de majuscules, d'accent ou de caractères spéciaux.

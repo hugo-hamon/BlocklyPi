@@ -54,7 +54,7 @@ class FrancasterEvent:
         if not question:
             self.francaster.speak("Je n'ai pas compris votre demande")
             return
-
+        question = self.normalize_text(question)
         # Process the question
         if "quel heure" in question:
             self.process_time()
@@ -164,6 +164,8 @@ class FrancasterEvent:
         self.francaster.speak(joke[0])
         time.sleep(2)
         self.francaster.speak(joke[1])
+        time.sleep(1)
+        self.francaster.speak("Ahahahahahahaha.")
 
     def process_quote(self) -> None:
         """Process the quote event"""
