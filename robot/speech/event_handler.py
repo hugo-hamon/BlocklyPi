@@ -164,8 +164,7 @@ class FrancasterEvent:
         self.francaster.speak(joke[0])
         time.sleep(2)
         self.francaster.speak(joke[1])
-        time.sleep(1)
-        self.francaster.speak("Ahahahahahahaha.")
+        self.francaster.speak("C'était drôle non ?")
 
     def process_quote(self) -> None:
         """Process the quote event"""
