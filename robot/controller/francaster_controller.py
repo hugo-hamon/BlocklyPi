@@ -12,15 +12,15 @@ MOTORS = {
     "RIGHT_SHOULDER_FLEXOR": RobotMotor(4, 0, 180, 90),
     "RIGHT_SHOULDER_ABDUCTOR": RobotMotor(5, 0, 180, 0),
     "RIGHT_SHOULDER_ROTATOR": RobotMotor(6, 0, 180, 90),
-    "RIGHT_ELBOW": RobotMotor(7, 0, 170, 0),
+    "RIGHT_ELBOW": RobotMotor(7, 0, 140, 0),
     "LEFT_HIP": RobotMotor(8, 0, 180, 90),
     "LEFT_KNEE": RobotMotor(9, 0, 135, 0),
-    "LEFT_ANKLE": RobotMotor(10, 0, 120, 45),
+    "LEFT_ANKLE": RobotMotor(10, 0, 100, 45),
     "RIGHT_HIP": RobotMotor(11, 0, 180, 90),
     "RIGHT_KNEE": RobotMotor(12, 45, 180, 180),
     "RIGHT_ANKLE": RobotMotor(13, 0, 120, 75),
     "HEAD_YAW": RobotMotor(14, 0, 180, 90),
-    "HEAD_PITCH": RobotMotor(15, 0, 140, 90),
+    "HEAD_PITCH": RobotMotor(15, 0, 60, 30),
 }
 
 def str_to_int(value: str) -> int:

@@ -31,9 +31,9 @@ class FrancasterSpeech:
             return self.record(ask)
 
     def __record(self, source, ask):
-        self.recognizer.adjust_for_ambient_noise(source)
         if ask != "":
             self.speak(ask)
+        self.recognizer.adjust_for_ambient_noise(source)
         audio = self.recognizer.listen(source)
         voice_data = self.recognizer.recognize_google(
             audio, language=self.language)
