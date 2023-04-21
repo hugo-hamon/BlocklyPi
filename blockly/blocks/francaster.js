@@ -178,3 +178,15 @@ Blockly.Blocks['francaster_listen_and_answer'] = {
         this.setHelpUrl("");
     }
 };
+
+Blockly.Blocks['francaster_dance'] = {
+    init: function () {
+        this.appendDummyInput()
+        .appendField("Faire danser le robot");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(FRANCASTER_COLOR);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
