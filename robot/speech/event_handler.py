@@ -102,6 +102,8 @@ class FrancasterEvent:
             self.process_joke()
         elif "calcule" in question:
             self.process_calcul()
+        elif "citation" in question:
+            self.process_quote()
         else:
             self.process_question_answer(question)
 
