@@ -1,9 +1,14 @@
 from __future__ import annotations
 from typing import Dict, TYPE_CHECKING, List
-import webbrowser, requests, random
+import webbrowser
+import requests
+import random
 from difflib import SequenceMatcher
 from unidecode import unidecode
-import string, json, time, sys
+import string
+import json
+import time
+import sys
 if TYPE_CHECKING:
     from .francaster_speech import FrancasterSpeech
     from ..controller.francaster_controller import FrancasterController
@@ -32,6 +37,7 @@ class FrancasterEvent:
         self.question_answer = self.load_question_answer()
 
         self.questions = list(self.question_answer.keys())
+        self.word_frequency = self.load_word_frequency()
 
     def load_question_answer(self) -> Dict[str, str]:
         """Load the question answer"""
@@ -47,6 +53,25 @@ class FrancasterEvent:
         """Load the quotes"""
         with open("robot/speech/json/quotes.json", "r") as file:
             return json.load(file)
+
+    def load_word_frequency(self) -> Dict[str, int]:
+        """Load the word frequency"""
+        # get all individual words from the questions
+        words = {}
+        for question in self.questions:
+            splits = question.split(" ")
+            for split in splits:
+                if split not in words:
+                    words[split] = 0
+                words[split] += 1
+        # inverse the frequency
+        for word in words:
+            words[word] = 1 / words[word]
+        # normalize the frequency between 0 and 1
+        max_frequency = max(words.values())
+        for value in words.values():
+            value /= max_frequency
+        return words
 
     def process_question(self, question: str) -> None:
         """Process the given question"""
@@ -188,10 +213,13 @@ class FrancasterEvent:
         max_similarity_index = similarities.index(max(similarities))
         max_similarity_value = max(similarities)
         return self.questions[max_similarity_index], max_similarity_value
-    
+
     def percentage_similarity(self, text1: str, text2: str) -> float:
         """Return the percentage of similarity between two texts"""
-        return SequenceMatcher(None, text1, text2).ratio()
+        match_words = [word for word in text1.split() if word in text2.split()]
+        similarity = sum(self.word_frequency[word] for word in match_words)
+        # normalize the similarity
+        return similarity / (abs(len(text1.split()) - len(text2.split())) + 1)
 
     def normalize_text(self, text: str) -> str:
         text = text.lower()
