@@ -27,8 +27,7 @@ class FrancasterSpeech:
             with self.microphone as source:
                 return self.__record(source, ask)
         except Exception:
-            self.speak("Désolé, une erreur est survenue")
-            return self.record(ask)
+            return self.record("Répéter s'il vous plaît")
 
     def __record(self, source, ask):
         if ask != "":
@@ -38,8 +37,7 @@ class FrancasterSpeech:
         voice_data = self.recognizer.recognize_google(
             audio, language=self.language)
         if type(voice_data) != str:
-            self.speak("Désolé, je n'ai pas compris")
-            return self.record("Veuillez répéter s'il vous plaît")
+            return self.record("Répéter s'il vous plaît")
         voice_data = voice_data.lower()
         voice_data = unidecode(voice_data)
         return voice_data
@@ -48,7 +46,9 @@ class FrancasterSpeech:
         """Speak the given text"""
         pg.mixer.init()
         logging.info(f"Speaking: {text}")
+
         tts = gTTS(text=text, lang=self.language)
+
         r = random.randint(1, 1000000)
         audio_file = f"audio-{r}.mp3"
         tts.save(audio_file)
@@ -60,7 +60,7 @@ class FrancasterSpeech:
 
     def repeat(self) -> None:
         """Record audio from the microphone and repeat it"""
-        self.speak(self.record("Recording..."))
+        self.speak(self.record("A vous de parler"))
 
     def answer(self, question: str) -> None:
         """Answer to the given question"""

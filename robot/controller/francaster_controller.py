@@ -23,6 +23,7 @@ MOTORS = {
     "HEAD_PITCH": RobotMotor(15, 0, 60, 30),
 }
 
+
 def str_to_int(value: str) -> int:
     """Convert a string to an int"""
     try:
@@ -204,29 +205,28 @@ class FrancasterController:
 
     def francaster_listen_and_answer(self) -> None:
         """Listen and answer"""
-        self.francaster_answer_question(FrancasterSpeech(self).record("Pose moi une question."))
+        self.francaster_answer_question(FrancasterSpeech(
+            self).record("Pose moi une question."))
 
     def francaster_dance(self) -> None:
         """Listen and answer"""
-        MOTORS["LEFT_SHOULDER_ROTATOR"].set_motor_position(60)
-        MOTORS["RIGHT_SHOULDER_ROTATOR"].set_motor_position(120)
-        sleep(1)
-        
         MOTORS["LEFT_SHOULDER_ABDUCTOR"].set_motor_position(180)
         MOTORS["RIGHT_SHOULDER_ABDUCTOR"].set_motor_position(0)
         sleep(1)
-        
-        
+        MOTORS["LEFT_SHOULDER_ROTATOR"].set_motor_position(60)
+        MOTORS["RIGHT_SHOULDER_ROTATOR"].set_motor_position(120)
+        sleep(1)
+
         MOTORS["LEFT_SHOULDER_ROTATOR"].set_motor_position(120)
         MOTORS["RIGHT_SHOULDER_ROTATOR"].set_motor_position(60)
         sleep(1)
-        
+
         MOTORS["LEFT_ELBOW"].set_motor_position(30)
         MOTORS["RIGHT_ELBOW"].set_motor_position(150)
         sleep(1)
-        
+
         MOTORS["LEFT_SHOULDER_ABDUCTOR"].set_motor_position(0)
         MOTORS["RIGHT_SHOULDER_ABDUCTOR"].set_motor_position(180)
         sleep(1)
-        
+
         self.francaster_reset_position()

@@ -17,7 +17,7 @@ class RobotMotor:
         self.min_angle = min_angle
         self.max_angle = max_angle
         self.initial_angle = initial_angle
-        self.servo_kit = ServoKit(channels=16)
+        # self.servo_kit = ServoKit(channels=16)
 
     def is_in_range(self, angle: int) -> int:
         """Check if the given angle is in the range of the motor"""
