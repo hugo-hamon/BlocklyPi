@@ -1,14 +1,15 @@
 from __future__ import annotations
 from .event_handler import FrancasterEvent
 from typing import TYPE_CHECKING
-import logging
-import random
-import time
-import os
 import speech_recognition as sr
 from unidecode import unidecode
 from gtts import gTTS
 import pygame as pg
+import whisper
+import logging
+import random
+import time
+import os
 if TYPE_CHECKING:
     from ..controller.francaster_controller import FrancasterController
 
@@ -20,6 +21,7 @@ class FrancasterSpeech:
         self.microphone = sr.Microphone()
         self.language = language
         self.event_handler = FrancasterEvent(self, francaster_controller)
+        self.model = whisper.load_model("base")
 
     def record(self, ask="") -> str:
         """Record audio from the microphone and return the recognized text"""
@@ -34,13 +36,11 @@ class FrancasterSpeech:
             self.speak(ask)
         self.recognizer.adjust_for_ambient_noise(source)
         audio = self.recognizer.listen(source)
-        voice_data = self.recognizer.recognize_google(
-            audio, language=self.language)
-        if type(voice_data) != str:
-            return self.record("Répéter s'il vous plaît")
-        voice_data = voice_data.lower()
-        voice_data = unidecode(voice_data)
-        return voice_data
+        with open("microphone-results.wav", "wb") as f:
+            f.write(audio.get_wav_data())
+        result = self.model.transcribe("microphone-results.wav", language="fr")
+        os.remove("microphone-results.wav")
+        return unidecode(result["text"])
 
     def speak(self, text: str) -> None:
         """Speak the given text"""
