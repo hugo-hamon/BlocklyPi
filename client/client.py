@@ -36,7 +36,7 @@ if __name__ == "__main__":
     # Network configuration.
     host = '192.168.0.18'  # client ip
     port = 4005
-    server = ('192.168.0.18', 4000)
+    server = ('192.168.0.15', 4000)
 
     # Register function for all robots.
     blockly_server.register_instance(

@@ -2,22 +2,22 @@ const FRANCASTER_COLOR = 60;
 
 function getMotorDropdownFrancaster() {
     return new Blockly.FieldDropdown([
-        ["inconnue", "0"],
-        ["inconnue", "1"],
-        ["inconnue", "2"],
         ["Epaule gauche 1", "3"],
-        ["Epaule droite 1", "4"],
-        ["Epaule droite 2", "5"],
-        ["Epaule droite 3", "6"],
-        ["Coudre droit", "7"],
-        ["Hanche gauche", "8"],
-        ["Genou gauche", "9"],
-        ["Pied gauche", "10"],
-        ["Hanche droite", "11"],
-        ["Genou droit", "12"],
-        ["Pied droit", "13"],
-        ["Nuque", "14"],
-        ["Tete", "15"]
+        ["Epaule gauche 2", "5"],
+        ["Epaule gauche 3", "6"],
+        ["Coude gauche", "9"],
+        ["Epaule droite 1", "2"],
+        ["Epaule droite 2", "4"],
+        ["Epaule droite 3", "7"],
+        ["Coudre droit", "8"],
+        ["Hanche gauche", "11"],
+        ["Genou gauche", "12"],
+        ["Pied gauche", "15"],
+        ["Hanche droite", "10"],
+        ["Genou droit", "13"],
+        ["Pied droit", "14"],
+        ["Nuque", "1"],
+        ["Tete", "0"]
     ]);
 }
 
