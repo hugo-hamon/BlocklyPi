@@ -15,7 +15,6 @@ class RequestHandler(SimpleXMLRPCRequestHandler, SimpleHTTPRequestHandler):
 LOGGING_CONFIG = {
     'level': logging.INFO,
     'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    'datefmt': '%d-%b-%y %H:%M:%S',
     'filename': 'log/log.log',
     'filemode': 'w'
 }
@@ -42,6 +41,8 @@ if __name__ == "__main__":
     blockly_server.register_instance(
         Controller(host=host, port=port, server=server)
     )
+
+    print(f"Client connected to {server[0]}:{server[1]}")
 
     # Start to server.
     blockly_server.serve_forever()
