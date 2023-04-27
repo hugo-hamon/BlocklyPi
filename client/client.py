@@ -44,7 +44,7 @@ if __name__ == "__main__":
     port = 4005
     print(f"The client is running on {host}:{port}")
     server_host = input("Enter the server host:\n>")
-    server = ('192.168.0.15', 4000)
+    server = (server_host, 4000)
 
     # Register function for all robots.
     blockly_server.register_instance(
