@@ -1,5 +1,7 @@
 from speech.francaster_speech import FrancasterSpeech
+from video_capture import capture_video
 from robot_motor import RobotMotor
+import threading
 import socket
 
 
@@ -78,7 +80,8 @@ class Server:
             FrancasterSpeech().answer(FrancasterSpeech().record("Pose moi une question."))
 
 
-if __name__ == '__main__':
+def run_server() -> None:
+    """Run the server"""
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.connect(("8.8.8.8", 80))
@@ -90,3 +93,19 @@ if __name__ == '__main__':
     port = 4000
     server = Server(host, port)
     server.start()
+
+
+def video_capture() -> None:
+    """Run the video capture"""
+    capture_video()
+
+
+if __name__ == '__main__':
+    run_server_thread = threading.Thread(target=run_server)
+    run_server_thread.start()
+
+    video_capture_thread = threading.Thread(target=video_capture)
+    video_capture_thread.start()
+
+    run_server_thread.join()
+    video_capture_thread.join()

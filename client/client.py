@@ -43,7 +43,7 @@ if __name__ == "__main__":
         raise e
     port = 4005
     print(f"The client is running on {host}:{port}")
-    server_host = input("Enter the server host:\n>")
+    server_host = input("Enter the server host:\n:>")
     server = (server_host, 4000)
 
     # Register function for all robots.
