@@ -79,7 +79,13 @@ class Server:
 
 
 if __name__ == '__main__':
-    host = "192.168.0.18"  # Server ip
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        host = s.getsockname()[0]
+        s.close()
+    except Exception as e:
+        raise e
     port = 4000
     server = Server(host, port)
     server.start()
