@@ -86,6 +86,7 @@ if __name__ == '__main__':
         s.close()
     except Exception as e:
         raise e
+    print(f"The server will run on {host}")
     port = 4000
     server = Server(host, port)
     server.start()
