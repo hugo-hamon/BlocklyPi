@@ -2,6 +2,7 @@ from xmlrpc.server import SimpleXMLRPCRequestHandler, SimpleXMLRPCServer
 from robot.controller.controller import Controller
 from http.server import SimpleHTTPRequestHandler
 import logging
+import socket
 
 
 # We define a custom server request handler, capable of both handling GET and XML-RPC requests.
@@ -33,8 +34,16 @@ if __name__ == "__main__":
     blockly_server.register_introspection_functions()
 
     # Network configuration.
-    host = '192.168.0.18'  # client ip
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        host = s.getsockname()[0]
+        s.close()
+    except Exception as e:
+        raise e
     port = 4005
+    print(f"The client is running on {host}:{port}")
+    server_host = input("Enter the server host:\n>")
     server = ('192.168.0.15', 4000)
 
     # Register function for all robots.
