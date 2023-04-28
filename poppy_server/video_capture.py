@@ -24,7 +24,14 @@ def capture_video():
 
     welcome_name = []
     unknown_count = 0
+
+    frame_rate = 1
+    prev = 0
     while True:
+        time_elapsed = time.time() - prev
+        if time_elapsed < 1. / frame_rate:
+            continue
+        prev = time.time()
         _, frame = video_capture.read()
         # Trouver les visages et les encodages dans l'image actuelle
         face_locations = face_recognition.face_locations(frame)
@@ -73,8 +80,6 @@ def capture_video():
         # Quitter le programme en appuyant sur 'q'
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-
-        time.sleep(1)
 
     # Libérer la capture vidéo et fermer les fenêtres
     video_capture.release()
