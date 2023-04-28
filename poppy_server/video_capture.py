@@ -26,10 +26,12 @@ def capture_video():
     unknown_count = 0
     while True:
         _, frame = video_capture.read()
-        print(unknown_count, time.time())
         # Trouver les visages et les encodages dans l'image actuelle
         face_locations = face_recognition.face_locations(frame)
         face_encodings = face_recognition.face_encodings(frame, face_locations)
+
+        # show the current frame
+        cv2.imshow('Video', frame)
 
         # Comparer les encodages des visages trouvés avec les encodages connus
         for face_encoding, _ in zip(face_encodings, face_locations):
