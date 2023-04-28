@@ -52,7 +52,7 @@ def capture_video():
                     answer = ""
                     while not answer:
                         answer = FrancasterSpeech().record("Veut tu que j'enregistre ton visage ?")
-                    if answer.lower() == "oui":
+                    if "oui" in answer.lower() or "ok" in answer.lower():
                         name = ""
                         while not name:
                             name = FrancasterSpeech().record(
@@ -67,8 +67,10 @@ def capture_video():
                             FrancasterSpeech().speak("Merci, je t'ai ajouté à ma base de donnée")
                         else:
                             FrancasterSpeech().speak("Désolé, Je n'ai pas réussi à prendre la photo")
-                    else:
+                    elif "non" in answer.lower():
                         FrancasterSpeech().speak("D'accord, je ne prendrais pas de photo")
+                    else:
+                        FrancasterSpeech().speak("Désolé je n'ai pas compris")
 
         # Quitter le programme en appuyant sur 'q'
         if cv2.waitKey(1) & 0xFF == ord('q'):
