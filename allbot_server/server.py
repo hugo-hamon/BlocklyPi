@@ -3,14 +3,14 @@ import socket
 
 
 MOTORS = {
-    "FRONT_LEFT_ELBOW": RobotMotor(0, 30, 180, 40),
-    "FRONT_LEFT_SHOULDER": RobotMotor(1, 10, 135, 110),
-    "FRONT_RIGHT_ELBOW": RobotMotor(2, 10, 180, 20),
-    "FRONT_RIGHT_SHOULDER": RobotMotor(3, 25, 180, 70),
-    "BACK_LEFT_ELBOW": RobotMotor(4, 10, 180, 20),
-    "BACK_LEFT_SHOULDER": RobotMotor(6, 25, 180, 110),
-    "BACK_RIGHT_ELBOW": RobotMotor(8, 10, 180, 20),
-    "BACK_RIGHT_SHOULDER": RobotMotor(10, 10, 135, 50)
+    "FRONT_LEFT_ELBOW": RobotMotor(0, 0, 180, 45),
+    "FRONT_LEFT_SHOULDER": RobotMotor(3, 10, 135, 110),
+    "FRONT_RIGHT_ELBOW": RobotMotor(4, 10, 180, 20),
+    "FRONT_RIGHT_SHOULDER": RobotMotor(7, 25, 180, 70),
+    "BACK_LEFT_ELBOW": RobotMotor(8, 10, 180, 20),
+    "BACK_LEFT_SHOULDER": RobotMotor(12, 25, 180, 110),
+    "BACK_RIGHT_ELBOW": RobotMotor(13, 10, 180, 20),
+    "BACK_RIGHT_SHOULDER": RobotMotor(15, 10, 135, 50)
 }
 
 
