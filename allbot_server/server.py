@@ -3,8 +3,8 @@ import socket
 
 
 MOTORS = {
-    "FRONT_LEFT_ELBOW": RobotMotor(0, 0, 180, 45),
-    "FRONT_LEFT_SHOULDER": RobotMotor(3, 10, 135, 110),
+    "FRONT_LEFT_ELBOW": RobotMotor(0, 0, 150, 45),
+    "FRONT_LEFT_SHOULDER": RobotMotor(3, 10, 180, 110),
     "FRONT_RIGHT_ELBOW": RobotMotor(4, 10, 180, 20),
     "FRONT_RIGHT_SHOULDER": RobotMotor(7, 25, 180, 70),
     "BACK_LEFT_ELBOW": RobotMotor(8, 10, 180, 20),

@@ -26,7 +26,7 @@ def capture_video():
     unknown_count = 0
     while True:
         _, frame = video_capture.read()
-
+        print(unknown_count, time.time())
         # Trouver les visages et les encodages dans l'image actuelle
         face_locations = face_recognition.face_locations(frame)
         face_encodings = face_recognition.face_encodings(frame, face_locations)
@@ -46,7 +46,7 @@ def capture_video():
                     welcome_name.append(name)
             else:
                 unknown_count += 1
-                if unknown_count == 10:
+                if unknown_count == 2:
                     unknown_count = 0
                     FrancasterSpeech().speak("Bonjour inconnu")
                     answer = ""
