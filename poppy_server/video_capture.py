@@ -1,5 +1,6 @@
 from speech.francaster_speech import FrancasterSpeech
 import face_recognition
+import contextlib
 import time
 import cv2
 import os
@@ -12,11 +13,10 @@ def capture_video():
     ]
 
     # Extraire les encodages de visages pour les images connues
-    known_images_encoding = [
-        face_recognition.face_encodings(image)[0]
-        for image in know_images
-    ]
-
+    known_images_encoding = []
+    for image in know_images:
+        with contextlib.suppress(IndexError):
+            known_images_encoding.append(face_recognition.face_encodings(image)[0])
     # Créer un tableau des encodages et des noms correspondants
     known_face_names = [name.split(".")[0] for name in os.listdir("image")]
     # Initialiser la capture vidéo
@@ -71,6 +71,8 @@ def capture_video():
         # Quitter le programme en appuyant sur 'q'
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
+        time.sleep(1)
 
     # Libérer la capture vidéo et fermer les fenêtres
     video_capture.release()
