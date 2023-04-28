@@ -25,7 +25,7 @@ def capture_video():
     welcome_name = []
     unknown_count = 0
 
-    frame_rate = 1
+    frame_rate = 0.1
     prev = 0
     while True:
         time_elapsed = time.time() - prev
