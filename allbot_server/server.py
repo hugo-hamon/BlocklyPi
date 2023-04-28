@@ -8,9 +8,9 @@ MOTORS = {
     "FRONT_RIGHT_ELBOW": RobotMotor(2, 10, 180, 20),
     "FRONT_RIGHT_SHOULDER": RobotMotor(3, 25, 180, 70),
     "BACK_LEFT_ELBOW": RobotMotor(4, 10, 180, 20),
-    "BACK_LEFT_SHOULDER": RobotMotor(5, 25, 180, 110),
-    "BACK_RIGHT_ELBOW": RobotMotor(6, 10, 180, 20),
-    "BACK_RIGHT_SHOULDER": RobotMotor(7, 10, 135, 50)
+    "BACK_LEFT_SHOULDER": RobotMotor(6, 25, 180, 110),
+    "BACK_RIGHT_ELBOW": RobotMotor(8, 10, 180, 20),
+    "BACK_RIGHT_SHOULDER": RobotMotor(10, 10, 135, 50)
 }
 
 
@@ -70,6 +70,7 @@ if __name__ == '__main__':
         s.close()
     except Exception as e:
         raise e
+    print(f"The server will run on {host}")
     port = 4000
     server = Server(host, port)
     server.start()
