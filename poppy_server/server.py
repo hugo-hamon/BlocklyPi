@@ -101,6 +101,7 @@ def video_capture() -> None:
 
 
 if __name__ == '__main__':
+    video_capture()
     run_server_thread = threading.Thread(target=run_server)
     run_server_thread.start()
 
