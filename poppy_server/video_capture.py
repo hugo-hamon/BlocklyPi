@@ -61,12 +61,8 @@ def capture_video():
                         for i in range(3, 0, -1):
                             FrancasterSpeech().speak(str(i))
                             time.sleep(1)
-                        result, frame = video_capture.read()
-                        if result:
-                            cv2.imwrite(f"image/{name}.jpg", frame)
-                            FrancasterSpeech().speak("Merci, je t'ai ajouté à ma base de donnée")
-                        else:
-                            FrancasterSpeech().speak("Désolé, Je n'ai pas réussi à prendre la photo")
+                        cv2.imwrite(f"image/{name}.jpg", frame)
+                        FrancasterSpeech().speak("Merci, je t'ai ajouté à ma base de donnée")
                     elif "non" in answer.lower():
                         FrancasterSpeech().speak("D'accord, je ne prendrais pas de photo")
                     else:
