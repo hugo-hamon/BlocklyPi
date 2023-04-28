@@ -29,10 +29,10 @@ def capture_video():
     prev = 0
     while True:
         time_elapsed = time.time() - prev
+        _, frame = video_capture.read()
         if time_elapsed < 1. / frame_rate:
             continue
         prev = time.time()
-        _, frame = video_capture.read()
         # Trouver les visages et les encodages dans l'image actuelle
         face_locations = face_recognition.face_locations(frame)
         face_encodings = face_recognition.face_encodings(frame, face_locations)
