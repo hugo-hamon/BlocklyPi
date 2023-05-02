@@ -2,26 +2,6 @@ from typing import Tuple
 from time import sleep
 import socket
 
-"""
-MOTORS = {
-    "0": "LEFT_ELBOW",
-    "1": "LEFT_SHOULDER_ABDUCTOR",
-    "2": "LEFT_SHOULDER_ROTATOR",
-    "3": "LEFT_SHOULDER_FLEXOR",
-    "4": "RIGHT_SHOULDER_FLEXOR",
-    "5": "RIGHT_SHOULDER_ABDUCTOR",
-    "6": "RIGHT_SHOULDER_ROTATOR",
-    "7": "RIGHT_ELBOW",
-    "8": "LEFT_HIP",
-    "9": "LEFT_KNEE",
-    "10": "LEFT_ANKLE",
-    "11": "RIGHT_HIP",
-    "12": "RIGHT_KNEE",
-    "13": "RIGHT_ANKLE",
-    "14": "HEAD_YAW",
-    "15": "HEAD_PITCH"
-}
-"""
 MOTORS = {
     "9": "LEFT_ELBOW",
     "6": "LEFT_SHOULDER_ABDUCTOR",
@@ -40,7 +20,6 @@ MOTORS = {
     "1": "HEAD_YAW",
     "0": "HEAD_PITCH"
 }
-
 
 
 def str_to_int(value: str) -> int:
@@ -209,3 +188,11 @@ class FrancasterController:
         sleep(1)
         self.francaster_set_motor_position("1", "0")
         self.francaster_set_motor_position("5", "180")
+
+    def francaster_start_camera(self) -> None:
+        """Start the camera"""
+        self.socket.sendto(str.encode("video_start"), self.server)
+
+    def francaster_stop_camera(self) -> None:
+        """Stop the camera"""
+        self.socket.sendto(str.encode("video_stop"), self.server)

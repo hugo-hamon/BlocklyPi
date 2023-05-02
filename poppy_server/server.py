@@ -1,7 +1,6 @@
 from speech.francaster_speech import FrancasterSpeech
-from video_capture import capture_video
+from video_capture import FaceRecognition
 from robot_motor import RobotMotor
-import threading
 import socket
 
 
@@ -41,6 +40,8 @@ class Server:
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.socket.bind((self.host, self.port))
 
+        self.video_capture = FaceRecognition()
+
     def start(self) -> None:
         """Starts the server"""
         print("Server Started")
@@ -78,6 +79,10 @@ class Server:
                 MOTORS[datas[1]].reset()
         elif datas[0] == "question":
             FrancasterSpeech().answer(FrancasterSpeech().record("Pose moi une question."))
+        elif datas[0] == "video_start":
+            self.video_capture.start()
+        elif datas[0] == "video_stop":
+            self.video_capture.stop()
 
 
 def run_server() -> None:
@@ -95,18 +100,5 @@ def run_server() -> None:
     server.start()
 
 
-def video_capture() -> None:
-    """Run the video capture"""
-    capture_video()
-
-
 if __name__ == '__main__':
-    video_capture()
-    run_server_thread = threading.Thread(target=run_server)
-    run_server_thread.start()
-
-    video_capture_thread = threading.Thread(target=video_capture)
-    video_capture_thread.start()
-
-    run_server_thread.join()
-    video_capture_thread.join()
+    run_server()

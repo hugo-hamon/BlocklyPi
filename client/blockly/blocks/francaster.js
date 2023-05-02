@@ -71,6 +71,8 @@ Blockly.Blocks['francaster_sleep'] = {
         this.setColour(FRANCASTER_COLOR);
         this.setTooltip("");
         this.setHelpUrl("");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
     }
 };
 
@@ -190,3 +192,27 @@ Blockly.Blocks['francaster_dance'] = {
         this.setHelpUrl("");
     }
 };
+
+Blockly.Blocks['francaster_start_camera'] = {
+    init: function () {
+        this.appendDummyInput()
+        .appendField("Démarrer la caméra");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(FRANCASTER_COLOR);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+}
+
+Blockly.Blocks['francaster_stop_camera'] = {
+    init: function () {
+        this.appendDummyInput()
+        .appendField("Arrêter la caméra");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(FRANCASTER_COLOR);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+}

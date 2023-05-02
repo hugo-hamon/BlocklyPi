@@ -70,3 +70,11 @@ Blockly.JavaScript['francaster_listen_and_answer'] = function (block) {
 Blockly.JavaScript['francaster_dance'] = function (block) {
     return `runPiRobotCommand("francaster_dance");`;
 };
+
+Blockly.JavaScript['francaster_start_camera'] = function (block) {
+    return `runPiRobotCommand("francaster_start_camera");`;
+}
+
+Blockly.JavaScript['francaster_stop_camera'] = function (block) {
+    return `runPiRobotCommand("francaster_stop_camera");`;
+}

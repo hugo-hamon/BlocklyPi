@@ -11,7 +11,6 @@ import os
 
 
 class FrancasterSpeech:
-
     def __init__(self, language="fr") -> None:
         self.recognizer = sr.Recognizer()
         self.microphone = sr.Microphone()
