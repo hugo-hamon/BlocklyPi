@@ -59,6 +59,13 @@ class FrancasterSpeech:
             time.sleep(0.1)
         os.remove(audio_file)
 
+    def speak_from_file(self, path: str) -> None:
+        pg.mixer.init()
+        pg.mixer.music.load(path)
+        pg.mixer.music.play()
+        while pg.mixer.music.get_busy():
+            time.sleep(0.1)
+
     def repeat(self) -> None:
         """Record audio from the microphone and repeat it"""
         self.speak(self.record("A vous de parler"))

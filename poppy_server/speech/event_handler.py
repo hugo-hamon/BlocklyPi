@@ -8,6 +8,7 @@ import string
 import json
 import time
 import sys
+import os
 if TYPE_CHECKING:
     from .francaster_speech import FrancasterSpeech
 
@@ -231,8 +232,12 @@ class FrancasterEvent:
     def process_question_answer(self, question: str) -> None:
         """Process the question answer event"""
         normalize_question = self.normalize_text(question)
-        most_similar_question, similarity = self.find_most_similar_question(
+        most_similar_question, _ = self.find_most_similar_question(
             normalize_question)
-        print(normalize_question, most_similar_question, similarity)
         answers = self.question_answer[most_similar_question]
-        self.francaster.speak(answers)
+
+        path = f"speech/sound/{most_similar_question}"
+        if os.path.exists(path):
+            self.francaster.speak_from_file(path)
+        else:
+            self.francaster.speak(answers)

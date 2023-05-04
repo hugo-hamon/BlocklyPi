@@ -158,15 +158,9 @@ class FrancasterController:
 
     def francaster_do_hi(self, nb_greetings: str) -> None:
         """Do a hi gesture"""
-        self.francaster_set_motor_position("5", "130")
-        sleep(0.1)
-        self.francaster_set_motor_position("6", "180")
-        sleep(0.1)
-        for _ in range(str_to_int(nb_greetings)):
-            self.francaster_set_motor_position("7", "90")
-            sleep(0.5)
-            self.francaster_set_motor_position("7", "0")
-            sleep(0.5)
+        self.francaster_set_motor_position("5", "90")
+        sleep(0.5)
+        
 
     def francaster_listen_and_answer(self) -> None:
         """Listen and answer"""
