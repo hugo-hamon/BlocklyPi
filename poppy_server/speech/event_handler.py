@@ -75,11 +75,12 @@ class FrancasterEvent:
         """Process the given question"""
         # Check if the question is empty
         if not question:
-            self.francaster.speak("Je n'ai pas compris votre demande")
+            self.francaster.speak("Désolé je n'ai pas compris votre demande")
             return
         question = self.normalize_text(question)
+        print(question)
         # Process the question
-        if "quel heure" in question:
+        if "quelle heure" in question:
             self.process_time()
         elif "quel jour" in question:
             self.process_day()
@@ -236,7 +237,7 @@ class FrancasterEvent:
             normalize_question)
         answers = self.question_answer[most_similar_question]
 
-        path = f"speech/sound/{most_similar_question}"
+        path = f"speech/sound/{most_similar_question}.mp3"
         if os.path.exists(path):
             self.francaster.speak_from_file(path)
         else:
